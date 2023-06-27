@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAMC,EAAW;EACV,SAAS,EAHI,GAAG;;AAEjB,EAAW;EACV,SAAS,EAHY,KAAK;;AAE3B,EAAW;EACV,SAAS,EAHsB,KAAK",
-"sources": ["map.scss"],
-"names": [],
-"file": "map.css"
-}

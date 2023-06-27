@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAcA,IAAI;EACH,SAAS,EAVA,IAA+B;EAWxC,KAAK,EAJc,KAAuC",
-"sources": ["calculate.scss"],
-"names": [],
-"file": "cal.css"
-}

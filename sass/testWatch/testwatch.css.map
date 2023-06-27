@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,QAAS;EACR,OAAO,EAAC,EAAE",
-"sources": ["../watch/testwatch.scss"],
-"names": [],
-"file": "testwatch.css"
-}

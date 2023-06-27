@@ -1,29 +1,18 @@
 {
-
-    "name": "test", //web app 的名称
-
-    "short_name": "tt", //简称，没有足够空间的时候显示
-
-    "description": "pwa测试", //简介
-
-    "icons": [{ //图标
-
-        "src": "./images/hello.jpg",
-
-        "sizes": "150x150",
-
-        "type": "image/png"
-
-    }],
-
-    "background_color": "#fff", //背景颜色
-
-    "theme_color": "#000", //主题色
-
-    "start_url": "../index.html", //Web App 启动时的html文件，地址路径相对于mainfest.json文件
-
-    "display": "standalone", //显示类型： 包含 fullscreen，standalone，minimal-ui，browser
-
-    "orientation": "portrait" //显示方向，包含横屏，竖屏，自适应等
-
+	"name": "pwademo", //web app 的名称
+	"short_name": "pd", //简称，没有足够空间的时候显示
+	"description": "pwa测试demo", //简介
+	"icons": [
+		{
+			//图标
+			"src": "images/raku.png",
+			"sizes": "150x150",
+			"type": "image/png"
+		}
+	],
+	"background_color": "#fff", //背景颜色
+	"theme_color": "#000", //主题色
+	"start_url": "index.html", //Web App 启动时的html文件，地址路径相对于mainfest.json文件
+	"display": "standalone", //显示类型： 包含 fullscreen，standalone，minimal-ui，browser
+	"orientation": "portrait" //显示方向，包含横屏，竖屏，自适应等
 }

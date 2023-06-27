@@ -1,9 +1,0 @@
-/* '$' means create a variable,and this variable is a global variable
-* !deafault it means just a default value,it is easy to be covered
-* so the red will be coverd by yellowgreen
-*/
-$color: yellowgreen;
-$color: red!default;
-a {
-	color:$color;
-}

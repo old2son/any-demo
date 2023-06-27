@@ -1,8 +1,0 @@
-/* '$' means create a variable; 
-* !deafault it means just a default value,it is easy to be covered
-* so the red will be coverd by yellowgreen
-*/
-a {
-  color: yellowgreen; }
-
-/*# sourceMappingURL=variable.css.map */

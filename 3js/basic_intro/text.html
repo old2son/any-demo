@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>threejs demo</title>
+</head>
+<body>
+
+<div id="info">Description</div>
+<style>
+    #info {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display:block;
+    }
+</style>
+
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+<script type="importmap">
+	{
+	    "imports": {
+            "three": "https://unpkg.com/three/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.153.0/examples/jsm/"
+	    }
+	}
+</script>
+    
+<!-- 模块引入 -->
+<script type="module">
+    import * as THREE from 'three';
+    import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+    import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+    camera.position.set( 0, 0, 500 );
+    camera.lookAt( 0, 0, 0 );
+    
+    const scence = new THREE.Scene();
+
+    const loader = new FontLoader();
+    
+    loader.load('https://threejs.org/examples/fonts/optimer_bold.typeface.json', function (font) {
+        const geometry = new TextGeometry( 'happy!', {
+            font: font,
+            size: 80,
+            height: 5,
+            curveSegments: 12,
+            bevelEnabled: true,
+            bevelThickness: 10,
+            bevelSize: 8,
+            bevelSegments: 5
+        });
+
+        const textMaterial = new THREE.MeshNormalMaterial();
+        const textMesh = new THREE.Mesh(geometry, textMaterial);
+        textMesh.position.x = -150;
+        textMesh.position.y = 5;
+        scence.add( textMesh );
+        renderer.render( scence, camera );
+    });
+</script>
+
+</body>
+</html>

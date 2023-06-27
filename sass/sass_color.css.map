@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACA,oCAAoC;AACpC,GAAG;EACF,KAAK,EAAE,OAAgB;EACvB,gBAAgB,EAAE,OACnB",
-"sources": ["sass_color.scss"],
-"names": [],
-"file": "sass_color.css"
-}

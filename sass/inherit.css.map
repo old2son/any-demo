@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACA,YAAE;EACD,MAAM,EAAE,cAAc;;AAEvB,QAAS;EAER,YAAY,EAAE,GAAG;;AAIlB,YAAI;EACH,KAAK,EAAE,WAAW;EAClB,WAAW,EAAC,IAAI;EAChB,gBAAgB,EAAE,WAAW;EAC7B,MAAM,EAAC,CAAC;;AAiBT,2CAA2C;AAC3C,OAAQ;EAEP,sBAAsB;EACtB,KAAK,EAAE,KAAK",
-"sources": ["inherit.scss"],
-"names": [],
-"file": "inherit.css"
-}

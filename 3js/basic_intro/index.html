@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>threejs demo</title>
+</head>
+<body>
+
+<!-- 模块引入 -->
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three/build/three.module.js"
+        }
+    }
+</script>
+<script type="module">
+    // 从模块中引入three
+    import * as THREE from 'three';
+
+    // 创建相机
+    const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+    camera.position.z = 1;
+
+    // 创建场景
+    const scene = new THREE.Scene();
+
+    // 创建立方体
+    const geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
+    // 创建材质
+    const material = new THREE.MeshNormalMaterial();
+
+    // 创建网格, 将立方体和材质结合
+    const mesh = new THREE.Mesh( geometry, material );
+    // 将网格添加到场景中
+    scene.add( mesh );
+
+    // 创建渲染器
+    const renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setAnimationLoop( animation );
+    // 将渲染器添加到页面中
+    document.body.appendChild( renderer.domElement );
+
+    function animation( time ) {
+        mesh.rotation.x = time / 2000;
+        mesh.rotation.y = time / 1000;
+        // 渲染场景相机
+        renderer.render( scene, camera );
+    }
+</script>
+
+</body>
+</html>

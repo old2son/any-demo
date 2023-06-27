@@ -1,7 +1,0 @@
-@import "test.css"; // .css file will not be merge, just have a url
-@import "basic.scss"; // scss or sass will merge in a new .css file
-body {
-	/*test the watch*/
-	color:green;
-	background-color: red;
-}

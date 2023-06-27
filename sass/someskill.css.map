@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACA,OAAQ;EAeP,KAAK,EAAE,IAAI;EAdX,YAAO;IACN,KAAK,EAAE,IAAI;EAGZ,mCAAO;IACN,gBAAgB,EAAE,IAAI;EAIvB,qBAAgB;IAEf,KAAK,EAAE,OAAO;;AAehB,aAAc;EALV,KAAK,EADa,IAAI;EAOL,UAAU,EATvB,KAAK;EAKT,MAAM,EAAE,cAAgB;;AAQxB,WAAQ;EAMA,OAAO,EAAE,qCAAsD",
-"sources": ["someskill.scss"],
-"names": [],
-"file": "someskill.css"
-}
