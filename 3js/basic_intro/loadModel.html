@@ -33,6 +33,10 @@
     camera.position.z = 8;
     camera.lookAt(0, 0, 0);
 
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.target.set(0, 0, 0);
+    controls.enableDamping = true;
+
     const scene = new THREE.Scene();
 
     // 添加光源
@@ -43,10 +47,16 @@
 
     loader.load( 'ice_pop.glb', function ( gltf ) {
         scene.add( gltf.scene );
-        renderer.render(scene, camera);
+        animate();
     }, undefined, function (error) {
         console.error( error );
     } );
+
+    function animate() {
+        controls.update();
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+    }
     
 </script>
 
