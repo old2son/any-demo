@@ -34,7 +34,15 @@
     camera.lookAt(0, 0, 0);
 
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.target.set(0, 0, 0);
+    controls.target.set(0, 3, 0);
+    controls.enablePan = false;
+    controls.enableRotate = true;
+    /* controls.minAzimuthAngle = 1; */
+    /* controls.maxAzimuthAngle = 2; */
+    const polarAngle = Math.PI / 2;
+    controls.minPolarAngle = polarAngle;
+    controls.maxPolarAngle = polarAngle;
+    controls.enableZoom = false;
     controls.enableDamping = true;
 
     const scene = new THREE.Scene();
