@@ -1,0 +1,18 @@
+{
+	"name": "sq2",
+	"description": "sq2🦑",
+	"version": "0.01",
+	"manifest_version": 3,
+	"action": {
+		"default_title": "🦑🦑🦑",
+		"default_popup": "index.html",
+		"default_icon": "images/sd.png"
+	},
+	"content_scripts": [
+		{
+			"js": ["js/app.js"],
+			"matches": ["http://*/*", "https://*/*"],
+			"run_at": "document_start"
+		}
+	]
+}
