@@ -156,6 +156,7 @@
 			'提纯',
 			'社区管理',
 			'社管',
+			'关服',
 			'水军',
 			'网警',
 			'删评',
@@ -177,11 +178,8 @@
 			const $btnLike = $cur.querySelector('.reply-like');
 			const userId = $cur.querySelector('.user-name').dataset.userId;
 
-			if (Number(userId) === 809925) {
-				console.log('不点赞自己');
-				return;
-			} else if ($btnLike.querySelector('.liked')) {
-				console.log('重复点赞');
+			if (Number(userId) === 809925 || $btnLike.querySelector('.liked')) {
+				console.log('不点赞自己/重复点赞');
 				return;
 			}
 
@@ -198,5 +196,5 @@
 	};
 
 	switchClick();
-	autoComment();
+	// autoComment();
 })();
