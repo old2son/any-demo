@@ -18,8 +18,8 @@
 	const urlSb = `https://api.bilibili.com/x/v2/reply/add?csrf=${biliJct}`;
 
 	const dayStrs = [
-		`卡车队来咯📢📢📢📢📢📢📢📢\n                   🚚🚚🚚🚚🚚🚚🚚🚚\n1.犹太教在我国没有合法席位，国内没有犹太教。\n2.将宗教类物品植入文娱作品需要有报备，而2024年1月7日凌晨2：40的紧急热修加上后来的大规模删帖封号足以说明散爆是在没有报备的情况下故意夹带私货，货不对板。\n3.根据宗教事务条例，涉及宗教内容的出版物，应当符合国家出版管理的规定，并不得含有下列内容：\n（一）破坏信教公民与不信教公民和睦相处的；\n（二）破坏不同宗教之间和睦以及宗教内部和睦的；\n（三）歧视、侮辱信教公民或者不信教公民的；\n（四）宣扬宗教极端主义的；\n（五）违背宗教的独立自主自办原则的。\n`,
-		`1.犹太教在我国没有合法席位，国内没有犹太教。\n2.将宗教类物品植入文娱作品需要有报备，而2024年1月7日凌晨2：40的紧急热修加上后来的大规模删帖封号足以说明散爆是在没有报备的情况下故意夹带私货，货不对板。\n3.根据宗教事务条例，涉及宗教内容的出版物，应当符合国家出版管理的规定，并不得含有下列内容：\n（一）破坏信教公民与不信教公民和睦相处的；\n（二）破坏不同宗教之间和睦以及宗教内部和睦的；\n（三）歧视、侮辱信教公民或者不信教公民的；\n（四）宣扬宗教极端主义的；\n（五）违背宗教的独立自主自办原则的。\n`
+		`卡车队来咯📢📢📢📢📢📢📢📢\n                   🚚🚚🚚🚚🚚🚚🚚🚚\n1.犹太教在我国没有合法席位，国内没有犹太教。\n2.将宗教类物品植入文娱作品需要有报备，而2024年1月7日凌晨2：40的紧急热修加上后来的大规模删帖封号足以说明散爆是在没有报备的情况下故意夹带私货，货不对板。\n3.根据宗教事务条例，涉及宗教内容的出版物，应当符合国家出版管理的规定，并不得含有下列内容：\n（一）破坏信教公民与不信教公民和睦相处的；\n（二）破坏不同宗教之间和睦以及宗教内部和睦的；\n（三）歧视、侮辱信教公民或者不信教公民的；\n（四）宣扬宗教极端主义的；\n（五）违背宗教的独立自主自办原则的。`,
+		`传播非法宗教\n非法恶意使用中国邮政和EMS logo\n恶意抹黑世界文明遗产长城\n文案恶意辱骂玩家\n191不当剧情恶意引用伟人话语\n无公告，未告知用户更新\n月卡描述欺诈`
 	];
 
 	const nightStrs = [
@@ -35,11 +35,11 @@
 		`啊啊啊啊啊啊啊，不管了，我反正挺喜欢这个游戏的，希望别💥姒，也不要总折腾官方了等新年活动吧，希望越做越好！！！\n(此模板 0.5 新谢克尔,括号里面记得删)`
 	];
 
-	const backStrs = ['ymfm', 'YMFM', 'YMFM', 'YMFM'];
+	const backStrs = ['ymfm', 'YMFM', '狱中❤️‍🔥fm', '狱中💝FM'];
 
-	function getRandomUniqueValue(arr) {
+	function getRandomUniqueValue(arr, isDel = false) {
 		if (!arr.length) {
-			arr = ['ymfm', 'YMFM', '狱中❤️‍🔥fm', '狱中💝FM'];
+			arr = [...backStrs];
 		}
 
 		let currentIndex = arr.length;
@@ -54,13 +54,17 @@
 			arr[randomIndex] = temporaryValue;
 		}
 
-		return arr.pop();
+		if (isDel) {
+			return arr.pop();
+		} else {
+			return arr[0];
+		}
 	}
 
 	const params = {
 		oid: 305455322,
 		type: 11,
-		message: getRandomUniqueValue(nightStrs),
+		message: getRandomUniqueValue(dayStrs),
 		plat: '1',
 		at_name_to_mid: '{}',
 		pictures: [],
@@ -101,7 +105,7 @@
 
 	const switchClick = () => {
 		console.log('begin switch click');
-		setInterval(() => {
+		setTimeout(() => {
 			console.log('hot-sort click');
 			const $hot = document.querySelector('.hot-sort');
 			$hot.click();
@@ -118,12 +122,14 @@
 				.catch((error) => {
 					console.error('发生错误:', error);
 				});
-		}, 30000);
+		}, 1000);
 	};
 
 	const likeFn = () => {
 		const $replyWrap = document.querySelectorAll('.root-reply-container');
 		const keywords = [
+			'红星',
+			'教员',
 			'鱿',
 			'🦑',
 			'犹太',
@@ -133,17 +139,21 @@
 			'传教',
 			'非法宗教',
 			'🔻',
-			'红星',
-			'罕见',
-			'汉奸',
 			'羽中',
 			'翀',
+			'汉奸',
+			'罕见',
+			'识趣的后退',
+			'一瘸一拐',
+			'土豆花',
+			'马铃薯花',
 			'行家啊',
 			'硬核不媚宅',
 			'提纯',
 			'社区管理',
 			'社管',
 			'水军',
+			'网警',
 			'删评',
 			'ymfm',
 			'YMFM',
