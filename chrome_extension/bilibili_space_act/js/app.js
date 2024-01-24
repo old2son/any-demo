@@ -122,7 +122,7 @@
 				.catch((error) => {
 					console.error('发生错误:', error);
 				});
-		}, 1000);
+		}, 1800000);
 	};
 
 	const likeFn = () => {
