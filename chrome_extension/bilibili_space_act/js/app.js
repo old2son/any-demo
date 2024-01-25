@@ -75,10 +75,8 @@
 		return new Promise((resolve) => setTimeout(resolve, ms));
 	};
 
-	const autoComment = () => {
-		console.log('autoComment countdown');
+	const autoComment = (sec = 1800000) => {
 		setInterval(() => {
-			console.log('autoComment begin');
 			fetch(urlSb, {
 				method: 'POST',
 				headers: {
@@ -94,24 +92,20 @@
 					return response.json();
 				})
 				.then((data) => {
-					console.log('成功发布');
 					console.log('Response data:', data);
 				})
 				.catch((error) => {
 					console.error('Error:', error);
 				});
-		}, 1800000);
+		}, sec);
 	};
 
-	const switchClick = () => {
-		console.log('begin switch click');
+	const switchClick = (sec = 30000) => {
 		setInterval(() => {
-			console.log('hot-sort click');
 			const $hot = document.querySelector('.hot-sort');
 			$hot.click();
 			delay(5000)
 				.then(() => {
-					console.log('time-sort click');
 					const $time = document.querySelector('.time-sort');
 					$time.click();
 					return delay(5000);
@@ -122,7 +116,7 @@
 				.catch((error) => {
 					console.error('发生错误:', error);
 				});
-		}, 30000);
+		}, sec);
 	};
 
 	const likeFn = () => {
@@ -145,11 +139,7 @@
 			'罕见',
 			'识趣的后退',
 			'一瘸一拐',
-			'土豆花',
-			'马铃薯花',
 			'行家啊',
-			'识趣的后退',
-			'一瘸一拐',
 			'土豆花',
 			'马铃薯花',
 			'硬核不媚宅',
@@ -158,8 +148,9 @@
 			'社管',
 			'关服',
 			'水军',
-			'网警',
 			'删评',
+			'画饼骗钱',
+			'网警',
 			'ymfm',
 			'YMFM',
 			'まする',
@@ -179,7 +170,6 @@
 			const userId = $cur.querySelector('.user-name').dataset.userId;
 
 			if (Number(userId) === 809925 || $btnLike.querySelector('.liked')) {
-				console.log('不点赞自己/重复点赞');
 				return;
 			}
 
@@ -188,13 +178,12 @@
 
 			if (containsKeyword) {
 				$btnLike.click();
-				console.log('成功点赞');
 			} else {
 				console.log('文字中未包含指定的内容');
 			}
 		});
 	};
 
-	switchClick();
-	// autoComment();
+	switchClick(sec);
+	autoComment(sec);
 })();
