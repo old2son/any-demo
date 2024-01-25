@@ -148,6 +148,7 @@
 			'社管',
 			'关服',
 			'水军',
+			'受害者形象',
 			'删评',
 			'画饼骗钱',
 			'网警',
@@ -184,6 +185,6 @@
 		});
 	};
 
-	switchClick(sec);
-	autoComment(sec);
+	switchClick();
+	autoComment();
 })();
