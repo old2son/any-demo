@@ -157,7 +157,7 @@
 			'必养的',
 			'byd'
 		];
-		const banwords = ['🐢', '⭐️', '星'];
+		const banwords = ['🐢', '⭐️', '星', '@'];
 
 		const containsKeywordsButNotBanwords = (text, keywords, banwords) => {
 			let containsKeywords = keywords.some((keyword) => text.includes(keyword));
