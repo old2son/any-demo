@@ -125,6 +125,7 @@
 			'红星',
 			'教员',
 			'鱿',
+			'犹戏',
 			'🦑',
 			'犹太',
 			'新谢克尔',
@@ -152,6 +153,9 @@
 			'删评',
 			'画饼骗钱',
 			'网警',
+			'少前2团本小助手',
+			'不要欺负二创作者',
+			'@少女前线2-追放制作组',
 			'ymfm',
 			'YMFM',
 			'まする',
@@ -161,6 +165,10 @@
 		const banwords = ['🐢', '⭐️', '星', '@'];
 
 		const containsKeywordsButNotBanwords = (text, keywords, banwords) => {
+			if (text.includes('@少女前线2-追放制作组')) {
+				return true;
+			}
+
 			let containsKeywords = keywords.some((keyword) => text.includes(keyword));
 			let containsBanwords = banwords.some((banword) => text.includes(banword));
 			return containsKeywords && !containsBanwords;
