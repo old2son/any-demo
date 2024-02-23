@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import 'dotenv/config';
 import { SocksProxyAgent } from 'socks-proxy-agent';
+import getImgNum from './getImgNum.js';
 
 const downloadImage = (imgUrl) => {
     // 创建 imgs 目录（如果不存在）
@@ -14,13 +15,8 @@ const downloadImage = (imgUrl) => {
     // 解析图片 URL
 	const urlParts = new URL(imgUrl);
 
-    // 获取文件名中的数字字符串
-    const startIndex = imgUrl.lastIndexOf('/'); // 找到最后一个斜杠的索引
-    const endIndex = imgUrl.lastIndexOf('.'); // 找到最后一个点的索引
-    const numberString = imgUrl.slice(startIndex, endIndex);
-
     // 创建可写流
-	const fileStream = fs.createWriteStream(path.join(imgDir, `${numberString}.jpg`));
+	const fileStream = fs.createWriteStream(path.join(imgDir, `${getImgNum(imgUrl)}.jpg`));
 
 	const proxyAgent = new SocksProxyAgent(process.env.SOCKET_PROXY);
 
