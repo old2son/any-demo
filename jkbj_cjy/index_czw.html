@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>czw</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+		<!-- Link Swiper's CSS -->
+
+		<!-- Demo styles -->
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/html2canvas.min.js"></script>
+		<script src="js/canvas2image.js"></script>
+		<style>
+			p {
+				margin: 0;
+				padding: 0;
+			}
+			.bg {
+				width: 1200px;
+				height: 1600px;
+				background: url(img/bg.jpg) no-repeat;
+				overflow: hidden;
+				margin: auto;
+			}
+			.title {
+				padding-top: 62px;
+				line-height: 70px;
+				height: 70px;
+				overflow: hidden;
+				text-align: center;
+				color: #819ecb;
+				font-size: 40px;
+			}
+			.content {
+				width: 1000px;
+				margin: 20px auto;
+			}
+			.content span {
+				color: red;
+			}
+			.subtitle {
+				height: 86px;
+				background-color: #fff;
+				border: solid 1px #000;
+				border-radius: 43px;
+				margin: 50px 0;
+				line-height: 86px;
+				width: auto;
+				display: table;
+			}
+			.subtitle .left {
+				height: 86px;
+				background-color: #7ba9e4;
+				border: solid 1px #000;
+				border-radius: 43px;
+				margin: -1px 0 0 -1px;
+				font-size: 56px;
+				color: #fff;
+				font-weight: bold;
+				float: left;
+				padding: 0 20px;
+				line-height: 78px;
+			}
+			.subtitle .right {
+				font-size: 60px;
+				color: #7ba9e4;
+				font-weight: bold;
+				float: left;
+				padding: 0 20px;
+			}
+			.text {
+				padding: 0 10px;
+				font-size: 48px;
+				line-height: 62px;
+				color: #362e2b;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="bg" id="html-canvas">
+			<p class="title" id="tetie">私处有点出血，但不像来月经的原因！</p>
+			<div class="content" id="content"></div>
+		</div>
+	</body>
+	<script>
+		//一页控制在247个字以内
+		var jisonText = [
+			{
+				title: '私处有点出血，但不像来月经的原因！',
+				//分多少页
+				page: [
+					{
+						content: [
+							{
+								subtitle: '排卵期出血',
+								id: '01',
+								cntText:
+									'可能是处于排卵期，体内的雌激素水平暂时性下降，子宫内膜失去激素的支撑之后，也会发生部分脱落，引起阴道少量出血'
+							},
+							{
+								subtitle: '妊娠及其相关问题',
+								id: '02',
+								cntText:
+									'若是怀孕，在初期，胚胎还不稳定时，出现少量出血属于正常情况；若是出血量大且持续时间长，就要警惕流产、宫外孕等情况，需及时就诊，对症处理'
+							},
+							{
+								subtitle: '子宫内膜炎',
+								id: '03',
+								cntText:
+									'可能是受到淋病奈瑟菌、衣原体、<span>支原体</span>等病原微生物的感染，导致子宫内膜处于充血和水肿的状态，局部的小血管扩张破裂后，诱发阴道部位有少量的出血，同时还伴有腹胀。'
+							}
+						]
+					},
+					{
+						content: [
+							{
+								subtitle: '宫颈息肉',
+								id: '04',
+								cntText:
+									'宫颈息肉是由宫颈组织长时间受到炎症刺激出现的增生性赘生物，息肉表面有较多的毛细血管分布，受到外界刺激后，容易使血管破裂，导致阴道异常出血。'
+							},
+							{
+								subtitle: '子宫肌瘤',
+								id: '05',
+								cntText:
+									'可能因为肌瘤导致宫腔增大，进而增加子宫面积，周围的静脉丛充血扩张破裂后也会有异常的出血，同时还伴有月经量增多、痛经等。在平时，需要做好个人的卫生和防护措施，保持局部的清洁和干燥，及时更换内裤。而且出血期间尽量不要有性生活，防止病原微生物入侵。'
+							}
+						]
+					}
+				]
+			}
+		];
+		function setHtml() {
+			for (var i = 0; i < jisonText.length; i++) {
+				var setTitle = jisonText[i].title;
+				var setObj = jisonText[i].page;
+				for (var j = 0; j < setObj.length; j++) {
+					var setContent = setObj[j].content;
+					var setHtml = '';
+					for (var k = 0; k < setContent.length; k++) {
+						setHtml =
+							setHtml +
+							'<div class="subtitle"><p class="left">' +
+							setContent[k].subtitle +
+							'</p><p class="right">' +
+							setContent[k].id +
+							'</p></div><p class="text">' +
+							setContent[k].cntText +
+							'</p>';
+					}
+					document.getElementById('tetie').innerHTML = setTitle;
+					document.getElementById('content').innerHTML = setHtml;
+					baoccun(setTitle, j);
+				}
+			}
+		}
+
+		function baoccun(setTitle, j) {
+			var realHtml = document.getElementById('html-canvas');
+			var width = 1200; //获取dom 宽度
+
+			var img_type = 'jpeg';
+			// var height = realHtml.offsetHeight; //获取dom 高度
+			var height = 1600; //获取dom 高度
+			var canvas = document.createElement('canvas'); //创建一个canvas节点
+			var scale = 1; //定义任意放大倍数 支持小数
+			canvas.width = width * scale; //定义canvas 宽度 * 缩放
+			canvas.height = height * scale; //定义canvas高度 *缩放
+			canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+			var opts = {
+				tainttest: true, //检测每张图片都已经加载完成
+				scale: scale, // 添加的scale 参数
+				useCORS: true,
+				canvas: canvas, //自定义 canvas
+				logging: true, //日志开关
+				width: width, //dom 原始宽度
+				height: height, //dom 原始高度
+				name: 'sss'
+			};
+			html2canvas(realHtml, opts).then(function (canvas) {
+				//如果想要生成图片 引入canvas2Image.js 下载地址：
+				//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+				// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+				imgUri = canvas.toDataURL('image/' + img_type).replace('image/' + img_type, 'image/octet-stream');
+				// alert(imgUri);
+				var saveLink = document.createElement('a');
+				saveLink.href = imgUri;
+				saveLink.download = setTitle + (j + 1) + '.' + img_type;
+				saveLink.click();
+				// realHtml.innerHTML="";
+				// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
+				// alert(document.body.offsetHeight);
+				// alert(document.getElementById("img1").offsetHeight);
+				// document.body.style.height = setHeight+"px";
+				// document.body.style.backgroundColor = "red";
+				// $('#img').attr('src',imgUri);
+				// document.removeChild(a);
+				// console.log(img);
+				// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
+				// localStorage.removeItem("img-html");
+				// localStorage.removeItem('img-type');
+				// localStorage.removeItem('canvas_multiple');
+			});
+		}
+		setHtml()
+	</script>
+</html>
