@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>003</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/canvas2image.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_003.jpg) no-repeat;
+	}
+
+	.title {
+		height: 70px;
+		line-height: 70px;
+		padding-top: 62px;
+		overflow: hidden;
+		text-align: center;
+		color: #4a2617;
+		font-size: 40px;
+		font-family: SourceHanSansCN-Bold;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 20px auto;
+
+		span {
+			color: #6036c3;
+			/* background-color: #f0ffcd; */
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 1px #000;
+		border-radius: 15px;
+		background-color: #fff546;
+
+		.left {
+			display: none;
+			height: 86px;
+			line-height: 78px;
+			padding: 0 20px;
+			margin: -1px 0 0 -1px;
+			float: left;
+			border: solid 1px #000;
+			border-radius: 43px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 56px;
+			background-color: #7ba9e4;
+		}
+
+		.right {
+			padding: 0 20px;
+			float: left;
+			color: #4d1a00;
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text {
+		line-height: 68px;
+		padding: 60px 40px 30px;
+		margin-top: -50px;
+		border: 1px solid #000;
+		border-radius: 15px;
+		color: #4a2617;
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+	}
+
+	.pic-wrap {
+		height: 600px;
+		margin: 50px auto 0;
+		overflow: hidden;
+
+		img {
+			/* width: 50%;
+			height: 400px;
+			object-fit: contain; */
+			display: block;
+			width: 65%;
+			margin: 0 auto;
+			object-fit: cover;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<p class="title" id="tetie"></p>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+
+var jisonText = [
+	{
+		title: '',
+		title: '对应方法',
+
+		page: [
+			{
+				content: [
+					// {
+					// 	subtitle: '',
+					// 	id: '1.生活习惯',
+					// 	cntText:
+					// 		'在生活中，如果我们<span>长时间的抽烟、喝酒或者是过度的劳累</span>等不良的生活习惯，可能会导致谷氨酰转肽酶出现偏高。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '2.药物因素',
+					// 	cntText:
+					// 		'如果患者使用了某些药物，比如<span>抗生素药物、抗病毒药物</span>等，可能会引起谷氨酰转肽酶暂时性的升高。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '3.肝脏疾病',
+					// 	cntText:
+					// 		'肝脏是谷氨酰转肽酶的主要产地，当肝脏受到损伤之后，谷氨酰转肽酶的活性就会明显的上升，常见的疾病有<span>慢性肝炎、酒精性肝病、肝硬化</span>等。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '4.胆道阻塞',
+					// 	cntText:
+					// 		'<span>胆道出现堵塞之后，会导致胆汁排泄不畅</span>，会使肝脏分泌的谷氨酰转肽酶无法正常的排出体外，会导致血清中的血氨酰转肽酶水平出现偏高。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '5.肾脏疾病',
+					// 	cntText:
+					// 		'当出现<span>肾脏疾病，比如肾炎、肾结石等，肾功能会受到损伤</span>，影响到机体的代谢，从而会引起谷氨酰转肽酶偏高。'
+					// },
+					// {
+					// 	picUrl: 'img/object/kidney_001.jpg',
+					// }
+				]
+			},
+			{
+				content: [
+					{
+						subtitle: '',
+						id: '1.调整生活习惯',
+						cntText:
+							'生活中需要养成良好的作息习惯，<span>避免熬夜</span>，饮食上需要均衡，<span>多吃水果和蔬菜</span>，需要<span>忌烟忌酒</span>。'
+					},
+					{
+						subtitle: '',
+						id: '2.治疗原发疾病',
+						cntText:
+							'针对查出来的病因进行<span>针对性的治疗</span>，能够使病情得到缓解，控制病情的发展。'
+					},
+					{
+						subtitle: '',
+						id: '3.定期复查',
+						cntText:
+							'在治疗的过程中，还需要<span>定期的到医院复查</span>，及时了解谷氨酰转肽酶的水平，以便评估治疗的效果。我相信通过以上的介绍，大家都了解了它的原因吧。'
+					},
+				]
+			},
+		]
+	}
+];
+var html = '';
+
+function setHtml() {
+	for (var i = 0; i < jisonText.length; i++) {
+		var setTitle = jisonText[i].title || '';
+		var setObj = jisonText[i].page;
+		for (var j = 0; j < setObj.length; j++) {
+			var setContent = setObj[j].content;
+			for (var k = 0; k < setContent.length; k++) {
+				if (setContent[k].picUrl) {
+					html += `<div class="pic-wrap"><img src="${setContent[k].picUrl}"></div>`
+				}
+				else {
+					html +=
+						'<div class="subtitle"><p class="left">' +
+						setContent[k].subtitle +
+						'</p><p class="right">' +
+						setContent[k].id +
+						'</p></div><p class="text">' +
+						setContent[k].cntText +
+						'</p>';
+				}
+			}
+			
+			document.getElementById('tetie').innerHTML = setTitle;
+			document.getElementById('content').innerHTML = html;
+			saveImg(setTitle, j);
+		}
+	}
+}
+
+function saveImg(setTitle='', j=0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		//如果想要生成图片 引入canvas2Image.js 下载地址：
+		//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+		// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+		imgUri = canvas.toDataURL('image/' + img_type).replace('image/' + img_type, 'image/octet-stream');
+		// alert(imgUri);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + img_type;
+		saveLink.click();
+		// realHtml.innerHTML="";
+		// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
+		// alert(document.body.offsetHeight);
+		// alert(document.getElementById("img1").offsetHeight);
+		// document.body.style.height = setHeight+"px";
+		// document.body.style.backgroundColor = "red";
+		// $('#img').attr('src',imgUri);
+		// document.removeChild(a);
+		// console.log(img);
+		// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
+		// localStorage.removeItem("img-html");
+		// localStorage.removeItem('img-type');
+		// localStorage.removeItem('canvas_multiple');
+	});
+}
+setHtml()
+</script>
+</html>

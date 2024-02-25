@@ -8,6 +8,32 @@
 <script src="js/html2canvas.min.js"></script>
 <script src="js/canvas2image.js"></script>
 <style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #fffd71;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #4a2617;
+		--subtitle-bg-color: #c7e8ff;
+		--text-color: #000;
+		--key-color: #3356bb;
+		--key-bg-color: #f0ffcd;
+	}
+
 	p {
 		margin: 0;
 		padding: 0;
@@ -18,7 +44,7 @@
 		height: 1600px;
 		margin: auto;
 		overflow: hidden;
-		background: url(img/bg_015.jpg) no-repeat;
+		background: url(img/bg/bg_015.jpg) no-repeat;
 	}
 
 	.title {
@@ -27,8 +53,9 @@
 		padding-top: 62px;
 		overflow: hidden;
 		text-align: center;
-		color: #819ecb;
+		color: var(--text-color);
 		font-size: 40px;
+		font-family: SourceHanSansCN-Bold;
 	}
 
 	.content {
@@ -36,20 +63,21 @@
 		margin: 20px auto;
 
 		span {
-			/* color: red; */
-			background-color: #f0ffcd;
+			color: var(--key-color);
 		}
 	}
 
 	.subtitle {
 		display: table;
+		position: relative;
 		width: auto;
-		height: 86px;
-		line-height: 86px;
-		margin: 50px 0;
-		border: solid 1px #000;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 2px var(--main-bdr-color);
 		border-radius: 15px;
-		background-color: #fff546;
+		color: var(--subtitle-color);
+		background-color: var(--subtitle-bg-color);
 
 		.left {
 			display: none;
@@ -58,7 +86,7 @@
 			padding: 0 20px;
 			margin: -1px 0 0 -1px;
 			float: left;
-			border: solid 1px #000;
+			border: solid 2px var(--main-bdr-color);
 			border-radius: 43px;
 			color: #fff;
 			font-weight: bold;
@@ -69,17 +97,31 @@
 		.right {
 			padding: 0 20px;
 			float: left;
-			color: #4d1a00;
-			font-size: 60px;
-			font-weight: bold;
+			color: #050f2c;
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
 		}
 	}
 
 	.text {
-		line-height: 62px;
-		padding: 0 10px;
-		color: #4a2617;
-		font-size: 48px;
+		line-height: 68px;
+		padding: 60px 40px 30px;
+		margin-top: -50px;
+		border: 1px solid var(--main-bdr-color);
+		border-radius: 15px;
+		color: var(--text-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+	}
+
+	.pic-wrap {
+		height: 600px;
+		margin: 50px auto 0;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+		}
 	}
 </style>
 </head>
@@ -91,50 +133,72 @@
 </div>
 </body>
 <script>
-//一页控制在247个字以内
+
 var jisonText = [
 	{
-		title: '',
-		//分多少页
+		// title: '咳嗽喉咙原因',
+		title: '实用建议',
+
 		page: [
 			{
 				content: [
-					{
-						subtitle: '排卵期出血',
-						id: '01',
-						cntText:
-							'可能是处于排卵期，体内的雌激素水平暂时性下降，子宫内膜失去激素的支撑之后，也会发生部分脱落，引起阴道少量出血'
-					},
-					{
-						subtitle: '妊娠及其相关问题',
-						id: '02',
-						cntText:
-							'若是怀孕，在初期，胚胎还不稳定时，出现少量出血属于正常情况；若是出血量大且持续时间长，就要警惕流产、宫外孕等情况，需及时就诊，对症处理'
-					},
-					{
-						subtitle: '子宫内膜炎',
-						id: '03',
-						cntText:
-							'可能是受到淋病奈瑟菌、衣原体、支原体等病原微生物的感染，导致子宫内膜处于充血和水肿的状态，局部的小血管扩张破裂后，诱发阴道部位有少量的出血，同时还伴有腹胀。'
-					}
+					// {
+					// 	subtitle: '',
+					// 	id: '1.环境因素',
+					// 	cntText:
+					// 		'如果经常在有<span>尘埃的环境当中居住</span>，很可能会导致<span>灰尘对咽喉黏膜带来刺激</span>，可能会产生刺激性咳嗽，引起咳嗽喉咙痒的症状。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '2.慢性咽炎',
+					// 	cntText:
+					// 		'<span>咽喉部位受到慢性炎症刺激</span>之后，可能会导致患者的咽喉黏膜产生异常的充血，并且伴随着疼痛、发痒、咳嗽等症状。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '3.支气管炎',
+					// 	cntText:
+					// 		'当患者的<span>支气管黏膜受到炎症和异物刺激</span>之后，会导致支气管黏膜发生破裂充血，局部会分泌粘液，<span>异物刺激喉咙</span>之后会导致喉咙充血，喉咙痒的情况。'
+					// },
+					// {
+					// 	subtitle: '心肌炎',
+					// 	id: '4.心肌炎',
+					// 	cntText:
+					// 		'一种常见疾病会导致患者出现身体不舒服，这是因为<span>心肌部位存在炎症</span>所引起，可能会出现<span>气短</span>和<span>胸闷</span>症状。'
+					// },
+					// {
+					// 	subtitle: '心包炎',
+					// 	id: '5.心包炎',
+					// 	cntText:
+					// 		'一种<span>慢性炎症性疾病</span>可能和感染和自身免疫存在一定联系，也会对心脏造成刺激。'
+					// },
+					// {
+					// 	picUrl: 'img/object/heart_002.jpg',
+					// }
 				]
 			},
 			{
 				content: [
 					{
-						subtitle: '宫颈息肉',
-						id: '4. 骨质疏松：',
+						subtitle: '',
+						id: '1.改善环境',
 						cntText:
-							'<span>宫颈息肉</span>是由宫颈组织长时间受到炎症刺激出现的增生性赘生物，息肉表面有较多的毛细血管分布，受到外界刺激后，容易使血管破裂，导致阴道异常出血。'
+							'对于长时间在有尘埃的环境当中，居住人群需要及时<span>改善居住环境要加强口腔的护理，减少受到灰尘刺激</span>，能够及时缓解症状。'
 					},
 					{
-						subtitle: '子宫肌瘤',
-						id: '5. 其他原因：',
+						subtitle: '',
+						id: '2.局部用药',
 						cntText:
-							'可能因为肌瘤导致宫腔增大，进而增加子宫面积，周围的静脉丛充血扩张破裂后也会有异常的出血，同时还伴有月经量增多、痛经等。在平时，需要做好个人的卫生和防护措施，保持局部的清洁和干燥，及时更换内裤。而且出血期间尽量不要有性生活，防止病原微生物入侵。'
-					}
+							'对于慢性咽炎所引起的喉咙痒和咳嗽症状，发病之后可以使用<span>西瓜霜含片、复方草珊瑚含片</span>等药物能够起到清咽利喉的效果，可以减轻症状。'
+					},
+					{
+						subtitle: '',
+						id: '3.内服药物',
+						cntText:
+							'支气管炎的原因，患者可以在医生指导下使用<span>阿莫西林胶囊、盐酸氨溴索口服溶液、复方甘草片</span>等药物，能够起到消炎止咳的效果。'
+					},
 				]
-			}
+			},
 		]
 	}
 ];
@@ -142,35 +206,38 @@ var html = '';
 
 function setHtml() {
 	for (var i = 0; i < jisonText.length; i++) {
-		var setTitle = jisonText[i].title;
+		var setTitle = jisonText[i].title || '';
 		var setObj = jisonText[i].page;
-		console.log(i)
 		for (var j = 0; j < setObj.length; j++) {
 			var setContent = setObj[j].content;
 			for (var k = 0; k < setContent.length; k++) {
-				html =
-				html +
-					'<div class="subtitle"><p class="left">' +
-					setContent[k].subtitle +
-					'</p><p class="right">' +
-					setContent[k].id +
-					'</p></div><p class="text">' +
-					setContent[k].cntText +
-					'</p>';
+				if (setContent[k].picUrl) {
+					html += `<div class="pic-wrap"><img src="${setContent[k].picUrl}"></div>`
+				}
+				else {
+					html +=
+						'<div class="subtitle"><p class="left">' +
+						setContent[k].subtitle +
+						'</p><p class="right">' +
+						setContent[k].id +
+						'</p></div><p class="text">' +
+						setContent[k].cntText +
+						'</p>';
+				}
 			}
 			
 			document.getElementById('tetie').innerHTML = setTitle;
 			document.getElementById('content').innerHTML = html;
-			// baoccun(setTitle, j);
+			// saveImg(setTitle, j);
 		}
 	}
 }
 
-function baoccun(setTitle, j) {
+function saveImg(setTitle='', j=0) {
 	var realHtml = document.getElementById('html-canvas');
 	var width = 1200; //获取dom 宽度
 
-	var img_type = 'jpeg';
+	var img_type = 'jpg';
 	// var height = realHtml.offsetHeight; //获取dom 高度
 	var height = 1600; //获取dom 高度
 	var canvas = document.createElement('canvas'); //创建一个canvas节点
@@ -186,7 +253,7 @@ function baoccun(setTitle, j) {
 		logging: true, //日志开关
 		width: width, //dom 原始宽度
 		height: height, //dom 原始高度
-		name: 'sss'
+		name: 'pic'
 	};
 	html2canvas(realHtml, opts).then(function (canvas) {
 		//如果想要生成图片 引入canvas2Image.js 下载地址：

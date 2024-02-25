@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>036</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/canvas2image.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #fffd71;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #4d1a00;
+		--subtitle-bg-color: #fff546;
+		--text-color: #000;
+		--key-color: #fff;
+		--key-bg-color: #000;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_036.jpg) no-repeat;
+	}
+
+	.title {
+		height: 70px;
+		line-height: 70px;
+		padding-top: 170px;
+		overflow: hidden;
+		-webkit-text-stroke-width: 1.5px;
+		-webkit-text-stroke-color: var(--title-stroke-color);
+		text-align: center;
+		color: var(--title-color);
+		font-size: 47px;
+		font-family: SourceHanSansCN-Bold;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 20px auto;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 2px var(--main-bdr-color);
+		border-radius: 15px;
+		color: var(--subtitle-color);
+		background-color: var(--subtitle-bg-color);
+
+		&:nth-of-type(1) {
+			margin-top: 35px;
+		}
+
+		.left {
+			display: none;
+			height: 86px;
+			line-height: 78px;
+			padding: 0 20px;
+			margin: -1px 0 0 -1px;
+			float: left;
+			border: 2px solid var(--main-bdr-color);
+			border-radius: 43px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 56px;
+			background-color: #7ba9e4;
+		}
+
+		.right {
+			padding: 0 20px;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text {
+		line-height: 68px;
+		padding: 60px 40px 30px;
+		margin-top: -50px;
+		border: 2px solid var(--main-bdr-color);
+		border-radius: 15px;
+		color: var(--text-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+	}
+
+	.pic-wrap {
+		height: 600px;
+		margin: 50px auto 0;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<p class="title" id="tetie"></p>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+
+var jisonText = [
+	{
+		// title: '咳嗽喉咙原因',
+		title: '针对这些可能的原因，可以采取以下治疗方法：',
+
+		page: [
+			{
+				content: [
+					// {
+					// 	subtitle: '',
+					// 	id: '1.环境因素',
+					// 	cntText:
+					// 		'如果经常在有<span>尘埃的环境当中居住</span>，很可能会导致<span>灰尘对咽喉黏膜带来刺激</span>，可能会产生刺激性咳嗽，引起咳嗽喉咙痒的症状。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '2.慢性咽炎',
+					// 	cntText:
+					// 		'<span>咽喉部位受到慢性炎症刺激</span>之后，可能会导致患者的咽喉黏膜产生异常的充血，并且伴随着疼痛、发痒、咳嗽等症状。'
+					// },
+					// {
+					// 	subtitle: '',
+					// 	id: '3.支气管炎',
+					// 	cntText:
+					// 		'当患者的<span>支气管黏膜受到炎症和异物刺激</span>之后，会导致支气管黏膜发生破裂充血，局部会分泌粘液，<span>异物刺激喉咙</span>之后会导致喉咙充血，喉咙痒的情况。'
+					// },
+					// {
+					// 	subtitle: '心肌炎',
+					// 	id: '4.心肌炎',
+					// 	cntText:
+					// 		'一种常见疾病会导致患者出现身体不舒服，这是因为<span>心肌部位存在炎症</span>所引起，可能会出现<span>气短</span>和<span>胸闷</span>症状。'
+					// },
+					// {
+					// 	subtitle: '心包炎',
+					// 	id: '5.心包炎',
+					// 	cntText:
+					// 		'一种<span>慢性炎症性疾病</span>可能和感染和自身免疫存在一定联系，也会对心脏造成刺激。'
+					// },
+					// {
+					// 	picUrl: 'img/object/heart_002.jpg',
+					// }
+				]
+			},
+			{
+				content: [
+					{
+						subtitle: '',
+						id: '1.改善环境',
+						cntText:
+							'<span>男性相较于女性更好动</span>，喜欢踢足球、打篮球等剧烈的运动项目，可能在运动的过程中被外力碰撞冲击，造成膝盖受伤，典型的症状除了疼痛还会有淤青，可以口服活血类的胶囊进行缓解，搭配热敷可能效果更好。'
+					},
+					{
+						subtitle: '',
+						id: '2.局部用药',
+						cntText:
+							'<span>天气在温度低的时候</span>，潮湿以及冷空气也会进入体内，膝盖作为人体关节的一部分，更容易受到冷空气的侵袭。长期处于这样的环境，膝盖就会疼痛，想改变这种情况可以在局部进行按摩，这种按摩要在专业医的指导下进行，切勿自己随意扭动，可能自己的不当操作会引发膝盖的二次伤害。'
+					},
+				]
+			},
+		]
+	}
+];
+var html = '';
+
+function setHtml() {
+	for (var i = 0; i < jisonText.length; i++) {
+		var setTitle = jisonText[i].title || '';
+		var setObj = jisonText[i].page;
+		for (var j = 0; j < setObj.length; j++) {
+			var setContent = setObj[j].content;
+			for (var k = 0; k < setContent.length; k++) {
+				if (setContent[k].picUrl) {
+					html += `<div class="pic-wrap"><img src="${setContent[k].picUrl}"></div>`
+				}
+				else {
+					html +=
+						'<div class="subtitle"><p class="left">' +
+						setContent[k].subtitle +
+						'</p><p class="right">' +
+						setContent[k].id +
+						'</p></div><p class="text">' +
+						setContent[k].cntText +
+						'</p>';
+				}
+			}
+			
+			document.getElementById('tetie').innerHTML = setTitle;
+			document.getElementById('content').innerHTML = html;
+			// saveImg(setTitle, j);
+		}
+	}
+}
+
+function saveImg(setTitle='', j=0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		//如果想要生成图片 引入canvas2Image.js 下载地址：
+		//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+		// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+		imgUri = canvas.toDataURL('image/' + img_type).replace('image/' + img_type, 'image/octet-stream');
+		// alert(imgUri);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + img_type;
+		saveLink.click();
+		// realHtml.innerHTML="";
+		// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
+		// alert(document.body.offsetHeight);
+		// alert(document.getElementById("img1").offsetHeight);
+		// document.body.style.height = setHeight+"px";
+		// document.body.style.backgroundColor = "red";
+		// $('#img').attr('src',imgUri);
+		// document.removeChild(a);
+		// console.log(img);
+		// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
+		// localStorage.removeItem("img-html");
+		// localStorage.removeItem('img-type');
+		// localStorage.removeItem('canvas_multiple');
+	});
+}
+setHtml()
+</script>
+</html>
