@@ -30,8 +30,23 @@
 		--subtitle-color: #4a2617;
 		--subtitle-bg-color: #c7e8ff;
 		--text-color: #000;
+		--summary-color: #000000;
 		--key-color: #3356bb;
-		--key-bg-color: #f0ffcd;
+		--key-bg-color: transparent;
+		--list-key-color: #bb335d;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
 	}
 
 	p {
@@ -61,10 +76,6 @@
 	.content {
 		width: 1000px;
 		margin: 20px auto;
-
-		span {
-			color: var(--key-color);
-		}
 	}
 
 	.subtitle {
@@ -105,22 +116,78 @@
 
 	.text {
 		line-height: 68px;
-		padding: 60px 40px 30px;
+		padding: 60px 30px 20px;
 		margin-top: -50px;
-		border: 1px solid var(--main-bdr-color);
+		border: 2px solid var(--main-bdr-color);
 		border-radius: 15px;
+		text-align: justify;
 		color: var(--text-color);
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.list-attention {
+		margin-top: 35px;
+		border-top: 1px solid #000;
+
+		li {
+			position: relative;
+			line-height: 64px;
+			padding-left: 40px;
+			margin-top: 20px;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				top: 20px;
+				left: 0;
+				content: '';
+				width: 14px;
+				height: 14px;
+				border: 3px solid var(--list-circle-bdr-color);
+				border-radius: 50%;
+				background-color: var(--list-circle-bg-color);;
+			}
+
+			span {
+				color: var(--list-key-color);
+			}
+		}
+	}
+
+	.summary {
+		line-height: 72px;
+		padding: 50px 40px 0;
+		text-align: justify;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--list-key-color);
+			background-color: var(--key-bg-color);
+		}
 	}
 
 	.pic-wrap {
-		height: 600px;
+		/* height: 600px; */
 		margin: 50px auto 0;
+		/* margin: -25px auto 0; */
 		overflow: hidden;
 
 		img {
 			width: 100%;
+			/* display: block;
+			width: 80%;
+			margin: 0 auto;
+			object-fit: cover; */
 		}
 	}
 </style>
@@ -133,104 +200,141 @@
 </div>
 </body>
 <script>
-
 var jisonText = [
 	{
-		// title: '咳嗽喉咙原因',
-		title: '实用建议',
+		/* title: '补气血吃什么药效果最好', */
+		title: '温度计汞泄漏处理',
 
 		page: [
 			{
-				content: [
-					// {
-					// 	subtitle: '',
-					// 	id: '1.环境因素',
-					// 	cntText:
-					// 		'如果经常在有<span>尘埃的环境当中居住</span>，很可能会导致<span>灰尘对咽喉黏膜带来刺激</span>，可能会产生刺激性咳嗽，引起咳嗽喉咙痒的症状。'
-					// },
-					// {
-					// 	subtitle: '',
-					// 	id: '2.慢性咽炎',
-					// 	cntText:
-					// 		'<span>咽喉部位受到慢性炎症刺激</span>之后，可能会导致患者的咽喉黏膜产生异常的充血，并且伴随着疼痛、发痒、咳嗽等症状。'
-					// },
-					// {
-					// 	subtitle: '',
-					// 	id: '3.支气管炎',
-					// 	cntText:
-					// 		'当患者的<span>支气管黏膜受到炎症和异物刺激</span>之后，会导致支气管黏膜发生破裂充血，局部会分泌粘液，<span>异物刺激喉咙</span>之后会导致喉咙充血，喉咙痒的情况。'
-					// },
-					// {
-					// 	subtitle: '心肌炎',
-					// 	id: '4.心肌炎',
-					// 	cntText:
-					// 		'一种常见疾病会导致患者出现身体不舒服，这是因为<span>心肌部位存在炎症</span>所引起，可能会出现<span>气短</span>和<span>胸闷</span>症状。'
-					// },
-					// {
-					// 	subtitle: '心包炎',
-					// 	id: '5.心包炎',
-					// 	cntText:
-					// 		'一种<span>慢性炎症性疾病</span>可能和感染和自身免疫存在一定联系，也会对心脏造成刺激。'
-					// },
-					// {
-					// 	picUrl: 'img/object/heart_002.jpg',
-					// }
-				]
+				/* content: [
+					{
+						picUrl: 'img/object/veins_001.jpg',
+					},
+					{
+						summary:
+							'静脉曲张比较常见的是下肢静脉曲张，是因为血液瘀滞、静脉管壁薄弱引起，<span>临床表现是下肢皮肤出现肉眼可见的青紫色静脉凸起</span>。醋泡大蒜虽然有一定的消炎作用，但是对于<span>改善静脉曲张效果不是特别明显</span>，不建议盲目使用。'
+					}
+				] */
+			},
+			{
+				/* content: [
+					{
+						subtitle: '1.情绪波动',
+						subContent:
+							'如<span>焦虑、抑郁、易怒</span>等。'
+					},
+					{
+						subtitle: '2.睡眠障碍',
+						subContent:
+							'如<span>失眠、多梦、早醒</span>等。'
+					},
+					{
+						subtitle: '3. 认知功能下降',
+						subContent:
+							'如<span>记忆力减退、注意力不集中</span>等。'
+					},
+					{
+						subtitle: '4. 躯体症状',
+						subContent:
+							'如<span>头痛、胸闷、心悸</span>等。'
+					},
+					{
+						picUrl: 'img/object/anxiety_001.png',
+					}
+				] */
 			},
 			{
 				content: [
 					{
-						subtitle: '',
-						id: '1.改善环境',
-						cntText:
-							'对于长时间在有尘埃的环境当中，居住人群需要及时<span>改善居住环境要加强口腔的护理，减少受到灰尘刺激</span>，能够及时缓解症状。'
+						subtitle: '1.通风与保护',
+						subContent:
+							'<span>打开窗户通风</span>，让汞蒸气散去。记得<span>戴上手套，避免直接接触</span>。'
 					},
 					{
-						subtitle: '',
-						id: '2.局部用药',
-						cntText:
-							'对于慢性咽炎所引起的喉咙痒和咳嗽症状，发病之后可以使用<span>西瓜霜含片、复方草珊瑚含片</span>等药物能够起到清咽利喉的效果，可以减轻症状。'
+						subtitle: '2. 汞收集',
+						subContent:
+							'可以用<span>硬纸板轻轻刮起它们，或者用胶带黏起来</span>。千万<span>别用吸尘器</span>，否则汞会扩散到空气中。'
 					},
 					{
-						subtitle: '',
-						id: '3.内服药物',
-						cntText:
-							'支气管炎的原因，患者可以在医生指导下使用<span>阿莫西林胶囊、盐酸氨溴索口服溶液、复方甘草片</span>等药物，能够起到消炎止咳的效果。'
+						subtitle: '3. 垃圾分类',
+						subContent:
+							'<span>将汞和其他垃圾分开</span>，<span>标注“危险”</span>，交给专业处理。'
 					},
+					{
+						subtitle: '4. 地点清洁',
+						subContent:
+							'用<span>硫磺粉撒在汞污染的地方</span>，它会和汞反应形成无害的硫化汞。'
+					},
+					/* {
+						subtitle: '5. 红枣',
+						subContent:
+							'红枣虽然有一定的<span>补血</span>作用，但<span>效果相对较弱</span>。它可以作为<span>日常保健食品</span>食用。'
+					}, */
+					/* {
+						picUrl: 'img/object/food_005.jpg',
+					},
+					{
+						summary:
+							'红枣富含<span>铁、维生素C</span>等营养成分，对于<span>缺铁性贫血</span>的人来说确实有一定的补血作用。但是，<span>红枣并非万能的补血良药</span>。如果气血不足的情况较为严重或持续时间较长，单纯依靠红枣可能难以达到理想的效果。此时，可以在<span>医生的建议下选择适当的药物进行补充</span>。 '
+					}, */
 				]
 			},
+			/* {
+				list: [
+					'保持肛门清洁干燥，<span>避免潮湿环境</span>导致的感染。',
+					'<span>避免使用刺激性强的肥皂或清洁剂清</span>洗肛门。',
+					'<span>避免过度擦拭或搔抓局部</span>，以免加重症状。',
+					'注意饮食调整，<span>避免辛辣刺激性食物</span>。',
+					'及时就诊，以明确病因并接受专业治疗。'
+				]
+			} */
 		]
 	}
 ];
-var html = '';
 
 function setHtml() {
-	for (var i = 0; i < jisonText.length; i++) {
-		var setTitle = jisonText[i].title || '';
-		var setObj = jisonText[i].page;
-		for (var j = 0; j < setObj.length; j++) {
-			var setContent = setObj[j].content;
-			for (var k = 0; k < setContent.length; k++) {
-				if (setContent[k].picUrl) {
-					html += `<div class="pic-wrap"><img src="${setContent[k].picUrl}"></div>`
+	var html = '';
+
+	jisonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj) {
+			obj.list?.forEach(function (listItem, i, arr) {
+				if (i === 0) {
+					html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+				}
+				else if (i === arr.length - 1) {
+					html += `<li>${listItem}</li></ul>`;
 				}
 				else {
-					html +=
-						'<div class="subtitle"><p class="left">' +
-						setContent[k].subtitle +
-						'</p><p class="right">' +
-						setContent[k].id +
-						'</p></div><p class="text">' +
-						setContent[k].cntText +
-						'</p>';
+					html += `<li>${listItem}</li>`;
 				}
-			}
-			
-			document.getElementById('tetie').innerHTML = setTitle;
-			document.getElementById('content').innerHTML = html;
-			// saveImg(setTitle, j);
-		}
-	}
+			});
+
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `<div class="pic-wrap"><img src="${contentItem.picUrl}"></div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else {
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
+		});
+
+		document.getElementById('tetie').innerHTML = setTitle;
+		document.getElementById('content').innerHTML = html;
+		saveImg(setTitle, i);
+	});
 }
 
 function saveImg(setTitle='', j=0) {

@@ -23,6 +23,20 @@
 		src: url('css/font/SourceHanSansCN-Regular.otf');
 	}
 
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #4d1a00;
+		--title-bg-color: transparent;;
+		--title-stroke-color: transparent;
+		--subtitle-color: #4d1a00;
+		--subtitle-bg-color: #fff546;
+		--text-color: #4a2617;
+		--text-bg-color: transparent;
+		--summary-color: #000000;
+		--key-color: #6036c3;
+		--key-bg-color: transparent;
+	}
+
 	p {
 		margin: 0;
 		padding: 0;
@@ -42,7 +56,7 @@
 		padding-top: 62px;
 		overflow: hidden;
 		text-align: center;
-		color: #4a2617;
+		color: var(--title-color);
 		font-size: 40px;
 		font-family: SourceHanSansCN-Bold;
 	}
@@ -50,11 +64,6 @@
 	.content {
 		width: 1000px;
 		margin: 20px auto;
-
-		span {
-			color: #6036c3;
-			/* background-color: #f0ffcd; */
-		}
 	}
 
 	.subtitle {
@@ -64,9 +73,10 @@
 		height: 100px;
 		line-height: 100px;
 		margin: 50px 0 0;
-		border: solid 1px #000;
+		/* margin: 30px 0 0; */
+		border: 2px solid var(--main-bdr-color);
 		border-radius: 15px;
-		background-color: #fff546;
+		background-color: var(--subtitle-bg-color);
 
 		.left {
 			display: none;
@@ -75,7 +85,7 @@
 			padding: 0 20px;
 			margin: -1px 0 0 -1px;
 			float: left;
-			border: solid 1px #000;
+			border: 2px solid var(--main-bdr-color);
 			border-radius: 43px;
 			color: #fff;
 			font-weight: bold;
@@ -86,7 +96,7 @@
 		.right {
 			padding: 0 20px;
 			float: left;
-			color: #4d1a00;
+			color: var(--subtitle-color);
 			font-size: 50px;
 			font-family: SourceHanSansCN-Bold;
 		}
@@ -94,26 +104,43 @@
 
 	.text {
 		line-height: 68px;
-		padding: 60px 40px 30px;
+		padding: 60px 30px 30px;
 		margin-top: -50px;
-		border: 1px solid #000;
+		border: 2px solid var(--main-bdr-color);
 		border-radius: 15px;
-		color: #4a2617;
+		text-align: justify;
+		color: var(--text-color);
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.summary {
+		line-height: 72px;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
 	}
 
 	.pic-wrap {
-		height: 600px;
-		margin: 50px auto 0;
+		/* height: 600px; */
+		/* margin: 50px auto 0; */
+		margin: 20px auto 0;
 		overflow: hidden;
 
 		img {
-			/* width: 50%;
-			height: 400px;
-			object-fit: contain; */
+			/* width: 100%; */
 			display: block;
-			width: 65%;
+			width: 85%;
 			margin: 0 auto;
 			object-fit: cover;
 		}
@@ -128,104 +155,131 @@
 </div>
 </body>
 <script>
-
 var jisonText = [
 	{
-		title: '',
-		title: '对应方法',
-
+		title: '神经紊乱常见的症状',
+		/* title: '神经紊乱应对措施', */
 		page: [
 			{
-				content: [
-					// {
-					// 	subtitle: '',
-					// 	id: '1.生活习惯',
-					// 	cntText:
-					// 		'在生活中，如果我们<span>长时间的抽烟、喝酒或者是过度的劳累</span>等不良的生活习惯，可能会导致谷氨酰转肽酶出现偏高。'
-					// },
-					// {
-					// 	subtitle: '',
-					// 	id: '2.药物因素',
-					// 	cntText:
-					// 		'如果患者使用了某些药物，比如<span>抗生素药物、抗病毒药物</span>等，可能会引起谷氨酰转肽酶暂时性的升高。'
-					// },
-					// {
-					// 	subtitle: '',
-					// 	id: '3.肝脏疾病',
-					// 	cntText:
-					// 		'肝脏是谷氨酰转肽酶的主要产地，当肝脏受到损伤之后，谷氨酰转肽酶的活性就会明显的上升，常见的疾病有<span>慢性肝炎、酒精性肝病、肝硬化</span>等。'
-					// },
-					// {
-					// 	subtitle: '',
-					// 	id: '4.胆道阻塞',
-					// 	cntText:
-					// 		'<span>胆道出现堵塞之后，会导致胆汁排泄不畅</span>，会使肝脏分泌的谷氨酰转肽酶无法正常的排出体外，会导致血清中的血氨酰转肽酶水平出现偏高。'
-					// },
-					// {
-					// 	subtitle: '',
-					// 	id: '5.肾脏疾病',
-					// 	cntText:
-					// 		'当出现<span>肾脏疾病，比如肾炎、肾结石等，肾功能会受到损伤</span>，影响到机体的代谢，从而会引起谷氨酰转肽酶偏高。'
-					// },
-					// {
-					// 	picUrl: 'img/object/kidney_001.jpg',
-					// }
-				]
+				/* content: [
+					{
+						picUrl: 'img/object/veins_001.jpg',
+					},
+					{
+						summary:
+							'静脉曲张比较常见的是下肢静脉曲张，是因为血液瘀滞、静脉管壁薄弱引起，<span>临床表现是下肢皮肤出现肉眼可见的青紫色静脉凸起</span>。醋泡大蒜虽然有一定的消炎作用，但是对于<span>改善静脉曲张效果不是特别明显</span>，不建议盲目使用。'
+					}
+				] */
 			},
 			{
 				content: [
 					{
-						subtitle: '',
-						id: '1.调整生活习惯',
-						cntText:
-							'生活中需要养成良好的作息习惯，<span>避免熬夜</span>，饮食上需要均衡，<span>多吃水果和蔬菜</span>，需要<span>忌烟忌酒</span>。'
+						subtitle: '1.情绪波动',
+						subContent:
+							'如焦虑、抑郁、易怒等。'
 					},
 					{
-						subtitle: '',
-						id: '2.治疗原发疾病',
-						cntText:
-							'针对查出来的病因进行<span>针对性的治疗</span>，能够使病情得到缓解，控制病情的发展。'
+						subtitle: '2.睡眠障碍',
+						subContent:
+							'如失眠、多梦、早醒等。'
 					},
 					{
-						subtitle: '',
-						id: '3.定期复查',
-						cntText:
-							'在治疗的过程中，还需要<span>定期的到医院复查</span>，及时了解谷氨酰转肽酶的水平，以便评估治疗的效果。我相信通过以上的介绍，大家都了解了它的原因吧。'
+						subtitle: '3. 认知功能下降',
+						subContent:
+							'如记忆力减退、注意力不集中等。'
 					},
+					{
+						subtitle: '4. 躯体症状',
+						subContent:
+							'如头痛、胸闷、心悸等。'
+					},
+					{
+						picUrl: 'img/object/anxiety_001.png',
+					}
 				]
 			},
+			{
+				content: [
+					/* {
+						subtitle: '1.调整生活方式',
+						subContent:
+							'保持规律的作息时间、充足的睡眠、适当的运动等都有助于缓解神经紊乱。'
+					},
+					{
+						subtitle: '2. 心理疏导',
+						subContent:
+							'通过心理咨询、自我调适等方式来减轻精神压力、改善情绪状态。'
+					},
+					{
+						subtitle: '3. 药物治疗',
+						subContent:
+							'在必要时可以采用抗抑郁药、镇静催眠药等药物来辅助治疗。'
+					}, */
+					/* {
+						subtitle: '4. 中医调理',
+						subContent:
+							'中医调理：针灸、推拿、中药等都是中医调理神经紊乱的有效手段。。'
+					}, */
+					/* {
+						picUrl: 'img/object/skin_001.jpg',
+					} */
+				]
+			},
+			/* {
+				list: [
+					'保持肛门清洁干燥，<span>避免潮湿环境</span>导致的感染。',
+					'<span>避免使用刺激性强的肥皂或清洁剂清</span>洗肛门。',
+					'<span>避免过度擦拭或搔抓局部</span>，以免加重症状。',
+					'注意饮食调整，<span>避免辛辣刺激性食物</span>。',
+					'及时就诊，以明确病因并接受专业治疗。'
+				]
+			} */
 		]
 	}
 ];
-var html = '';
 
 function setHtml() {
-	for (var i = 0; i < jisonText.length; i++) {
-		var setTitle = jisonText[i].title || '';
-		var setObj = jisonText[i].page;
-		for (var j = 0; j < setObj.length; j++) {
-			var setContent = setObj[j].content;
-			for (var k = 0; k < setContent.length; k++) {
-				if (setContent[k].picUrl) {
-					html += `<div class="pic-wrap"><img src="${setContent[k].picUrl}"></div>`
+	var html = '';
+
+	jisonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj) {
+			obj.list?.forEach(function (listItem, i, arr) {
+				if (i === 0) {
+					html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+				}
+				else if (i === arr.length - 1) {
+					html += `<li>${listItem}</li></ul>`;
 				}
 				else {
-					html +=
-						'<div class="subtitle"><p class="left">' +
-						setContent[k].subtitle +
-						'</p><p class="right">' +
-						setContent[k].id +
-						'</p></div><p class="text">' +
-						setContent[k].cntText +
-						'</p>';
+					html += `<li>${listItem}</li>`;
 				}
-			}
-			
-			document.getElementById('tetie').innerHTML = setTitle;
-			document.getElementById('content').innerHTML = html;
-			saveImg(setTitle, j);
-		}
-	}
+			});
+
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `<div class="pic-wrap"><img src="${contentItem.picUrl}"></div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else {
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
+		});
+
+		document.getElementById('tetie').innerHTML = setTitle;
+		document.getElementById('content').innerHTML = html;
+		/* saveImg(setTitle, i); */
+	});
 }
 
 function saveImg(setTitle='', j=0) {
