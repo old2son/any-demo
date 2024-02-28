@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>010</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/canvas2image.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #000;
+		--title-bg-color: #e1f143;;
+		--title-stroke-color: transparent;
+		--subtitle-color: #000;
+		--subtitle-bg-color: #d7f0fe;
+		--text-color: #000;
+		--text-bg-color: #ffffff;
+		--key-color: #266188;
+		--key-bg-color: transparent;
+		--list-key-color: #bb335d;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	.bg {
+		position: relative;
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_010.jpg) no-repeat;
+	}
+
+	.title {
+		position: relative;
+		z-index: 2;
+		padding: 0 20px;
+		height: 135px;
+		line-height: 135px;
+		border: 2px solid var(--main-bdr-color);
+		border-radius: 10px;
+		-webkit-text-stroke-width: 1.5px;
+		-webkit-text-stroke-color: var(--title-stroke-color);
+		text-align: center;
+		color: var(--title-color);
+		background-color: var(--title-bg-color);
+		font-size: 79px;
+		font-family: SourceHanSansCN-Bold;
+	}
+
+	.title-wrap {
+		position: absolute;
+		left: 80px;
+		top: 44px;
+		z-index: 1;
+
+		.title-line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: -10px;
+			z-index: 1;
+			height: 135px;
+			line-height: 135px;
+			border: 2px solid var(--main-bdr-color);
+			border-radius: 8px;
+			color: var(--title-color);
+		}
+	}
+
+	.content {
+		width: 1000px;
+		padding-top: 280px;
+		margin: 0px auto;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 2px var(--main-bdr-color);
+		border-radius: 15px;
+		color: var(--subtitle-color);
+		background-color: var(--subtitle-bg-color);
+
+		&::after {
+			display: none;
+			position: absolute;
+			right: -95px;
+			top: 50%;
+			content: '';
+			width: 70px;
+			height: 70px;
+			border: 2px solid var(--main-bdr-color);
+			border-radius: 50%;
+			transform: translateY(-50%);
+			background: url(img/item/icon_arrow_001.png) center no-repeat;
+		}
+
+		&:nth-of-type(1) {
+			margin-top: 35px;
+		}
+
+		.left {
+			display: none;
+			height: 86px;
+			line-height: 78px;
+			padding: 0 20px;
+			margin: -1px 0 0 -1px;
+			float: left;
+			border: 2px solid var(--main-bdr-color);
+			border-radius: 43px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 56px;
+			background-color: #7ba9e4;
+		}
+
+		.right {
+			padding: 0 20px;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text {
+		line-height: 68px;
+		padding: 60px 30px 30px;
+		margin: -50px 0 0;
+		border: 2px solid var(--main-bdr-color);
+		border-radius: 15px;
+		color: var(--text-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+		background-color: var(--text-bg-color);
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.summary-tl {
+		margin-top: 30px;
+		border: 2px solid var(--main-bdr-color);
+		border-bottom: 0;
+		border-radius: 20px 20px 0 0;
+		-webkit-text-stroke-width: 1.5px;
+		-webkit-text-stroke-color: #000;
+		text-align: center;
+		color: #fff;
+		font-size: 56px;
+		font-family: SourceHanSansCN-Bold;
+		background: linear-gradient(180deg, #faf8c9, #fbf089);
+
+		b {
+			position: relative;
+			font-weight: normal;
+		}
+
+		b::after {
+			position: absolute;
+			top: 50%;
+			right: -40px;
+			content: '';
+			width: 16px;
+			height: 16px;
+			border: 2px solid #000;
+			border-radius: 50%;
+			transform: translateY(-50%);
+			background-color: #d9eefc;
+		}
+
+		b::before {
+			position: absolute;
+			top: 50%;
+			left: -40px;
+			content: '';
+			width: 16px;
+			height: 16px;
+			border: 2px solid #000;
+			border-radius: 50%;
+			transform: translateY(-50%);
+			background-color: #d9eefc;
+		}
+	}
+
+	.summary {
+		line-height: 68px;
+		padding: 30px 40px;
+		border: 2px solid var(--main-bdr-color);
+		border-top-width: 1px;
+		border-radius: 0 0 20px 20px;
+		text-align: justify;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+		background-color: #fff;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.pic-wrap {
+		/* height: 600px; */
+		margin: 50px auto 0;
+		/* margin: 20px auto 0; */
+		overflow: hidden;
+
+		img {
+			/* width: 100%; */
+			display: block;
+			width: 85%;
+			margin: 0 auto;
+			object-fit: cover;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<p class="title" id="tetie"></p>
+		<i class="title-line"></i>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+	var jisonText = [
+		{
+			title: '我来告诉你！',
+			/* title: '管理高血小板计数的关键措施', */
+	
+			page: [
+				{
+					content: [
+						{
+							subtitle: '甲减怎么治疗最好最快最有效',
+							summary:
+								'<span>胃炎一般是细菌</span>、病毒、药物、不良的饮食习惯等因素导致的，常见的症状包括胃痛、腹胀、恶心、呕吐、嗳气、食欲不振等。通过临床症状只能初步怀疑有胃炎，想要更准确知道是否有胃炎，是哪一种类型的类型，还需要借助胃镜或者病理检查来明确。'
+						},
+						{
+							subtitle: '甲减怎么治疗最好最快最有效',
+							summary:
+								'<span>胃炎一般是细菌</span>、病毒、药物、不良的饮食习惯等因素导致的，常见的症状包括胃痛、腹胀、恶心、呕吐、嗳气、食欲不振等。通过临床症状只能初步怀疑有胃炎，想要更准确知道是否有胃炎，是哪一种类型的类型，还需要借助胃镜或者病理检查来明确。'
+						},
+						/* {
+							picUrl: 'img/object/food_010.jpg',
+						}, */
+					]
+				},
+				{
+					content: [
+						/* {
+							subtitle: '1.合理补充碘',
+							subContent:
+								'碘元素是合成甲状腺激素的重要原料，在日常生活中要补充适量碘，可以适当吃一些<span>海带、虾</span>等食物。'
+						},
+						{
+							subtitle: '2.药物治疗',
+							subContent:
+								'甲减的患者一般需要外源性的补充甲状腺激素进行替代治疗，可以根据甲状腺激素水平以及患者的体重情况，选择合适剂量的<span>左甲状腺素片</span>进行补充。'
+						}, */
+						/* {
+							subtitle: '3. 定期复查',
+							subContent:
+								'导致甲减的原因比较多，部分是可逆的，部分是不可逆的，所以在用药量方面可能是需要调整的，应该要定期去医院<span>监测甲状腺激素的水平，调整药物的使用量</span>。'
+						}, */
+						/* {
+							subtitle: '4. 避免过度用药',
+							subContent:
+								'某些药物可能导致血小板计数增高，如<span>阿司匹林、非甾体抗炎药等，患者应遵医嘱使用药物</span>，并定期复查血小板计数。'
+						},
+						{
+							subtitle: '5. 注意生活方式',
+							subContent:
+								'保持良好的生活习惯，如<span>规律作息、适量运动、避免过度疲劳</span>，有助于维持血液健康。'
+						}, */
+						/* {
+							summary: '保持良好的生活习惯，如规律作息、适量运动、避免过度疲劳，有助于维持血液健康。'
+						}, */
+						/* {
+							picUrl: 'img/object/thyroid_003.jpg',
+						} */
+					]
+				},
+				{
+					content: [
+						/* {
+							subtitle: '1.生活习惯',
+							subContent:
+								'<span>避免吸烟和饮酒</span>。注意空气质量，<span>避免在污染严重的环境</span>中呆太久。如果有过敏体质，尽量<span>避免接触过敏源</span>。保持良好的生活习惯，<span>充足的睡眠和适当的运动</span>。如果症状持续不减，应<span>及时就医</span>。'
+						},
+						{
+							subtitle: '2.改善饮食',
+							subContent:
+								'<span>富含维生素C的水果</span>，如橙子、柚子等，可以增强免疫力。<span>富含蛋白质的食物</span>，如鱼、肉、豆腐等，可以提高身体的抵抗力。喝一些<span>温和的汤</span>，如鸡汤、骨头汤等，可以缓解喉咙不适。'
+						}, */
+						/* {
+							subtitle: '3. 水果沙拉',
+							subContent:
+								'制作水果沙拉时撒上一些甜叶菊<span>增加甜味</span>。'
+						}, */
+						/* {
+							subtitle: '4. 地点清洁',
+							subContent:
+								'用<span>硫磺粉撒在汞污染的地方</span>，它会和汞反应形成无害的硫化汞。'
+						}, */
+						/* {
+							subtitle: '5. 红枣',
+							subContent:
+								'红枣虽然有一定的<span>补血</span>作用，但<span>效果相对较弱</span>。它可以作为<span>日常保健食品</span>食用。'
+						}, */
+						/* {
+							picUrl: 'img/object/throat_002.jpg',
+						}, */
+						/* {
+							summary:
+								'红枣富含<span>铁、维生素C</span>等营养成分，对于<span>缺铁性贫血</span>的人来说确实有一定的补血作用。但是，<span>红枣并非万能的补血良药</span>。如果气血不足的情况较为严重或持续时间较长，单纯依靠红枣可能难以达到理想的效果。此时，可以在<span>医生的建议下选择适当的药物进行补充</span>。 '
+						}, */
+					]
+				},
+				/* {
+					list: [
+						'虽然甜叶菊对大多数人来说是安全的，但<span>孕妇和哺乳期妇女应谨慎使用</span>。',
+						'有些人可能对<span>甜叶菊过敏</span>，如果出现不适，应<span>立即停止使用</span>。',
+					]
+				}, */
+				/* {
+					content: [
+						{
+							picUrl: 'img/object/food_007.jpg',
+						}
+					]
+				} */
+			]
+		}
+	];
+	
+	function setHtml() {
+		var html = '';
+	
+		jisonText.forEach(function (item, i) {
+			var setTitle = item.title || '';
+			var setObj = item.page;
+	
+			setObj.forEach(function (obj) {
+				obj.list?.forEach(function (listItem, i, arr) {
+					if (i === 0) {
+						html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+					}
+					else if (i === arr.length - 1) {
+						html += `<li>${listItem}</li></ul>`;
+					}
+					else {
+						html += `<li>${listItem}</li>`;
+					}
+				});
+	
+				obj.content?.forEach(function (contentItem) {
+					if (contentItem.picUrl) {
+						html += `<div class="pic-wrap"><img src="${contentItem.picUrl}"></div>`;
+					} 
+					else if (contentItem.summary) {
+						html += `
+							<div class="summary-tl"><b>${contentItem.subtitle}</b></div>
+							<p class="summary">${contentItem.summary}</p>`
+					}
+					else {
+						html += `
+							<div class="subtitle">
+								<p class="right">${contentItem.subtitle}</p>
+							</div>
+							<p class="text">${contentItem.subContent}</p>
+						`;
+					}
+				});
+			});
+	
+			document.getElementById('tetie').innerHTML = setTitle;
+			document.getElementById('content').innerHTML = html;
+			/* saveImg(setTitle, i); */
+		});
+	}
+	
+	function saveImg(setTitle='', j=0) {
+		var realHtml = document.getElementById('html-canvas');
+		var width = 1200; //获取dom 宽度
+	
+		var img_type = 'jpg';
+		// var height = realHtml.offsetHeight; //获取dom 高度
+		var height = 1600; //获取dom 高度
+		var canvas = document.createElement('canvas'); //创建一个canvas节点
+		var scale = 1; //定义任意放大倍数 支持小数
+		canvas.width = width * scale; //定义canvas 宽度 * 缩放
+		canvas.height = height * scale; //定义canvas高度 *缩放
+		canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+		var opts = {
+			tainttest: true, //检测每张图片都已经加载完成
+			scale: scale, // 添加的scale 参数
+			useCORS: true,
+			canvas: canvas, //自定义 canvas
+			logging: true, //日志开关
+			width: width, //dom 原始宽度
+			height: height, //dom 原始高度
+			name: 'pic'
+		};
+		html2canvas(realHtml, opts).then(function (canvas) {
+			//如果想要生成图片 引入canvas2Image.js 下载地址：
+			//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+			// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+			imgUri = canvas.toDataURL('image/' + img_type).replace('image/' + img_type, 'image/octet-stream');
+			// alert(imgUri);
+			var saveLink = document.createElement('a');
+			saveLink.href = imgUri;
+			saveLink.download = setTitle + (j + 1) + '.' + img_type;
+			saveLink.click();
+			// realHtml.innerHTML="";
+			// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
+			// alert(document.body.offsetHeight);
+			// alert(document.getElementById("img1").offsetHeight);
+			// document.body.style.height = setHeight+"px";
+			// document.body.style.backgroundColor = "red";
+			// $('#img').attr('src',imgUri);
+			// document.removeChild(a);
+			// console.log(img);
+			// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
+			// localStorage.removeItem("img-html");
+			// localStorage.removeItem('img-type');
+			// localStorage.removeItem('canvas_multiple');
+		});
+	}
+	setHtml()
+	</script>
+</html>

@@ -35,6 +35,9 @@
 		--summary-color: #000000;
 		--key-color: #6036c3;
 		--key-bg-color: transparent;
+		--list-key-color: #bb335d;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
 	}
 
 	p {
@@ -116,6 +119,37 @@
 		span {
 			color: var(--key-color);
 			background-color: var(--key-bg-color);
+		}
+	}
+
+	.list-attention {
+		margin-top: 50px;
+		/* border-top: 1px solid #000; */
+
+		li {
+			position: relative;
+			line-height: 64px;
+			padding-left: 40px;
+			margin-top: 40px;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				top: 20px;
+				left: 0;
+				content: '';
+				width: 14px;
+				height: 14px;
+				border: 3px solid var(--list-circle-bdr-color);
+				border-radius: 50%;
+				background-color: var(--list-circle-bg-color);;
+			}
+
+			span {
+				color: var(--list-key-color);
+			}
 		}
 	}
 
