@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split and Wrap Text</title>
+</head>
+<body>
+    <span>你好，我是小红</span>
+    <span>你好，我是小红</span>
+    <span>你好，我是小红</span>
+
+    <script>
+        // 获取所有的 span 元素
+        const spans = document.querySelectorAll('span');
+
+        // 遍历每个 span 元素
+        spans.forEach((span, i) => {
+            // 获取 span 元素的文本内容
+            const text = span.textContent;
+            
+            // 将文本内容拆分为单个字符的数组
+            const characters = text.split('');
+
+            // 使用 map() 方法将每个字符用 <i> 标签包裹
+            const wrappedCharacters = characters.map(char => `<i>${char}</i>`);
+
+            // 将包裹后的字符数组转换回字符串
+            const wrappedText = wrappedCharacters.join('');
+
+            // 将新字符串设置为 span 元素的 innerHTML
+            span.outerHTML = wrappedText;
+        });
+    </script>
+</body>
+</html>

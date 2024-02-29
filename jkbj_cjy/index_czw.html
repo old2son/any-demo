@@ -79,13 +79,13 @@
 
 	<body>
 		<div class="bg" id="html-canvas">
-			<p class="title" id="tetie">私处有点出血，但不像来月经的原因！</p>
+			<p class="title" id="title">私处有点出血，但不像来月经的原因！</p>
 			<div class="content" id="content"></div>
 		</div>
 	</body>
 	<script>
 		//一页控制在247个字以内
-		var jisonText = [
+		var jsonText = [
 			{
 				title: '私处有点出血，但不像来月经的原因！',
 				//分多少页
@@ -132,9 +132,9 @@
 			}
 		];
 		function setHtml() {
-			for (var i = 0; i < jisonText.length; i++) {
-				var setTitle = jisonText[i].title;
-				var setObj = jisonText[i].page;
+			for (var i = 0; i < jsonText.length; i++) {
+				var setTitle = jsonText[i].title;
+				var setObj = jsonText[i].page;
 				for (var j = 0; j < setObj.length; j++) {
 					var setContent = setObj[j].content;
 					var setHtml = '';
@@ -149,7 +149,7 @@
 							setContent[k].cntText +
 							'</p>';
 					}
-					document.getElementById('tetie').innerHTML = setTitle;
+					document.getElementById('title').innerHTML = setTitle;
 					document.getElementById('content').innerHTML = setHtml;
 					// baoccun(setTitle, j);
 				}

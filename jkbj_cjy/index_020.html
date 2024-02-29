@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>015</title>
+<title>020</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -27,13 +27,13 @@
 		--main-bdr-color: #000;
 		--title-color: #fffd71;
 		--title-stroke-color: #3e2308;
-		--subtitle-color: #4a2617;
+		--subtitle-color: #050f2c;
 		--subtitle-bg-color: #c7e8ff;
 		--text-color: #000;
 		--summary-color: #000000;
-		--key-color: #3356bb;
-		--key-bg-color: transparent;
-		--list-key-color: #bb335d;
+		--key-color: #fff;
+		--key-bg-color: #000;
+		--list-key-color: #ab1e50;
 		--list-circle-bdr-color: #000;
 		--list-circle-bg-color: #f9ff58;
 	}
@@ -54,12 +54,16 @@
 		padding: 0;
 	}
 
+	i {
+		font-style: normal;
+	}
+
 	.bg {
 		width: 1200px;
 		height: 1600px;
 		margin: auto;
 		overflow: hidden;
-		background: url(img/bg/bg_015.jpg) no-repeat;
+		background: url(img/bg/bg_020.jpg) no-repeat;
 	}
 
 	.title {
@@ -86,7 +90,7 @@
 		line-height: 100px;
 		margin: 50px 0 0;
 		border: solid 2px var(--main-bdr-color);
-		border-radius: 15px;
+		border-radius: 20px;
 		color: var(--subtitle-color);
 		background-color: var(--subtitle-bg-color);
 
@@ -119,13 +123,14 @@
 		padding: 60px 30px 20px;
 		margin-top: -50px;
 		border: 2px solid var(--main-bdr-color);
-		border-radius: 15px;
+		border-radius: 20px;
 		text-align: justify;
 		color: var(--text-color);
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
 
-		span {
+		i {
+			box-shadow: 0 0 1px 26px black inset;
 			color: var(--key-color);
 			background-color: var(--key-bg-color);
 		}
@@ -172,9 +177,8 @@
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
 
-		span {
+		i {
 			color: var(--list-key-color);
-			background-color: var(--key-bg-color);
 		}
 	}
 
@@ -220,7 +224,7 @@ var jsonText = [
 			},
 			{
 				content: [
-					/* {
+					{
 						subtitle: '1.益母草与其他药材',
 						subContent:
 							`<span>益母草</span>在中医中被视为<span>女性的良药</span>，能够<span>活血化瘀、调经止痛</span>。此外，<span>丹参、桃仁、红花</span>等药材也具有类似的功效。`
@@ -230,7 +234,7 @@ var jsonText = [
 						subContent:
 							`需要活血化瘀的时机包括经常感到<span>疼痛、肿胀，或出现皮肤瘀斑</span>等情况，尤其是<span>女性在经期前后</span>可能出现的不适症状。`
 					},
-					{
+					/* {
 						subtitle: '3.调整饮食与运动',
 						subContent:
 							`<span>温热性食物如姜、葱、蒜</span>有助于活血化瘀，而生冷食物则应少吃。适当的运动如<span>散步、慢跑、瑜伽</span>也能促进血液循环。`
@@ -240,32 +244,12 @@ var jsonText = [
 						subContent:
 							`虽然止血药能有效止血，但也<span>可能带来不良反应，如恶心、头晕</span>等。使用前务必仔细阅读说明书，<span>按照医生或药师的建议使用</span>。`
 					}, */
-					/* {
-						subtitle: '5. 薏米',
-						subContent:
-							'薏米有<span>利尿作用</span>，能促进尿酸的排出，对高尿酸人群十分友好。'
-					},
-					{
-						subtitle: '6. 苹果',
-						subContent:
-							'苹果中的<span>苹果酸能促进尿酸的溶解和排出。</span>'
-					},
-					{
-						subtitle: '7. 冬瓜',
-						subContent:
-							'冬瓜具有<span>利尿消肿</span>的作用，能帮助排出体内多余的尿酸。'
-					},
-					{
-						subtitle: '8. 香蕉',
-						subContent:
-							'香蕉富<span>含钾元素，能中和体内的酸性物质</span>，降低尿酸水平。'
-					}, */
 					{
 						summary: `活血化瘀并非难题，掌握正确方法并<span>结合个人情况进行调整</span>，每个人都能拥有更健康的身体。`
 					},
-					{
+					/* {
 						picUrl: 'img/object/drug_008.jpg',
-					}
+					} */
 				]
 			},
 			{
@@ -360,8 +344,11 @@ function setHtml() {
 			});
 		});
 
-		document.getElementById('title').innerHTML = setTitle;
-		document.getElementById('content').innerHTML = html;
+		var $tl = document.getElementById('title');
+		var $cont = document.getElementById('content');
+		$tl.innerHTML = setTitle;
+		$cont.innerHTML = html;
+		setKeyWords();
 		/* saveImg(setTitle, i); */
 	});
 }
@@ -413,6 +400,18 @@ function saveImg(setTitle='', j=0) {
 		// localStorage.removeItem('canvas_multiple');
 	});
 }
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map(char => `<i>${char}</i>`);
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
 setHtml()
 </script>
 </html>

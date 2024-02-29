@@ -184,12 +184,12 @@
 
 <body>
 <div class="bg" id="html-canvas">
-	<p class="title" id="tetie"></p>
+	<p class="title" id="title"></p>
 	<div class="content" id="content"></div>
 </div>
 </body>
 <script>
-var jisonText = [
+var jsonText = [
 	{
 		title: '支气管炎的症状',
 		/* title: '管理高血小板计数的关键措施', */
@@ -297,7 +297,7 @@ var jisonText = [
 function setHtml() {
 	var html = '';
 
-	jisonText.forEach(function (item, i) {
+	jsonText.forEach(function (item, i) {
 		var setTitle = item.title || '';
 		var setObj = item.page;
 
@@ -332,7 +332,7 @@ function setHtml() {
 			});
 		});
 
-		document.getElementById('tetie').innerHTML = setTitle;
+		document.getElementById('title').innerHTML = setTitle;
 		document.getElementById('content').innerHTML = html;
 		/* saveImg(setTitle, i); */
 	});

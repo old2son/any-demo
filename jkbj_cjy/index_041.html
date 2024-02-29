@@ -41,6 +41,10 @@
 		padding: 0;
 	}
 
+	i {
+		font-style: normal;
+	}
+
 	.bg {
 		position: relative;
 		width: 1200px;
@@ -178,14 +182,14 @@
 <body>
 <div class="bg" id="html-canvas">
 	<div class="title-wrap">
-		<p class="title" id="tetie"></p>
+		<p class="title" id="title"></p>
 		<i class="title-line"></i>
 	</div>
 	<div class="content" id="content"></div>
 </div>
 </body>
 <script>
-var jisonText = [
+var jsonText = [
 	{
 		title: '甲流和乙流的区别',
 		/* title: '预防和治疗', */
@@ -257,9 +261,9 @@ var jisonText = [
 var html = '';
 
 function setHtml() {
-	for (var i = 0; i < jisonText.length; i++) {
-		var setTitle = jisonText[i].title || '';
-		var setObj = jisonText[i].page;
+	for (var i = 0; i < jsonText.length; i++) {
+		var setTitle = jsonText[i].title || '';
+		var setObj = jsonText[i].page;
 		for (var j = 0; j < setObj.length; j++) {
 			var setContent = setObj[j].content;
 			for (var k = 0; k < setContent.length; k++) {
@@ -278,7 +282,7 @@ function setHtml() {
 				}
 			}
 			
-			document.getElementById('tetie').innerHTML = setTitle;
+			document.getElementById('title').innerHTML = setTitle;
 			document.getElementById('content').innerHTML = html;
 			/* saveImg(setTitle, j); */
 		}

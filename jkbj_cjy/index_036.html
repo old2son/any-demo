@@ -30,8 +30,12 @@
 		--subtitle-color: #4d1a00;
 		--subtitle-bg-color: #fff546;
 		--text-color: #000;
+		--summary-color: #000000;
 		--key-color: #fff;
 		--key-bg-color: #000;
+		--list-key-color: #fff;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
 	}
 
 	p {
@@ -63,11 +67,6 @@
 	.content {
 		width: 1000px;
 		margin: 20px auto;
-
-		span {
-			color: var(--key-color);
-			background-color: var(--key-bg-color);
-		}
 	}
 
 	.subtitle {
@@ -119,15 +118,72 @@
 		color: var(--text-color);
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.list-attention {
+		margin-top: 50px;
+		/* border-top: 1px solid #000; */
+
+		li {
+			position: relative;
+			line-height: 64px;
+			padding-left: 40px;
+			margin-top: 40px;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				top: 20px;
+				left: 0;
+				content: '';
+				width: 14px;
+				height: 14px;
+				border: 3px solid var(--list-circle-bdr-color);
+				border-radius: 50%;
+				background-color: var(--list-circle-bg-color);;
+			}
+
+			span {
+				color: var(--list-key-color);
+			}
+		}
+	}
+
+	.summary {
+		line-height: 72px;
+		padding: 50px 40px 0;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: justify;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--list-key-color);
+			background-color: var(--key-bg-color);
+		}
 	}
 
 	.pic-wrap {
-		height: 600px;
+		/* height: 600px; */
 		margin: 50px auto 0;
+		/* margin: 150px auto 0; */
 		overflow: hidden;
 
 		img {
-			width: 100%;
+			/* width: 100%; */
+			display: block;
+			width: 65%;
+			margin: 0 auto;
+			object-fit: cover;
 		}
 	}
 </style>
@@ -135,158 +191,222 @@
 
 <body>
 <div class="bg" id="html-canvas">
-	<p class="title" id="tetie"></p>
+	<p class="title" id="title"></p>
 	<div class="content" id="content"></div>
 </div>
 </body>
 <script>
-var jisonText = [
-	{
-		title: '甲流和乙流的区别',
-		/* title: '预防和治疗', */
-
-		page: [
-			{
-				content: [
-					{
-						subtitle: '',
-						id: '1.病毒类型不同',
-						cntText:
-							'甲流是受到<span>甲型流感病毒</span>感染所导致的，以<span>H1N1、H3N2</span>等亚型为代表，而乙流主要是受到<span>乙型流感病毒</span>感染所导致，以<span>B/ Victoria和B/Yamagata</span>等亚型为代表。'
-					},
-					{
-						subtitle: '',
-						id: '2.传染性不同',
-						cntText:
-							'甲流和乙流都具有传染性，会通过飞沫空气传播以及密切接触等方式来传播。而两者相比较<span>甲流的传染性会比较强一些</span>，而<span>乙流的传染性会比较弱</span>，传染的范围也比较小。'
-					},
-					/* {
-						subtitle: '',
-						id: '3.症状不同',
-						cntText:
-							'甲流在发生之后症状会比较严重，患者会出现发热、肌肉酸痛、咳嗽、咳痰，部分还会伴有消化系统症状，比如呕吐、腹泻等，乙流症状比较轻微，会出现头痛、乏力、肌肉酸痛、咽痛等症状。'
-					},
-					{
-						subtitle: '',
-						id: '4.并发症',
-						cntText:
-							'甲流容易出现严重的并发症，比如肺炎，脑炎等，特别是对于婴幼儿或者是免疫力低下的人群，而乙流引起的并发症比较少。'
-					}, */
-					/* {
-						subtitle: '',
-						id: '5.肾脏疾病',
-						cntText:
-							'当出现<span>肾脏疾病，比如肾炎、肾结石等，肾功能会受到损伤</span>，影响到机体的代谢，从而会引起谷氨酰转肽酶偏高。'
-					}, */
-					/* {
-						picUrl: 'img/object/ear_001.jpg',
-					} */
-				]
-			},
-			{
-
-				content: [
-					/* {
-						subtitle: '',
-						id: '1.注意休息',
-						cntText:
-							'不管是甲流和乙流，在患病之后，患者需要<span>注意多休息，避免劳累，避免熬夜。</span>'
-					},
-					{
-						subtitle: '',
-						id: '2.隔离治疗',
-						cntText:
-							'疾病都具有的传染性，在患病之后需要<span>隔离治疗</span>，对居住的环境，<span>定期的消毒。</span>'
-					},
-					{
-						subtitle: '',
-						id: '3.药物治疗',
-						cntText:
-							'患病之后可以在医生的指导下使用<span>连花清瘟胶囊、奥司他韦胶囊、布洛芬缓释胶囊</span>等药物治疗，能够起到抗病毒和退热的作用。'
-					}, */
-				]
-			},
-		]
-	}
-];
-var html = '';
-
-function setHtml() {
-	for (var i = 0; i < jisonText.length; i++) {
-		var setTitle = jisonText[i].title || '';
-		var setObj = jisonText[i].page;
-		for (var j = 0; j < setObj.length; j++) {
-			var setContent = setObj[j].content;
-			for (var k = 0; k < setContent.length; k++) {
-				if (setContent[k].picUrl) {
-					html += `<div class="pic-wrap"><img src="${setContent[k].picUrl}"></div>`
-				}
-				else {
-					html +=
-						'<div class="subtitle"><p class="left">' +
-						setContent[k].subtitle +
-						'</p><p class="right">' +
-						setContent[k].id +
-						'</p></div><p class="text">' +
-						setContent[k].cntText +
-						'</p>';
-				}
-			}
-			
-			document.getElementById('tetie').innerHTML = setTitle;
-			document.getElementById('content').innerHTML = html;
-			/* saveImg(setTitle, j); */
+	var jsonText = [
+		{
+			title: '聊聊活血化瘀：益母草与那些帮手们',
+	
+			page: [
+				{
+					content: [
+						/* {
+							picUrl: 'img/object/teeth_003.png',
+						},
+						{
+							summary:
+								`根管治疗通常用于治疗<span>牙髓炎或牙髓坏死。这些病症可能由龋齿、牙折裂、感染等引起</span>。如果不及时治疗，可能导致更严重的口腔问题。`
+						}, */
+					]
+				},
+				{
+					content: [
+						{
+							subtitle: '1.益母草与其他药材',
+							subContent:
+								`<span>益母草</span>在中医中被视为<span>女性的良药</span>，能够<span>活血化瘀、调经止痛</span>。此外，<span>丹参、桃仁、红花</span>等药材也具有类似的功效。`
+						},
+						{
+							subtitle: '2.适合活血化瘀的时机',
+							subContent:
+								`需要活血化瘀的时机包括经常感到<span>疼痛、肿胀，或出现皮肤瘀斑</span>等情况，尤其是<span>女性在经期前后</span>可能出现的不适症状。`
+						},
+						{
+							subtitle: '3.调整饮食与运动',
+							subContent:
+								`<span>温热性食物如姜、葱、蒜</span>有助于活血化瘀，而生冷食物则应少吃。适当的运动如<span>散步、慢跑、瑜伽</span>也能促进血液循环。`
+						},
+						/* {
+							subtitle: '4.谨慎使用止血药',
+							subContent:
+								`虽然止血药能有效止血，但也<span>可能带来不良反应，如恶心、头晕</span>等。使用前务必仔细阅读说明书，<span>按照医生或药师的建议使用</span>。`
+						}, */
+						/* {
+							subtitle: '5. 薏米',
+							subContent:
+								'薏米有<span>利尿作用</span>，能促进尿酸的排出，对高尿酸人群十分友好。'
+						},
+						{
+							subtitle: '6. 苹果',
+							subContent:
+								'苹果中的<span>苹果酸能促进尿酸的溶解和排出。</span>'
+						},
+						{
+							subtitle: '7. 冬瓜',
+							subContent:
+								'冬瓜具有<span>利尿消肿</span>的作用，能帮助排出体内多余的尿酸。'
+						},
+						{
+							subtitle: '8. 香蕉',
+							subContent:
+								'香蕉富<span>含钾元素，能中和体内的酸性物质</span>，降低尿酸水平。'
+						}, */
+						/* {
+							summary: `活血化瘀并非难题，掌握正确方法并<span>结合个人情况进行调整</span>，每个人都能拥有更健康的身体。`
+						},
+						{
+							picUrl: 'img/object/drug_008.jpg',
+						} */
+					]
+				},
+				{
+					content: [
+						/* {
+							subtitle: '1.生活习惯',
+							subContent:
+								'<span>避免吸烟和饮酒</span>。注意空气质量，<span>避免在污染严重的环境</span>中呆太久。如果有过敏体质，尽量<span>避免接触过敏源</span>。保持良好的生活习惯，<span>充足的睡眠和适当的运动</span>。如果症状持续不减，应<span>及时就医</span>。'
+						},
+						{
+							subtitle: '2.改善饮食',
+							subContent:
+								'<span>富含维生素C的水果</span>，如橙子、柚子等，可以增强免疫力。<span>富含蛋白质的食物</span>，如鱼、肉、豆腐等，可以提高身体的抵抗力。喝一些<span>温和的汤</span>，如鸡汤、骨头汤等，可以缓解喉咙不适。'
+						}, */
+						/* {
+							subtitle: '3. 水果沙拉',
+							subContent:
+								'制作水果沙拉时撒上一些甜叶菊<span>增加甜味</span>。'
+						}, */
+						/* {
+							subtitle: '4. 地点清洁',
+							subContent:
+								'用<span>硫磺粉撒在汞污染的地方</span>，它会和汞反应形成无害的硫化汞。'
+						}, */
+						/* {
+							subtitle: '5. 红枣',
+							subContent:
+								'红枣虽然有一定的<span>补血</span>作用，但<span>效果相对较弱</span>。它可以作为<span>日常保健食品</span>食用。'
+						}, */
+						
+						/* {
+							summary:
+								`重度脂肪肝的治疗，就是<span>“管住嘴，迈开腿”，加上持之以恒</span>。当然，每个人的情况不同，具体方案还得根据个人情况来定。如果你有类似的问题，记得<span>及时找专业医生咨询</span>哦！`
+						},
+						{
+							picUrl: 'img/object/food_027.jpg',
+						}, */
+					]
+				},
+				/* {
+					list: [
+						'选择蛋类应<span>根据个人需求和口味，适量摄入</span>是关键。',
+						'确保食用蛋类新鲜<span>无污染</span>，并选择健康的烹饪方式，如<span>蒸、煮或炖，以保留营养价值</span>。',
+					]
+				}, */
+				/* {
+					content: [
+						{
+							picUrl: 'img/object/nerve_001.png',
+						}
+					]
+				} */
+			]
 		}
+	];
+	
+	function setHtml() {
+		var html = '';
+	
+		jsonText.forEach(function (item, i) {
+			var setTitle = item.title || '';
+			var setObj = item.page;
+	
+			setObj.forEach(function (obj) {
+				obj.list?.forEach(function (listItem, i, arr) {
+					if (i === 0) {
+						html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+					}
+					else if (i === arr.length - 1) {
+						html += `<li>${listItem}</li></ul>`;
+					}
+					else {
+						html += `<li>${listItem}</li>`;
+					}
+				});
+	
+				obj.content?.forEach(function (contentItem) {
+					if (contentItem.picUrl) {
+						html += `<div class="pic-wrap"><img src="${contentItem.picUrl}"></div>`;
+					} 
+					else if (contentItem.summary) {
+						html += `<p class="summary">${contentItem.summary}</p>`
+					}
+					else {
+						html += `
+							<div class="subtitle">
+								<p class="right">${contentItem.subtitle}</p>
+							</div>
+							<p class="text">${contentItem.subContent}</p>
+						`;
+					}
+				});
+			});
+	
+			document.getElementById('title').innerHTML = setTitle;
+			document.getElementById('content').innerHTML = html;
+			/* saveImg(setTitle, i);  */
+		});
 	}
-}
-
-function saveImg(setTitle='666', j=0) {
-	var realHtml = document.getElementById('html-canvas');
-	var width = 1200; //获取dom 宽度
-
-	var img_type = 'jpg';
-	// var height = realHtml.offsetHeight; //获取dom 高度
-	var height = 1600; //获取dom 高度
-	var canvas = document.createElement('canvas'); //创建一个canvas节点
-	var scale = 1; //定义任意放大倍数 支持小数
-	canvas.width = width * scale; //定义canvas 宽度 * 缩放
-	canvas.height = height * scale; //定义canvas高度 *缩放
-	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
-	var opts = {
-		tainttest: true, //检测每张图片都已经加载完成
-		scale: scale, // 添加的scale 参数
-		useCORS: true,
-		canvas: canvas, //自定义 canvas
-		logging: true, //日志开关
-		width: width, //dom 原始宽度
-		height: height, //dom 原始高度
-		name: 'pic'
-	};
-	html2canvas(realHtml, opts).then(function (canvas) {
-		//如果想要生成图片 引入canvas2Image.js 下载地址：
-		//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
-		// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
-		imgUri = canvas.toDataURL('image/' + img_type).replace('image/' + img_type, 'image/octet-stream');
-		// alert(imgUri);
-		var saveLink = document.createElement('a');
-		saveLink.href = imgUri;
-		saveLink.download = setTitle + (j + 1) + '.' + img_type;
-		saveLink.click();
-		// realHtml.innerHTML="";
-		// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
-		// alert(document.body.offsetHeight);
-		// alert(document.getElementById("img1").offsetHeight);
-		// document.body.style.height = setHeight+"px";
-		// document.body.style.backgroundColor = "red";
-		// $('#img').attr('src',imgUri);
-		// document.removeChild(a);
-		// console.log(img);
-		// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
-		// localStorage.removeItem("img-html");
-		// localStorage.removeItem('img-type');
-		// localStorage.removeItem('canvas_multiple');
-	});
-}
-setHtml()
+	
+	function saveImg(setTitle='', j=0) {
+		var realHtml = document.getElementById('html-canvas');
+		var width = 1200; //获取dom 宽度
+	
+		var img_type = 'jpg';
+		// var height = realHtml.offsetHeight; //获取dom 高度
+		var height = 1600; //获取dom 高度
+		var canvas = document.createElement('canvas'); //创建一个canvas节点
+		var scale = 1; //定义任意放大倍数 支持小数
+		canvas.width = width * scale; //定义canvas 宽度 * 缩放
+		canvas.height = height * scale; //定义canvas高度 *缩放
+		canvas.getContext('2d').scale(1, 1); //获取context,设置scale
+		var opts = {
+			tainttest: true, //检测每张图片都已经加载完成
+			scale: scale, // 添加的scale 参数
+			useCORS: true,
+			canvas: canvas, //自定义 canvas
+			logging: true, //日志开关
+			width: width, //dom 原始宽度
+			height: height, //dom 原始高度
+			name: 'pic'
+		};
+		html2canvas(realHtml, opts).then(function (canvas) {
+			//如果想要生成图片 引入canvas2Image.js 下载地址：
+			//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+			// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+			imgUri = canvas.toDataURL('image/' + img_type).replace('image/' + img_type, 'image/octet-stream');
+			// alert(imgUri);
+			var saveLink = document.createElement('a');
+			saveLink.href = imgUri;
+			saveLink.download = setTitle + (j + 1) + '.' + img_type;
+			saveLink.click();
+			// realHtml.innerHTML="";
+			// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
+			// alert(document.body.offsetHeight);
+			// alert(document.getElementById("img1").offsetHeight);
+			// document.body.style.height = setHeight+"px";
+			// document.body.style.backgroundColor = "red";
+			// $('#img').attr('src',imgUri);
+			// document.removeChild(a);
+			// console.log(img);
+			// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
+			// localStorage.removeItem("img-html");
+			// localStorage.removeItem('img-type');
+			// localStorage.removeItem('canvas_multiple');
+		});
+	}
+	setHtml()
 </script>
 </html>

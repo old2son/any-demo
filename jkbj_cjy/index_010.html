@@ -255,14 +255,14 @@
 <body>
 <div class="bg" id="html-canvas">
 	<div class="title-wrap">
-		<p class="title" id="tetie"></p>
+		<p class="title" id="title"></p>
 		<i class="title-line"></i>
 	</div>
 	<div class="content" id="content"></div>
 </div>
 </body>
 <script>
-	var jisonText = [
+	var jsonText = [
 		{
 			title: '我来告诉你！',
 			/* title: '管理高血小板计数的关键措施', */
@@ -376,7 +376,7 @@
 	function setHtml() {
 		var html = '';
 	
-		jisonText.forEach(function (item, i) {
+		jsonText.forEach(function (item, i) {
 			var setTitle = item.title || '';
 			var setObj = item.page;
 	
@@ -413,7 +413,7 @@
 				});
 			});
 	
-			document.getElementById('tetie').innerHTML = setTitle;
+			document.getElementById('title').innerHTML = setTitle;
 			document.getElementById('content').innerHTML = html;
 			/* saveImg(setTitle, i); */
 		});
