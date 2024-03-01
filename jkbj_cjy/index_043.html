@@ -26,15 +26,15 @@
 	:root {
 		--main-bdr-color: #000;
 		--title-color: #000000;
-		--title-bg-color: #fef1b2;;
+		--title-bg-color: #f2e885;;
 		--title-stroke-color: transparent;
 		--subtitle-color: #060606;
-		--subtitle-bg-color: #fff;
-		--text-color: #110e30;
-		--text-bg-color: #e8e6fc;
-		--key-color: #fef1b2;
-		--key-bg-color: #110e30;
-		--list-key-color: #2a38c0;
+		--subtitle-bg-color: #fff275;
+		--text-color: #301b0e;
+		--text-bg-color: #fffef5;
+		--key-color: #2657b0;
+		--key-bg-color: transparent;
+		--list-key-color: #26816b;
 		--list-circle-bdr-color: #000;
 		--list-circle-bg-color: #f9ff58;
 	}
@@ -83,14 +83,15 @@
 		.title-line {
 			position: absolute;
 			left: 0;
-			right: 0;
-			bottom: -10px;
+			right: -10px;
+			bottom: -6px;
 			z-index: 1;
 			height: 135px;
 			line-height: 135px;
 			border: 2px solid var(--main-bdr-color);
 			border-radius: 28px;
 			color: var(--title-color);
+			background-color: #fc8c08;
 		}
 	}
 
@@ -171,7 +172,6 @@
 		font-family: SourceHanSansCN-Regular;
 
 		i {
-			box-shadow: 0 0 1px 26px black inset;
 			color: var(--key-color);
 			background-color: var(--key-bg-color);
 		}
