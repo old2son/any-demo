@@ -124,7 +124,7 @@
 		margin-top: -50px;
 		border: 2px solid var(--main-bdr-color);
 		border-radius: 20px;
-		text-align: justify;
+		text-align: left;
 		color: var(--text-color);
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
@@ -149,7 +149,7 @@
 			font-size: 46px;
 			font-family: SourceHanSansCN-Regular;
 
-			&::after {
+			::after {
 				position: absolute;
 				top: 20px;
 				left: 0;
@@ -161,7 +161,7 @@
 				background-color: var(--list-circle-bg-color);;
 			}
 
-			span {
+			i {
 				color: var(--list-key-color);
 			}
 		}
@@ -172,7 +172,7 @@
 		padding: 50px 40px 0;
 		/* margin-top: 50px; */
 		margin-top: 0px;
-		text-align: justify;
+		text-align: left;
 		color: var(--summary-color);
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
@@ -185,13 +185,13 @@
 	.pic-wrap {
 		/* height: 600px; */
 		margin: 50px auto 0;
-		/* margin: 150px auto 0; */
+		/* margin: 0px auto 0; */
 		overflow: hidden;
 
 		img {
-			/* width: 100%; */
 			display: block;
-			width: 65%;
+			width: 100%;
+			/* width: 85%; */
 			margin: 0 auto;
 			object-fit: cover;
 		}
@@ -208,47 +208,47 @@
 <script>
 var jsonText = [
 	{
-		title: '聊聊活血化瘀：益母草与那些帮手们',
+		title: '钠元素：人体不可或缺的小伙伴',
 
 		page: [
 			{
 				content: [
 					/* {
-						picUrl: 'img/object/teeth_003.png',
+						summary:
+							`总结来说，降低胆固醇并不是一蹴而就的事情，它需要<span>持续的努力和生活方式的改变</span>。降胆固醇的关键在于<span>均衡饮食和健康生活</span>。了解哪些食物有助于降低胆固醇，并将其融入日常饮食，同时<span>结合适当的运动和生活习惯</span>，女性朋友们可以有效地管理自己的胆固醇水平，享受健康的生活。`
 					},
 					{
-						summary:
-							`根管治疗通常用于治疗<span>牙髓炎或牙髓坏死。这些病症可能由龋齿、牙折裂、感染等引起</span>。如果不及时治疗，可能导致更严重的口腔问题。`
+						picUrl: 'img/object/food_061.jpg',
 					}, */
 				]
 			},
 			{
 				content: [
-					{
-						subtitle: '1.益母草与其他药材',
-						subContent:
-							`<span>益母草</span>在中医中被视为<span>女性的良药</span>，能够<span>活血化瘀、调经止痛</span>。此外，<span>丹参、桃仁、红花</span>等药材也具有类似的功效。`
-					},
-					{
-						subtitle: '2.适合活血化瘀的时机',
-						subContent:
-							`需要活血化瘀的时机包括经常感到<span>疼痛、肿胀，或出现皮肤瘀斑</span>等情况，尤其是<span>女性在经期前后</span>可能出现的不适症状。`
-					},
 					/* {
-						subtitle: '3.调整饮食与运动',
+						subtitle: '1.饮食调整',
 						subContent:
-							`<span>温热性食物如姜、葱、蒜</span>有助于活血化瘀，而生冷食物则应少吃。适当的运动如<span>散步、慢跑、瑜伽</span>也能促进血液循环。`
+							`降胆固醇的食物选择至关重要。富含可溶性纤维的食物，如<span>燕麦、苹果、梨和豆类</span>，可以帮助降低胆固醇。同时，<span>深海鱼类如三文鱼和鲭鱼富</span>含Omega-3脂肪酸，对心脏健康有益。此外，<span>橄榄油、坚果和鳄梨</span>等健康脂肪也是降胆固醇饮食的好选择。`
+					},
+					{
+						subtitle: '2.生活习惯改变 ',
+						subContent:
+							`定期进行<span>有氧运动，如快走、游泳或骑自行车</span>，可以帮助提高好胆固醇（HDL）水平。同时，<span>戒烟和限制酒精摄入</span>也是降低胆固醇的有效方法。`
 					}, */
 					/* {
-						subtitle: '4.谨慎使用止血药',
+						subtitle: '3.适当运动',
 						subContent:
-							`虽然止血药能有效止血，但也<span>可能带来不良反应，如恶心、头晕</span>等。使用前务必仔细阅读说明书，<span>按照医生或药师的建议使用</span>。`
+							`可适当做些<span>轻微运动，如慢跑、骑车、徒步、瑜伽</span>等，也可通过运动中的呼吸缓解改善抑郁情绪。一般<span>每天30-60分钟</span>的运动量。`
 					}, */
-					{
-						summary: `活血化瘀并非难题，掌握正确方法并<span>结合个人情况进行调整</span>，每个人都能拥有更健康的身体。`
-					},
 					/* {
-						picUrl: 'img/object/drug_008.jpg',
+						subtitle: '4.刺激性食物',
+						subContent:
+							`比如<span>辣椒、酒精、咖啡</span>等，这些食物会刺激肝脏，加重肝脏的损伤。`
+					}, */
+					/* {
+						summary: `不要忘记，鱼油补充剂只是<span>辅助手段</span>，<span>均衡饮食</span>和健康生活方式才是保持身体健康的根本。正确服用鱼油，<span>坚持一年甚至更长时间</span>，后果是你可能会收获一个更加健康的自己。不过，记得始终在<span>医生的指导</span>下进行哦！`
+					}, */
+					/* {
+						picUrl: 'img/object/food_060.jpg',
 					} */
 				]
 			},
@@ -282,23 +282,24 @@ var jsonText = [
 					
 					/* {
 						summary:
-							`重度脂肪肝的治疗，就是<span>“管住嘴，迈开腿”，加上持之以恒</span>。当然，每个人的情况不同，具体方案还得根据个人情况来定。如果你有类似的问题，记得<span>及时找专业医生咨询</span>哦！`
-					},
-					{
-						picUrl: 'img/object/food_027.jpg',
+							`总的来说，抑郁症既可以被视为精神疾病，也可以被视为心理疾病。无论怎样，我们都应该对抑郁症有足够的理解和关注，及时寻求专业的帮助！`
+					}, */
+					/* {
+						picUrl: 'img/object/food_028.jpg',
 					}, */
 				]
 			},
 			/* {
 				list: [
-					'选择蛋类应<span>根据个人需求和口味，适量摄入</span>是关键。',
-					'确保食用蛋类新鲜<span>无污染</span>，并选择健康的烹饪方式，如<span>蒸、煮或炖，以保留营养价值</span>。',
+					`选择<span>无糖或低糖</span>的燕麦片，避免额外糖分摄入。`,
+					`适量食用，每天燕麦片<span>摄入量不超过半杯</span>。`,
+					`<span>避免含麸质</span>的燕麦片，对于<span>麸质不耐症患者</span>特别重要。`,
 				]
 			}, */
 			/* {
 				content: [
 					{
-						picUrl: 'img/object/nerve_001.png',
+						picUrl: 'img/object/food_032.jpg',
 					}
 				]
 			} */

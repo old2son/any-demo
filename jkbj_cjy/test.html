@@ -1,36 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Split and Wrap Text</title>
-</head>
-<body>
-    <span>你好，我是小红</span>
-    <span>你好，我是小红</span>
-    <span>你好，我是小红</span>
+	<head>
+		<meta charset="utf-8" />
+		<title>test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/html2canvas.min.js"></script>
+		<style>
+			@font-face {
+				font-family: SourceHanSansCN-Heavy;
+				src: url('css/font/SourceHanSansCN-Heavy.otf');
+			}
 
-    <script>
-        // 获取所有的 span 元素
-        const spans = document.querySelectorAll('span');
+			@font-face {
+				font-family: SourceHanSansCN-Bold;
+				src: url('css/font/SourceHanSansCN-Bold.otf');
+			}
 
-        // 遍历每个 span 元素
-        spans.forEach((span, i) => {
-            // 获取 span 元素的文本内容
-            const text = span.textContent;
-            
-            // 将文本内容拆分为单个字符的数组
-            const characters = text.split('');
+			@font-face {
+				font-family: SourceHanSansCN-Regular;
+				src: url('css/font/SourceHanSansCN-Regular.otf');
+			}
 
-            // 使用 map() 方法将每个字符用 <i> 标签包裹
-            const wrappedCharacters = characters.map(char => `<i>${char}</i>`);
+			:root {
+				--main-bdr-color: #000;
+				--title-color: #fffd71;
+				--title-stroke-color: #3e2308;
+				--subtitle-color: #381a0c;
+				--subtitle-bg-color: #fffde6;
+				--text-color: #000;
+				--summary-color: #000;
+				--key-color: #fff;
+				--key-bg-color: #000;
+				--list-key-color: #2a38c0;
+				--list-circle-bdr-color: #000;
+				--list-circle-bg-color: #f9ff58;
+			}
 
-            // 将包裹后的字符数组转换回字符串
-            const wrappedText = wrappedCharacters.join('');
+			ul {
+				padding: 0;
+				margin: 0;
 
-            // 将新字符串设置为 span 元素的 innerHTML
-            span.outerHTML = wrappedText;
-        });
-    </script>
-</body>
+				li {
+					padding: 0;
+					margin: 0;
+					list-style: none;
+				}
+			}
+
+			p {
+				margin: 0;
+				padding: 0;
+			}
+
+			i {
+				font-style: normal;
+			}
+
+			.bg {
+				width: 1200px;
+				height: 1600px;
+				margin: auto;
+				overflow: hidden;
+				background: url(img/bg/bg_008.jpg) no-repeat;
+			}
+
+			.title {
+				height: 70px;
+				line-height: 70px;
+				padding-top: 62px;
+				overflow: hidden;
+				text-align: center;
+				color: var(--text-color);
+				font-size: 40px;
+				font-family: SourceHanSansCN-Bold;
+			}
+
+			.content {
+				width: 1000px;
+				margin: 20px auto;
+			}
+
+			.subtitle {
+				display: table;
+				position: relative;
+				width: auto;
+				height: 100px;
+				line-height: 100px;
+				margin: 50px 0 0;
+				border: solid 2px var(--main-bdr-color);
+				border-radius: 20px;
+				color: var(--subtitle-color);
+				background-color: var(--subtitle-bg-color);
+
+				.left {
+					display: none;
+					height: 86px;
+					line-height: 78px;
+					padding: 0 20px;
+					margin: -1px 0 0 -1px;
+					float: left;
+					border: solid 2px var(--main-bdr-color);
+					border-radius: 43px;
+					color: #fff;
+					font-weight: bold;
+					font-size: 56px;
+					background-color: #7ba9e4;
+				}
+
+				.right {
+					padding: 0 20px;
+					float: left;
+					color: var(--subtitle-color);
+					font-size: 50px;
+					font-family: SourceHanSansCN-Bold;
+				}
+			}
+
+			.text {
+				line-height: 68px;
+				padding: 60px 30px 20px;
+				margin-top: -50px;
+				border: 2px solid var(--main-bdr-color);
+				border-radius: 20px;
+				text-align: left;
+				color: var(--text-color);
+				font-size: 46px;
+				font-family: SourceHanSansCN-Regular;
+
+				i {
+					box-shadow: 0 0 1px 26px black inset;
+					color: var(--key-color);
+					background-color: var(--key-bg-color);
+				}
+			}
+
+			.list-attention {
+				margin-top: 50px;
+				/* border-top: 1px solid #000; */
+
+				li {
+					position: relative;
+					line-height: 64px;
+					padding-left: 40px;
+					margin-top: 40px;
+					color: var(--text-color);
+					font-size: 46px;
+					font-family: SourceHanSansCN-Regular;
+
+					::after {
+						position: absolute;
+						top: 20px;
+						left: 0;
+						content: '';
+						width: 14px;
+						height: 14px;
+						border: 3px solid var(--list-circle-bdr-color);
+						border-radius: 50%;
+						background-color: var(--list-circle-bg-color);
+					}
+
+					i {
+						color: var(--list-key-color);
+					}
+				}
+			}
+
+			.summary {
+				line-height: 72px;
+				padding: 50px 40px 0;
+				/* margin-top: 50px; */
+				margin-top: 0px;
+				text-align: left;
+				color: var(--summary-color);
+				font-size: 46px;
+				font-family: SourceHanSansCN-Regular;
+
+				i {
+					color: var(--list-key-color);
+				}
+			}
+
+			.pic-wrap {
+				/* height: 600px; */
+				/* margin: 50px auto 0; */
+				/* margin: 0px auto 0; */
+				overflow: hidden;
+
+				img {
+					display: block;
+					/* width: 100%; */
+					/* width: 85%; */
+					margin: 0 auto;
+					object-fit: cover;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+	<script>
+		const canvas = document.getElementById('canvas');
+
+		canvas.toBlob((blob) => {
+			const newImg = document.createElement('img');
+			const url = URL.createObjectURL(blob);
+
+			newImg.onload = () => {
+				// 不再需要读取该 blob，因此释放该对象
+				URL.revokeObjectURL(url);
+			};
+
+			newImg.src = url;
+			document.body.appendChild(newImg);
+		});
+	</script>
 </html>
