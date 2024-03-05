@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>取环痛不痛？什么时候取环最好？▽▽▽</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #fff799;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #fff799;
+		--subtitle-bg-color: #0085ac;
+		--text-color: #313131;
+		--summary-color: #313131;
+		--summary-color-2: #313131;
+		--key-color: #0085ac;
+		--key-bg-color: #000;
+		--list-key-color: #0085ac;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403051500.jpg) center top no-repeat;
+	}
+
+	.content {
+		padding-top: 60px;
+		margin: 0px 90px;
+	}
+
+	.title-wrap {
+		padding-top: 60px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 110px;
+			line-height: 110px;
+			padding: 0 30px;
+			margin: 0;
+			border-radius: 0 0 15px 15px;
+			text-align: center;
+			color: var(--title-color);
+			font-size: 60px;
+			font-family: SourceHanSansCN-Bold;
+			background-color: var(--key-color);
+		}
+	}
+
+	.text-wrap {
+		position: relative;
+		margin: 50px 0 0;
+
+		img {
+			display: block;
+			margin: 0px auto;
+			object-fit: cover;
+		}
+
+		.subtitle {
+			display: block;
+			position: relative;
+			width: auto;
+			height: 87px;
+			line-height: 87px;
+			text-align: center;
+			color: var(--subtitle-color);
+
+			.right {
+				display: inline-block;
+				padding: 0 30px;
+				border-radius: 15px;
+				color: var(--subtitle-color);
+				font-size: 48px;
+				font-family: SourceHanSansCN-Bold;
+				background-color: var(--subtitle-bg-color);
+			}
+
+			.line {
+				display: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 15px;
+				z-index: 1;
+				content: '';
+				height: 32px;
+				background: url(img/item/title_line_002.png) center no-repeat;
+				background-size: 100% 100%;
+			}
+		}
+
+		.text {
+			line-height: 80px;
+			padding: 60px 40px 20px;
+			margin-top: -45px;
+			text-align: left;
+			border: 4px dashed var(--key-color);
+			border-radius: 15px;
+			color: var(--text-color);
+			font-size: 48px;
+			font-family: SourceHanSansCN-Regular;
+
+			i {
+				color: var(--key-color);
+				font-weight: 400;
+			}
+		}
+	}
+	
+	.summary-wrap {
+		position: relative;
+
+		img {
+			display: block;
+			margin: 0px auto;
+			object-fit: cover;
+		}
+
+		.summary-title {
+			display: block;
+			position: relative;
+			width: auto;
+			height: 87px;
+			line-height: 87px;
+			text-align: center;
+			color: var(--subtitle-color);
+
+			.right {
+				display: inline-block;
+				padding: 0 30px;
+				border-radius: 15px;
+				color: var(--subtitle-color);
+				font-size: 48px;
+				font-family: SourceHanSansCN-Bold;
+				background-color: var(--subtitle-bg-color);
+			}
+
+			.line {
+				display: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 15px;
+				z-index: 1;
+				content: '';
+				height: 32px;
+				background: url(img/item/title_line_002.png) center no-repeat;
+				background-size: 100% 100%;
+			}
+		}
+
+		.summary {
+			padding: 60px 0px 0px;
+			margin-top: -45px;
+			border: 4px dashed var(--key-color);
+			border-radius: 15px;
+
+			p {
+				position: relative;
+				line-height: 70px;
+				padding: 0 70px;
+				margin-top: 0px;
+				text-align: left;
+				color: var(--summary-color);
+				font-size: 48px;
+				font-family: SourceHanSansCN-Regular;
+
+				i {
+					position: relative;
+					color: var(--list-key-color);
+					font-weight: 700;
+				}
+			}
+		}
+
+		.list-attention {
+			margin-top: 20px;
+
+			li {
+				position: relative;
+				line-height: 55px;
+				padding: 20px 40px 20px 140px;
+				-webkit-text-stroke-width: 0.5px;
+				-webkit-text-stroke-color: #fff;
+				color: #313131;
+				font-size: 40px;
+
+				&:nth-of-type(2n-1) {
+					background-color: #daf3f7;
+				}
+
+				&:nth-of-type(2n) {
+					background-color: #e6f7fa;
+				}
+
+				&::after {
+					position: absolute;
+					left: 40px;
+					top: 50%;
+					content: '';
+					width: 75px;
+					height: 90px;
+					transform: translateY(-50%);
+					background: url(img/item/icon_start_002.png) center no-repeat;
+				}
+
+				i {
+					color: var(--key-color);
+				}
+			}
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<!-- <div class="title-wrap">
+		<h1 id="title"></h1>
+	</div> -->
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '取环的时间',
+
+		page: [
+			{
+				content: [
+					{
+						subtitle: '取环过程复杂么？',
+						subContent:
+							`<span>取环的过程较为简单</span>，而且技术成熟，一般在15分钟左右，即可完成全部操作`,
+							picUrl: `img/object/liver_001.png`,
+							picUrltyle: `width: 30%;`							
+					},
+					{
+						subtitle: '生活方式',
+						summary:
+							`<span>有些</span>女生痛经是因为子宫内膜异位症、子宫腺肌症等引起，这时候需要解决原发病，才能彻底根治痛经。`,
+						list: [
+							`<span>如果取环后身体没有出现不适症状</span>，遵医嘱回家后以卧床休息为主即可。`,
+							`恢复期间，注意避免过多活动，保持自身清洁卫生，术后两周内禁止同房，促进身体恢复。`
+						]
+					},
+					
+				],
+				
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, i) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem, j) {
+				if (contentItem.subContent) {
+					html += `
+						<div class="text-wrap" id="wrap-${j}">
+							<div class="subtitle">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="text">${contentItem.subContent}</p>
+							${contentItem.picUrl ? `<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">` : ''}
+						</div>
+					`;
+				} 
+				else if (contentItem.summary) {
+					html += `
+						<div class="summary-wrap" id="wrap-${j}">
+							<div class="summary-title">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<div class="summary">
+								<p>${contentItem.summary}</p>	
+							</div>
+							${contentItem.picUrl ? `<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">` : ''}
+						</div>
+					`;
+				}
+
+				contentItem.list?.forEach(function (listItem, k, arr) {
+					if (k === 0) {
+						html += `<ul class="list-attention js-list-attention" id="js-list-attention-${j}"><li>${listItem}</li>`;
+					}
+					else if (k === arr.length - 1) {
+						html += `<li>${listItem}</li></ul>`;
+					}
+					else {
+						html += `<li>${listItem}</li>`;
+					}
+				});
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			if ($tl) {
+				$tl.innerHTML = setTitle;
+			}
+
+			$cont.innerHTML = html;
+
+			insertList();
+			setKeyWords();
+			saveImg(setTitle, i);
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
+			else {
+				return `<i>${char}</i>`;
+			}
+		});
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+function insertList () {
+	document.querySelectorAll('.js-list-attention').forEach((item, i) => {
+		var str = item.id.split('-')
+		var id = str[str.length - 1];
+		document.querySelector(`#wrap-${id} .summary`).appendChild(item);
+	});
+}
+
+setHtml()
+</script>
+</html>

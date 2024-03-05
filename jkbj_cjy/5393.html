@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>来“大姨妈”痛到怀疑人生？试试这几个小妙招</title>
+<title>5393_202403041930</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -24,16 +24,15 @@
 
 	:root {
 		--main-bdr-color: #000;
-		--title-color: #333333;
+		--title-color: #b0d796;
 		--title-stroke-color: #3e2308;
-		--subtitle-color: #333333;
+		--subtitle-color: #3c6421;
 		--subtitle-bg-color: #fffde6;
-		--text-color: #545563;
-		--summary-color: #546163;
-		--summary-color-2: #5d5463;
+		--text-color: #362e2b;
+		--summary-color: #3c6421;
 		--key-color: #eb6100;
 		--key-bg-color: #000;
-		--list-key-color: #eb6100;
+		--list-key-color: #3c6421;
 		--list-circle-bdr-color: #000;
 		--list-circle-bg-color: #f9ff58;
 	}
@@ -63,12 +62,12 @@
 		height: 1600px;
 		margin: auto;
 		overflow: hidden;
-		background: url(img/bg/bg_202403051045.jpg) center top no-repeat;
+		background: url(img/bg/bg_202403041930.jpg) center top no-repeat;
 	}
 
 	.content {
-		padding-top: 100px;
-		margin: 0px 100px 0 200px;
+		width: 1000px;
+		margin: 0px auto;
 	}
 
 	.title-wrap {
@@ -80,11 +79,42 @@
 			position: relative;
 			height: 80px;
 			line-height: 80px;
-			margin: 0;
+			-webkit-text-stroke-width: 1.5px;
+			-webkit-text-stroke-color: var(--title-stroke-color);
+			text-shadow: #000 0 4px 0px;
 			text-align: center;
 			color: var(--title-color);
-			font-size: 50px;
+			font-size: 60px;
 			font-family: SourceHanSansCN-Bold;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: -30px;
+				content: '';
+				/* width: 142px; */
+				/* height: 222px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_001.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -30px;
+				content: '';
+				/* width: 110px; */
+				/* height: 213px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_002.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+			
 		}
 	}
 
@@ -102,20 +132,8 @@
 			z-index: 2;
 			float: left;
 			color: var(--subtitle-color);
-			font-size: 48px;
+			font-size: 54px;
 			font-family: SourceHanSansCN-Bold;
-
-			&::after {
-				position: absolute;
-				top: 50%;
-				right: -60px;
-				content: '';
-				width: 48px;
-				height: 49px;
-				transform: translateY(-50%);
-				background: url(img/item/icon_correct_001.png) center no-repeat;
-				background-size: 100%;
-			}
 		}
 
 		.line {
@@ -125,19 +143,19 @@
 			bottom: 15px;
 			z-index: 1;
 			content: '';
-			height: 32px;
-			background: url(img/item/title_line_002.png) center no-repeat;
-			background-size: 100% 100%;
+			height: 25px;
+			border-radius: 10px;
+			background-color: rgba(163, 231, 117, 0.3);
 		}
 	}
 
 	.text {
-		line-height: 52px;
+		line-height: 64px;
 		padding: 0px 30px 20px;
 		margin-top: 0px;
 		text-align: left;
 		color: var(--text-color);
-		font-size: 40px;
+		font-size: 42px;
 		font-family: SourceHanSansCN-Regular;
 
 		i {
@@ -145,32 +163,50 @@
 		}
 	}
 
-	.text-wrap {
-		position: relative;
-
-		img {
-			display: block;
-			margin: 0px auto;
-			object-fit: cover;
-		}
-	}
-
 	.summary {
 		position: relative;
-		line-height: 75px;
-		/* margin-top: 50px; */
-		margin-top: 0px;
-		text-align: left;
-		color: var(--summary-color-2);
-		font-size: 44px;
+		line-height: 72px;
+		padding: 30px 100px;
+		margin-top: 50px;
+		border: 4px dashed var(--summary-color);
+		border-radius: 20px;
+		/* text-align: left; */
+		text-align: center;
+		color: var(--summary-color);
+		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
+		/* background: url(img/item/border_001.png) center top no-repeat;
+		background-size: 100% 100%; */
+
+		&::before {
+			position: absolute;
+			left: 50px;
+			top: 80px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		&::after {
+			position: absolute;
+			right: 50px;
+			bottom: 70px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
 
 		i {
 			position: relative;
 			z-index: 1;
 			color: var(--list-key-color);
+			font-weight: 700;
 
-			/* &::after {
+			&::after {
 				position: absolute;
 				left: 0;
 				right: 0;
@@ -180,10 +216,10 @@
 				content: '';
 				height: 25px;
 				background-color: rgba(163, 231, 117, 0.3);
-			} */
+			}
 		}
 
-		/* i.first {
+		i.first {
 			&::after {
 				border-radius: 8px 0 0 8px;
 			}
@@ -193,41 +229,10 @@
 			&::after {
 				border-radius: 0 8px 8px 0;
 			}
-		} */
-	}
-
-	.summary-title {
-		display: inline-block;
-		position: relative;
-		width: auto;
-		height: 100px;
-		line-height: 100px;
-		margin: 20px 0 0;
-		color: var(--subtitle-color);
-
-		.right {
-			position: relative;
-			z-index: 2;
-			float: left;
-			color: var(--subtitle-color);
-			font-size: 48px;
-			font-family: SourceHanSansCN-Bold;
-		}
-
-		.line {
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 10px;
-			z-index: 1;
-			content: '';
-			height: 24px;
-			background: url(img/item/title_line_001.png) center no-repeat;
-			background-size: 100% 100%;
 		}
 	}
 
-	.summary-wrap {
+	.pic-wrap {
 		position: relative;
 		padding-right: 300px;
 		overflow: hidden;
@@ -237,6 +242,7 @@
 			position: absolute;
 			right: 0;
 			top: 50%;
+			margin: 50px auto;
 			object-fit: cover;
 			transform: translateY(-50%);
 		}
@@ -246,40 +252,33 @@
 
 <body>
 <div class="bg" id="html-canvas">
-	<!-- <div class="title-wrap">
+	<div class="title-wrap">
 		<h1 id="title"></h1>
-	</div> -->
+	</div>
 	<div class="content" id="content"></div>
 </div>
 </body>
 <script>
 var jsonText = [
 	{
-		title: '心衰患者的长寿秘诀：治疗与生活之道',
+		title: '阑尾炎手术：费用与术后护理全解析',
 
 		page: [
 			{
 				content: [
 					{
-						subtitle: '1.避免剧烈运动',
+						subtitle: '1.手术费用',
 						subContent:
-							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`,
-						picUrl: `img/object/surgery_001.png`,
-						picUrltyle: `width: 35%;height: 200px;`
+							`因地区、医院等级和患者选择的手术方式（如传统开腹手术或腹腔镜手术）而异。<span>腹腔镜阑尾切除术价格比较高</span>，费用大约在<span>10000元到12000元</span>左右，但它具有创伤小、恢复快的优点。<span>传统手术费用</span>大约需要<span>6000~8000元</span>左右。`,
 					},
 					{
-						subtitle: '饮食调整',
-						summary:
-							`<span>当然了，以上的方法</span>都是针对原发性痛经`,
-							
+						subtitle: '2.术后饮食',
+						subContent:
+							`术后初期，建议患者采取<span>清淡饮食，如白粥、面条</span>等，<span>避免油腻和辛辣食物</span>。随着恢复进程，可以逐渐增加<span>蛋白质和纤维的摄入，如瘦肉、鱼和蔬菜</span>。`
 					},
 					{
-						subtitle: '生活方式',
 						summary:
-							`<span>有些</span>女生痛经是因为子宫内膜异位症、子宫腺肌症等引起，这时候需要解决原发病，才能彻底根治痛经。`,
-							picUrl: `img/object/liver_001.png`,
-							picUrltyle: `width: 35%;`
-							
+							`在我的经验中，阑尾炎手术虽然是一种常见的急诊手术，但术后的护理同样重要。正确的护理不仅能加速恢复，还能减少并发症的风险。此外，术后的<span>定期复查</span>也是确保患者健康的关键。`
 					},
 					
 				],
@@ -300,9 +299,9 @@ function setHtml() {
 			html = '';
 			
 			obj.content?.forEach(function (contentItem) {
-				if (contentItem.picUrl && contentItem.subContent) {
+				if (contentItem.picUrl) {
 					html += `
-						<div class="text-wrap">
+						<div class="pic-wrap">
 							<div class="subtitle">
 								<p class="right">${contentItem.subtitle}</p>
 								<i class="line"></i>
@@ -311,18 +310,10 @@ function setHtml() {
 							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
 						</div>`;
 				} 
-				else if (contentItem.picUrl && contentItem.summary) {
-					html += `
-						<div class="summary-wrap">
-							<div class="summary-title">
-								<p class="right">${contentItem.subtitle}</p>
-								<i class="line"></i>
-							</div>
-							<p class="summary">${contentItem.summary}</p>
-							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
-						</div>`;
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
 				}
-				else if (contentItem.subContent) {
+				else {
 					html += `
 						<div class="subtitle">
 							<p class="right">${contentItem.subtitle}</p>
@@ -331,23 +322,11 @@ function setHtml() {
 						<p class="text">${contentItem.subContent}</p>
 					`;
 				}
-				else if (contentItem.summary) {
-					
-					html += `
-						<div class="summary-title">
-							<p class="right">${contentItem.subtitle}</p>
-							<i class="line"></i>
-						</div>
-						<p class="summary">${contentItem.summary}</p>
-					`;
-				}
 			});
 
 			var $tl = document.getElementById('title');
 			var $cont = document.getElementById('content');
-			if ($tl) {
-				$tl.innerHTML = setTitle;
-			}
+			$tl.innerHTML = setTitle;
 			$cont.innerHTML = html;
 			setKeyWords();
 			saveImg(setTitle, j);

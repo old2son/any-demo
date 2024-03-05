@@ -27,7 +27,7 @@
 		--main-bdr-color: #000;
 		--title-color: #fffd71;
 		--title-stroke-color: #3e2308;
-		--subtitle-color: #4a2617;
+		--subtitle-color: #000;
 		--subtitle-bg-color: #c7e8ff;
 		--text-color: #000;
 		--summary-color: #000000;
@@ -115,7 +115,7 @@
 	}
 
 	.text {
-		line-height: 68px;
+		line-height: 60px;
 		padding: 60px 30px 20px;
 		margin-top: -50px;
 		border: 2px solid var(--main-bdr-color);
@@ -204,7 +204,7 @@
 <script>
 var jsonText = [
 	{
-		title: '聊聊活血化瘀：益母草与那些帮手们',
+		title: '根管治疗的流程与注意事项',
 
 		page: [
 			{
@@ -221,51 +221,52 @@ var jsonText = [
 			{
 				content: [
 					/* {
-						subtitle: '1.益母草与其他药材',
+						subtitle: '1.治疗次数',
 						subContent:
-							`<span>益母草</span>在中医中被视为<span>女性的良药</span>，能够<span>活血化瘀、调经止痛</span>。此外，<span>丹参、桃仁、红花</span>等药材也具有类似的功效。`
+							`根管治疗的次数取决于病情的严重程度和个体差异。大部分患者需要<span>2-3次治疗</span>。但在某些复杂情况下，可能需要更多次的治疗。`
 					},
 					{
-						subtitle: '2.适合活血化瘀的时机',
+						subtitle: '2.治疗时间',
 						subContent:
-							`需要活血化瘀的时机包括经常感到<span>疼痛、肿胀，或出现皮肤瘀斑</span>等情况，尤其是<span>女性在经期前后</span>可能出现的不适症状。`
+							`第一次是清除感染组织，第二次是填充根管，第三次是修复牙齿。每次治疗约<span>30-60分钟</span>。`
 					},
 					{
-						subtitle: '3.调整饮食与运动',
+						subtitle: '3.治疗之后',
 						subContent:
-							`<span>温热性食物如姜、葱、蒜</span>有助于活血化瘀，而生冷食物则应少吃。适当的运动如<span>散步、慢跑、瑜伽</span>也能促进血液循环。`
+							`根管治疗采用<span>局部麻醉</span>等方式，所以患者的神志是清醒的，治疗结束后就可以离开了。`
+					},
+					{
+						subtitle: '4. 定时复查',
+						subContent:
+							'定时复查牙齿的根管状态，以防出现不必要的<span>并发症</span>。'
 					}, */
+					{
+						subtitle: '5.注意暂封材料',
+						subContent: 
+						`治疗期间，在暂封材料硬固之前<span>避免用患侧进食</span>。此外，<span>避免进食黏性食物</span>，防止暂时封闭材料脱落。还应<span>避免咬硬物</span>。`
+					},
+					{
+						subtitle: '6. 观察口腔',
+						subContent:
+							`在进行根管治疗后，需遵医嘱，观察患者的口腔状况。当出现<span>牙齿咬合痛、牙龈肿胀</span>等情况时，需要尽快就医。`
+					},
+					{
+						subtitle: '7. 饮食习惯',
+						subContent:
+							`根管治疗后，患牙建议<span>减少或避免咬硬物</span>。避免饮食不当，引起牙齿断裂等不良反应。`
+					},
+					{
+						subtitle: '8.口腔卫生',
+						subContent:
+							'注意保持口腔干净卫生，<span>早晚刷牙、饭后漱口</span>，同时可以用<span>漱口水</span>加以辅助。'
+					},
+					
 					/* {
-						subtitle: '4.谨慎使用止血药',
-						subContent:
-							`虽然止血药能有效止血，但也<span>可能带来不良反应，如恶心、头晕</span>等。使用前务必仔细阅读说明书，<span>按照医生或药师的建议使用</span>。`
-					}, */
-					/* {
-						subtitle: '5. 薏米',
-						subContent:
-							'薏米有<span>利尿作用</span>，能促进尿酸的排出，对高尿酸人群十分友好。'
-					},
-					{
-						subtitle: '6. 苹果',
-						subContent:
-							'苹果中的<span>苹果酸能促进尿酸的溶解和排出。</span>'
-					},
-					{
-						subtitle: '7. 冬瓜',
-						subContent:
-							'冬瓜具有<span>利尿消肿</span>的作用，能帮助排出体内多余的尿酸。'
-					},
-					{
-						subtitle: '8. 香蕉',
-						subContent:
-							'香蕉富<span>含钾元素，能中和体内的酸性物质</span>，降低尿酸水平。'
-					}, */
-					{
 						summary: `活血化瘀并非难题，掌握正确方法并<span>结合个人情况进行调整</span>，每个人都能拥有更健康的身体。`
 					},
 					{
 						picUrl: 'img/object/drug_008.jpg',
-					}
+					} */
 				]
 			},
 			{
@@ -362,7 +363,7 @@ function setHtml() {
 
 		document.getElementById('title').innerHTML = setTitle;
 		document.getElementById('content').innerHTML = html;
-		/* saveImg(setTitle, i); */
+		saveImg(setTitle, i);
 	});
 }
 
