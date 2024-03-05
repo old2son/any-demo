@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>5271_008</title>
+<title>救救孩子！一来大姨妈就“肚子蹦迪”怎么办？</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -24,13 +24,13 @@
 
 	:root {
 		--main-bdr-color: #000;
-		--title-color: #fffd71;
+		--title-color: #b0d796;
 		--title-stroke-color: #3e2308;
-		--subtitle-color: #381a0c;
+		--subtitle-color: #3c6421;
 		--subtitle-bg-color: #fffde6;
-		--text-color: #000;
-		--summary-color: #000;
-		--key-color: #fff;
+		--text-color: #362e2b;
+		--summary-color: #362e2b;
+		--key-color: #eb6100;
 		--key-bg-color: #000;
 		--list-key-color: #2a38c0;
 		--list-circle-bdr-color: #000;
@@ -62,23 +62,60 @@
 		height: 1600px;
 		margin: auto;
 		overflow: hidden;
-		background: url(img/bg/bg_008.jpg) no-repeat;
-	}
-
-	.title {
-		height: 70px;
-		line-height: 70px;
-		padding-top: 62px;
-		overflow: hidden;
-		text-align: center;
-		color: var(--text-color);
-		font-size: 40px;
-		font-family: SourceHanSansCN-Bold;
+		background: url(img/bg/bg_202403041930.jpg) center top no-repeat;
 	}
 
 	.content {
 		width: 1000px;
 		margin: 20px auto;
+	}
+
+	.title-wrap {
+		padding-top: 65px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			-webkit-text-stroke-width: 1.5px;
+			-webkit-text-stroke-color: var(--title-stroke-color);
+			text-shadow: #000 0 4px 0px;
+			text-align: center;
+			color: var(--title-color);
+			font-size: 60px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: -30px;
+				content: '';
+				/* width: 142px; */
+				/* height: 222px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_001.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -30px;
+				content: '';
+				/* width: 110px; */
+				/* height: 213px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_002.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+			
+		}
 	}
 
 	.subtitle {
@@ -88,50 +125,41 @@
 		height: 100px;
 		line-height: 100px;
 		margin: 50px 0 0;
-		border: solid 2px var(--main-bdr-color);
-		border-radius: 20px;
 		color: var(--subtitle-color);
-		background-color: var(--subtitle-bg-color);
-
-		.left {
-			display: none;
-			height: 86px;
-			line-height: 78px;
-			padding: 0 20px;
-			margin: -1px 0 0 -1px;
-			float: left;
-			border: solid 2px var(--main-bdr-color);
-			border-radius: 43px;
-			color: #fff;
-			font-weight: bold;
-			font-size: 56px;
-			background-color: #7ba9e4;
-		}
 
 		.right {
-			padding: 0 20px;
+			position: relative;
+			z-index: 2;
 			float: left;
 			color: var(--subtitle-color);
-			font-size: 50px;
+			font-size: 54px;
 			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 25px;
+			border-radius: 10px;
+			background-color: rgba(163, 231, 117, 0.3);
 		}
 	}
 
 	.text {
-		line-height: 68px;
-		padding: 60px 30px 20px;
-		margin-top: -50px;
-		border: 2px solid var(--main-bdr-color);
-		border-radius: 20px;
+		line-height: 64px;
+		padding: 0px 30px 20px;
+		margin-top: 0px;
 		text-align: left;
 		color: var(--text-color);
-		font-size: 46px;
+		font-size: 42px;
 		font-family: SourceHanSansCN-Regular;
 
 		i {
-			box-shadow: 0 0 1px 26px black inset;
 			color: var(--key-color);
-			background-color: var(--key-bg-color);
 		}
 	}
 
@@ -200,14 +228,16 @@
 
 <body>
 <div class="bg" id="html-canvas">
-	<p class="title" id="title"></p>
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
 	<div class="content" id="content"></div>
 </div>
 </body>
 <script>
 var jsonText = [
 	{
-		title: '腹腔镜手术后，你需要知道这些！',
+		title: '心衰患者的长寿秘诀：治疗与生活之道',
 
 		page: [
 			{
@@ -272,6 +302,7 @@ function setHtml() {
 					html += `
 						<div class="subtitle">
 							<p class="right">${contentItem.subtitle}</p>
+							<i class="line"></i>
 						</div>
 						<p class="text">${contentItem.subContent}</p>
 					`;

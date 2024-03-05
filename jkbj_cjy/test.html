@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>5272_008</title>
+<title>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -207,44 +207,37 @@
 <script>
 var jsonText = [
 	{
-		title: '掌握心率密码，运动效果翻倍！',
+		title: '腹腔镜手术后，你需要知道这些！',
 
 		page: [
 			{
 				content: [
 					{
-						subtitle: '1.运动心率达到多少才是最佳状态',
+						subtitle: '避免剧烈运动',
 						subContent:
-							`一般来说，大多数人来说，最佳运动心率范围为最大心率的60%-80%。`
+							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`
 					},
 					{
-						subtitle: '2.何监测和调整运动心率 ',
+						subtitle: '饮食调整',
 						subContent:
-							`首先，你需要一款可靠的心率监测设备，如智能手表或心率计。在运动时，关注你的心率变化，如果你的最大心率是200次/分钟，那么你的最佳运动心率范围就是120-160次/分钟，确保它保持在适当的范围内。`
+							`先从<span>清流食</span>开始，<span>慢慢过渡到正常饮食</span>，<span>避免刺激性食物</span>给伤口带来不必要的刺激。`
 					},
 					{
-						picUrl: 'img/object/food_062.png',
-						style: `width: 70%;margin: -70px auto;`
-					}
-				]
-			},
-			{
-				content: [
-					{
-						subtitle: '3.食谱建议',
+						subtitle: '心理调整',
 						subContent:
-							`早餐中加入一些<span>咸味的燕麦片</span>，或者在午餐时享用一份含有<span>海盐的烤鱼</span>。晚餐时，适量的<span>咸味汤品</span>也是不错的选择。当然，我们也要注意不要过量摄入钠。`
+							`保持乐观的心态，更有利于身体的恢复。不妨试试<span>听听音乐、看看书</span>，转移一下注意力。`
 					},
 					{
-						subtitle: '4.注意事项',
+						subtitle: '心理调整',
 						subContent:
-							`在烹饪时，可以选择<span>低钠的调味品</span>，并且在购买加工食品时，注意查看营养成分表，选择钠含量较低的产品。`
+							`保持乐观的心态，更有利于身体的恢复。不妨试试<span>听听音乐、看看书</span>，转移一下注意力。，转移一下注意力。，转移一下注意力。，转移一下注意力。，转移一下注意力。`
 					},
-					{
-						picUrl: 'img/object/food_063.png',
-						style: `width: 70%;margin: 50px auto;`
-					}
-				]
+					/* {
+						picUrl: `img/object/surgery_001.png`,
+						style: `width: 50%;margin: -60px auto;`
+					} */
+				],
+				
 			},
 		]
 	}
@@ -252,32 +245,36 @@ var jsonText = [
 
 function setHtml() {
 	var html = '';
+	var $tl = document.getElementById('title');
+	var $cont = document.getElementById('content');
 
 	jsonText.forEach(function (item, i) {
 		var setTitle = item.title || '';
 		var setObj = item.page;
+		$tl.innerHTML = setTitle;
 
 		setObj.forEach(function (obj, j) {
 			html = '';
 			
-			obj.list?.forEach(function (listItem, i, arr) {
-				if (i === 0) {
-					html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
-				}
-				else if (i === arr.length - 1) {
-					html += `<li>${listItem}</li></ul>`;
-				}
-				else {
-					html += `<li>${listItem}</li>`;
-				}
-			});
-
 			obj.content?.forEach(function (contentItem) {
 				if (contentItem.picUrl) {
 					html += `<div class="pic-wrap"><img style="${contentItem.style}" src="${contentItem.picUrl}"></div>`;
 				} 
 				else if (contentItem.summary) {
 					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else if (contentItem.list) {
+					contentItem.list?.forEach(function (listItem, i, arr) {
+						if (i === 0) {
+							html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+						}
+						else if (i === arr.length - 1) {
+							html += `<li>${listItem}</li></ul>`;
+						}
+						else {
+							html += `<li>${listItem}</li>`;
+						}
+					});
 				}
 				else {
 					html += `
@@ -289,11 +286,12 @@ function setHtml() {
 				}
 			});
 			
-			var $tl = document.getElementById('title');
-			var $cont = document.getElementById('content');
-			$tl.innerHTML = setTitle;
-			$cont.innerHTML = html;
 			setKeyWords();
+			$cont.innerHTML = html;
+			if ($cont.getBoundingClientRect().height >= 1350) {
+				$cont.innerHTML = '';
+				
+			}
 			/* saveImg(setTitle, j); */
 		});
 	}); 
@@ -339,6 +337,10 @@ function setKeyWords(parent = document) {
 		const wrappedText = wrappedCharacters.join('');
 		span.outerHTML = wrappedText;
 	});
+}
+
+function isLengthEven(array) {
+    return array.length % 2 === 0 ? true : false;
 }
 
 setHtml()
