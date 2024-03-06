@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</title>
+<title>test</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -24,15 +24,15 @@
 
 	:root {
 		--main-bdr-color: #000;
-		--title-color: #fffd71;
+		--title-color: #b0d796;
 		--title-stroke-color: #3e2308;
-		--subtitle-color: #381a0c;
+		--subtitle-color: #3c6421;
 		--subtitle-bg-color: #fffde6;
-		--text-color: #000;
-		--summary-color: #000;
-		--key-color: #fff;
+		--text-color: #362e2b;
+		--summary-color: #3c6421;
+		--key-color: #eb6100;
 		--key-bg-color: #000;
-		--list-key-color: #2a38c0;
+		--list-key-color: #3c6421;
 		--list-circle-bdr-color: #000;
 		--list-circle-bg-color: #f9ff58;
 	}
@@ -62,23 +62,60 @@
 		height: 1600px;
 		margin: auto;
 		overflow: hidden;
-		background: url(img/bg/bg_008.jpg) no-repeat;
-	}
-
-	.title {
-		height: 70px;
-		line-height: 70px;
-		padding-top: 62px;
-		overflow: hidden;
-		text-align: center;
-		color: var(--text-color);
-		font-size: 40px;
-		font-family: SourceHanSansCN-Bold;
+		background: url(img/bg/bg_202403041930.jpg) center top no-repeat;
 	}
 
 	.content {
 		width: 1000px;
-		margin: 20px auto;
+		margin: 0px auto;
+	}
+
+	.title-wrap {
+		padding-top: 65px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			-webkit-text-stroke-width: 1.5px;
+			-webkit-text-stroke-color: var(--title-stroke-color);
+			text-shadow: #000 0 4px 0px;
+			text-align: center;
+			color: var(--title-color);
+			font-size: 60px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: -30px;
+				content: '';
+				/* width: 142px; */
+				/* height: 222px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_001.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -30px;
+				content: '';
+				/* width: 110px; */
+				/* height: 213px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_002.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+			
+		}
 	}
 
 	.subtitle {
@@ -87,112 +124,127 @@
 		width: auto;
 		height: 100px;
 		line-height: 100px;
-		margin: 50px 0 0;
-		border: solid 2px var(--main-bdr-color);
-		border-radius: 20px;
+		margin: 20px 0 0;
 		color: var(--subtitle-color);
-		background-color: var(--subtitle-bg-color);
-
-		.left {
-			display: none;
-			height: 86px;
-			line-height: 78px;
-			padding: 0 20px;
-			margin: -1px 0 0 -1px;
-			float: left;
-			border: solid 2px var(--main-bdr-color);
-			border-radius: 43px;
-			color: #fff;
-			font-weight: bold;
-			font-size: 56px;
-			background-color: #7ba9e4;
-		}
 
 		.right {
-			padding: 0 20px;
+			position: relative;
+			z-index: 2;
 			float: left;
 			color: var(--subtitle-color);
-			font-size: 50px;
+			font-size: 54px;
 			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 25px;
+			border-radius: 10px;
+			background-color: rgba(163, 231, 117, 0.3);
 		}
 	}
 
 	.text {
-		line-height: 68px;
-		padding: 60px 30px 20px;
-		margin-top: -50px;
-		border: 2px solid var(--main-bdr-color);
-		border-radius: 20px;
+		line-height: 64px;
+		padding: 0px 30px 20px;
+		margin-top: 0px;
 		text-align: left;
 		color: var(--text-color);
-		font-size: 46px;
+		font-size: 42px;
 		font-family: SourceHanSansCN-Regular;
 
 		i {
-			box-shadow: 0 0 1px 26px black inset;
 			color: var(--key-color);
-			background-color: var(--key-bg-color);
-		}
-	}
-
-	.list-attention {
-		margin-top: 50px;
-		/* border-top: 1px solid #000; */
-
-		li {
-			position: relative;
-			line-height: 64px;
-			padding-left: 40px;
-			margin-top: 40px;
-			color: var(--text-color);
-			font-size: 46px;
-			font-family: SourceHanSansCN-Regular;
-
-			&::after {
-				position: absolute;
-				top: 20px;
-				left: 0;
-				content: '';
-				width: 14px;
-				height: 14px;
-				border: 3px solid var(--list-circle-bdr-color);
-				border-radius: 50%;
-				background-color: var(--list-circle-bg-color);;
-			}
-
-			i {
-				color: var(--list-key-color);
-			}
 		}
 	}
 
 	.summary {
+		position: relative;
 		line-height: 72px;
-		padding: 50px 40px 0;
-		/* margin-top: 50px; */
-		margin-top: 0px;
-		text-align: left;
+		padding: 30px 100px;
+		margin-top: 50px;
+		border: 4px dashed var(--summary-color);
+		border-radius: 20px;
+		/* text-align: left; */
+		text-align: center;
 		color: var(--summary-color);
 		font-size: 46px;
 		font-family: SourceHanSansCN-Regular;
+		/* background: url(img/item/border_001.png) center top no-repeat;
+		background-size: 100% 100%; */
+
+		&::before {
+			position: absolute;
+			left: 50px;
+			top: 80px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		&::after {
+			position: absolute;
+			right: 50px;
+			bottom: 70px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
 
 		i {
+			position: relative;
+			z-index: 1;
 			color: var(--list-key-color);
+			font-weight: 700;
+
+			&::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -10px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			}
+		}
+
+		i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
 		}
 	}
 
 	.pic-wrap {
-		/* height: 600px; */
-		/* margin: 50px auto 0; */
-		/* margin: 0px auto 0; */
+		position: relative;
+		padding-right: 300px;
 		overflow: hidden;
 
 		img {
 			display: block;
-			/* width: 100%; */
-			/* width: 85%; */
-			margin: 0 auto;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			margin: 50px auto;
 			object-fit: cover;
+			transform: translateY(-50%);
 		}
 	}
 </style>
@@ -200,42 +252,37 @@
 
 <body>
 <div class="bg" id="html-canvas">
-	<p class="title" id="title"></p>
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
 	<div class="content" id="content"></div>
 </div>
 </body>
 <script>
 var jsonText = [
 	{
-		title: '腹腔镜手术后，你需要知道这些！',
+		title: '心衰患者的长寿秘诀：治疗与生活之道',
 
 		page: [
 			{
 				content: [
-					{
-						subtitle: '避免剧烈运动',
+					/* {
+						subtitle: '1.避免剧烈运动',
 						subContent:
-							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`
+							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`,
+						picUrl: `img/object/surgery_001.png`,
+						picUrltyle: `width: 35%;right:-50px;`
 					},
 					{
-						subtitle: '饮食调整',
+						subtitle: '2.饮食调整',
 						subContent:
 							`先从<span>清流食</span>开始，<span>慢慢过渡到正常饮食</span>，<span>避免刺激性食物</span>给伤口带来不必要的刺激。`
 					},
 					{
-						subtitle: '心理调整',
-						subContent:
-							`保持乐观的心态，更有利于身体的恢复。不妨试试<span>听听音乐、看看书</span>，转移一下注意力。`
-					},
-					{
-						subtitle: '心理调整',
-						subContent:
-							`保持乐观的心态，更有利于身体的恢复。不妨试试<span>听听音乐、看看书</span>，转移一下注意力。，转移一下注意力。，转移一下注意力。，转移一下注意力。，转移一下注意力。`
-					},
-					/* {
-						picUrl: `img/object/surgery_001.png`,
-						style: `width: 50%;margin: -60px auto;`
-					} */
+						summary:
+							`<span>当然了，以上的方法</span>都是针对原发性痛经，有些女生痛经是因为子宫内膜异位症、子宫腺肌症等引起，这时候需要解决原发病，才能彻底根治痛经。`
+					}, */
+					
 				],
 				
 			},
@@ -243,55 +290,73 @@ var jsonText = [
 	}
 ];
 
+var txt = `1.避免剧烈运动#tl虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt2.饮食调整#tl先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
+
+// 使用正则表达式匹配项目
+var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
+
+var result = [];
+var match;
+
+// 使用正则表达式匹配所有项目
+while ((match = regex.exec(txt)) !== null) {
+    var subtitle = match[1];
+    var subContent = match[2];
+
+    // 创建对象并添加到数组中
+    var obj = {
+        subtitle: subtitle.trim(),
+        subContent: subContent.trim()
+    };
+    result.push(obj);
+}
+
+console.log(result);
+
+console.log(jsonText[0].page[0].content.push(...result))
+console.log(jsonText[0].page[0].content)
+
 function setHtml() {
 	var html = '';
-	var $tl = document.getElementById('title');
-	var $cont = document.getElementById('content');
 
 	jsonText.forEach(function (item, i) {
 		var setTitle = item.title || '';
 		var setObj = item.page;
-		$tl.innerHTML = setTitle;
 
 		setObj.forEach(function (obj, j) {
 			html = '';
 			
 			obj.content?.forEach(function (contentItem) {
 				if (contentItem.picUrl) {
-					html += `<div class="pic-wrap"><img style="${contentItem.style}" src="${contentItem.picUrl}"></div>`;
+					html += `
+						<div class="pic-wrap">
+							<div class="subtitle">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="text js-text">${contentItem.subContent}</p>
+							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
+						</div>`;
 				} 
 				else if (contentItem.summary) {
 					html += `<p class="summary">${contentItem.summary}</p>`
-				}
-				else if (contentItem.list) {
-					contentItem.list?.forEach(function (listItem, i, arr) {
-						if (i === 0) {
-							html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
-						}
-						else if (i === arr.length - 1) {
-							html += `<li>${listItem}</li></ul>`;
-						}
-						else {
-							html += `<li>${listItem}</li>`;
-						}
-					});
 				}
 				else {
 					html += `
 						<div class="subtitle">
 							<p class="right">${contentItem.subtitle}</p>
+							<i class="line"></i>
 						</div>
-						<p class="text">${contentItem.subContent}</p>
+						<p class="text js-text">${contentItem.subContent}</p>
 					`;
 				}
 			});
-			
-			setKeyWords();
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
 			$cont.innerHTML = html;
-			if ($cont.getBoundingClientRect().height >= 1350) {
-				$cont.innerHTML = '';
-				
-			}
+			setKeyWords();
 			/* saveImg(setTitle, j); */
 		});
 	}); 
@@ -329,20 +394,63 @@ function saveImg(setTitle = '', j = 0) {
 }
 
 function setKeyWords(parent = document) {
-	const spans = parent.querySelectorAll('span');
-	spans.forEach((span, i) => {
-		const text = span.textContent;
-		const characters = text.split('');
-		const wrappedCharacters = characters.map(char => `<i>${char}</i>`);
-		const wrappedText = wrappedCharacters.join('');
-		span.outerHTML = wrappedText;
-	});
+	var texts = parent.querySelectorAll('.js-text');
+	var key = [
+		'肝脏',
+		'胆囊',
+		'心血管',
+		'刺激性',
+		'辛辣',
+		'抗氧化',
+		'抗炎',
+		'促进消化',
+		'高血压',
+		'头晕',
+		'疲劳',
+		'胃痛',
+		'胃炎',
+		'胃溃疡',
+		'蛋白质',
+		'微量元素',
+		'维生素',
+		'维生素C',
+		'维生素c',
+		'矿物质',
+		'黄疸',
+		'姜茶',
+		'薄荷',
+		'胡椒',
+		'柠檬水',
+		'沙拉',
+		'果汁',
+		'海鲜',
+		'奶酪',
+		'鸡蛋',
+		'酸奶',
+		'麦片',
+		'适量食用',
+		'早餐',
+		'午餐',
+		'晚餐',
+		'甜点',
+		'心理压力大',
+	];
+
+	texts.forEach((item, i) => {
+		var characters = item.innerHTML.split('');
+		var result = characters.map(function(char, index) {
+			var isFirst = index === 0;
+			var isLast = index === characters.length - 1;
+			var classNames = isFirst ? 'first' : (isLast ? 'last' : '');
+			return `<i class="${classNames}">${char}</i>`;
+		});
+
+		console.log(result)
+
+		item.innerHTML = result.join('');
+	})
 }
 
-function isLengthEven(array) {
-    return array.length % 2 === 0 ? true : false;
-}
-
-setHtml()
+setHtml();
 </script>
 </html>
