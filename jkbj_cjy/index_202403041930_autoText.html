@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #b0d796;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #3c6421;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #362e2b;
+		--summary-color: #3c6421;
+		--key-color: #eb6100;
+		--key-bg-color: #000;
+		--list-key-color: #3c6421;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403041930.jpg) center top no-repeat;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 0px auto;
+	}
+
+	.title-wrap {
+		padding-top: 65px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			-webkit-text-stroke-width: 1.5px;
+			-webkit-text-stroke-color: var(--title-stroke-color);
+			text-shadow: #000 0 4px 0px;
+			text-align: center;
+			color: var(--title-color);
+			font-size: 60px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: -30px;
+				content: '';
+				/* width: 142px; */
+				/* height: 222px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_001.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -30px;
+				content: '';
+				/* width: 110px; */
+				/* height: 213px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_002.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+			
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 54px;
+			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 25px;
+			border-radius: 10px;
+			background-color: rgba(163, 231, 117, 0.3);
+		}
+	}
+
+	.text {
+		line-height: 64px;
+		padding: 0px 30px 20px;
+		margin-top: 0px;
+		text-align: left;
+		color: var(--text-color);
+		font-size: 42px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 72px;
+		padding: 30px 100px;
+		margin-top: 50px;
+		border: 4px dashed var(--summary-color);
+		border-radius: 20px;
+		/* text-align: left; */
+		text-align: center;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+		/* background: url(img/item/border_001.png) center top no-repeat;
+		background-size: 100% 100%; */
+
+		&::before {
+			position: absolute;
+			left: 50px;
+			top: 80px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		&::after {
+			position: absolute;
+			right: 50px;
+			bottom: 70px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+			font-weight: 700;
+
+			&::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -10px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			}
+		}
+
+		i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		}
+	}
+
+	.pic-wrap {
+		position: relative;
+		padding-right: 300px;
+		overflow: hidden;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			margin: 50px auto;
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '心衰患者的长寿秘诀：治疗与生活之道',
+
+		page: [
+			{
+				content: [
+					/* {
+						subtitle: '1.避免剧烈运动',
+						subContent:
+							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`,
+						picUrl: `img/object/surgery_001.png`,
+						picUrltyle: `width: 35%;right:-50px;`
+					},
+					{
+						subtitle: '2.饮食调整',
+						subContent:
+							`先从<span>清流食</span>开始，<span>慢慢过渡到正常饮食</span>，<span>避免刺激性食物</span>给伤口带来不必要的刺激。`
+					},
+					{
+						summary:
+							`<span>当然了，以上的方法</span>都是针对原发性痛经，有些女生痛经是因为子宫内膜异位症、子宫腺肌症等引起，这时候需要解决原发病，才能彻底根治痛经。`
+					}, */
+					
+				],
+				
+			},
+		]
+	}
+];
+
+var txt = `1.避免剧烈运动#tl
+虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt
+2.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
+
+// 使用正则表达式匹配项目
+var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
+
+var result = [];
+var match;
+
+// 使用正则表达式匹配所有项目
+while ((match = regex.exec(txt)) !== null) {
+    var subtitle = match[1];
+    var subContent = match[2];
+
+    // 创建对象并添加到数组中
+    var obj = {
+        subtitle: subtitle.trim(),
+        subContent: subContent.trim()
+    };
+    result.push(obj);
+}
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `
+						<div class="pic-wrap">
+							<div class="subtitle">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="text js-text">${contentItem.subContent}</p>
+							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
+						</div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else {
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+							<i class="line"></i>
+						</div>
+						<p class="text js-text">${contentItem.subContent}</p>
+					`;
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+var keywords = [
+	'肝脏',
+	'胆囊',
+	'心血管',
+	'刺激性',
+	'刺激性食物',
+	'避免刺激性食物',
+	'避免刺激性',
+	'辛辣',
+	'抗氧化',
+	'抗炎',
+	'促进消化',
+	'高血压',
+	'头晕',
+	'疲劳',
+	'胃痛',
+	'胃炎',
+	'胃溃疡',
+	'蛋白质',
+	'微量元素',
+	'维生素',
+	'维生素C',
+	'维生素c',
+	'矿物质',
+	'黄疸',
+	'姜茶',
+	'薄荷',
+	'胡椒',
+	'柠檬水',
+	'沙拉',
+	'果汁',
+	'海鲜',
+	'奶酪',
+	'鸡蛋',
+	'酸奶',
+	'麦片',
+	'适量食用',
+	'早餐',
+	'午餐',
+	'晚餐',
+	'甜点',
+	'心理压力大',
+	'剧烈运动',
+	'避免剧烈运动',
+];
+
+
+function setKeyWords(parent = document) {
+	var texts = parent.querySelectorAll('.js-text');
+
+	texts.forEach((item) => {
+		var txt = item.innerHTML;
+		var parts = txt.split(new RegExp('(' + keywords.join('|') + ')'));
+		var result = '';
+		parts.forEach(function(part, index) {
+			var isKeyword = keywords.indexOf(part) !== -1;
+			if (isKeyword) {
+				part.split('').map(function(char, index) {
+					if (index === 0) {
+						result += `<i class="first">${char}</i>`
+					}
+					else if (index === part.length - 1) {
+						result += `<i class="last">${char}</i>`
+					}
+					else {
+						result += `<i>${char}</i>`
+					}
+				});
+			} 
+			else {
+				result += part;
+			}
+		});
+
+		item.innerHTML = result;
+	})
+}
+
+setHtml();
+</script>
+</html>
