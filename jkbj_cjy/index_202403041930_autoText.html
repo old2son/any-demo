@@ -293,6 +293,10 @@ var jsonText = [
 var txt = `1.避免剧烈运动#tl
 虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt
 2.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt3.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt4.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt5.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt6.饮食调整#tl
 先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
 var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
 
@@ -314,47 +318,58 @@ jsonText[0].page[0].content.push(...result)
 function setHtml() {
 	var html = '';
 
-	jsonText.forEach(function (item, i) {
-		var setTitle = item.title || '';
-		var setObj = item.page;
+    for (let i = 0; i < jsonText.length; i++) {
+        let setTitle = jsonText[i].title || '';
+        let setObj = jsonText[i].page;
 
-		setObj.forEach(function (obj, j) {
-			html = '';
-			
-			obj.content?.forEach(function (contentItem) {
-				if (contentItem.picUrl) {
-					html += `
-						<div class="pic-wrap">
-							<div class="subtitle">
-								<p class="right">${contentItem.subtitle}</p>
-								<i class="line"></i>
-							</div>
-							<p class="text js-text">${contentItem.subContent}</p>
-							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
-						</div>`;
-				} 
+        for (let j = 0; j < setObj.length; j++) {
+            let html = '';
+            let obj = setObj[j];
+
+            for (let k = 0; k < obj.content.length; k++) {
+                let contentItem = obj.content[k];
+
+                if (contentItem.picUrl) {
+                    html += `
+                        <div class="pic-wrap">
+                            <div class="subtitle">
+                                <p class="right">${contentItem.subtitle}</p>
+                                <i class="line"></i>
+                            </div>
+                            <p class="text js-text">${contentItem.subContent}</p>
+                            <img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
+                        </div>`;
+                } 
 				else if (contentItem.summary) {
-					html += `<p class="summary">${contentItem.summary}</p>`
-				}
+                    html += `<p class="summary">${contentItem.summary}</p>`;
+                } 
 				else {
-					html += `
-						<div class="subtitle">
-							<p class="right">${contentItem.subtitle}</p>
-							<i class="line"></i>
-						</div>
-						<p class="text js-text">${contentItem.subContent}</p>
-					`;
-				}
-			});
+                    html += `
+                        <div class="subtitle">
+                            <p class="right">${contentItem.subtitle}</p>
+                            <i class="line"></i>
+                        </div>
+                        <p class="text js-text">${contentItem.subContent}</p>
+                    `;
+                }
+            }
 
-			var $tl = document.getElementById('title');
-			var $cont = document.getElementById('content');
-			$tl.innerHTML = setTitle;
-			$cont.innerHTML = html;
-			setKeyWords();
-			/* saveImg(setTitle, j); */
-		});
-	}); 
+            var $tl = document.getElementById('title');
+            var $cont = document.getElementById('content');
+            $tl.innerHTML = setTitle;
+            $cont.innerHTML = html;
+            setKeyWords();
+
+            if ($cont.getBoundingClientRect().height >= 1330) {
+				setObj[j + 1] || setObj.push({ content: [] });
+                setObj[j + 1].content.push(setObj[j].content.pop());
+                setHtml();
+                return;
+            } 
+
+			saveImg(setTitle, j);
+        }
+    }
 }
 
 function saveImg(setTitle = '', j = 0) {
