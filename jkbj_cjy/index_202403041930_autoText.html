@@ -367,7 +367,7 @@ function setHtml() {
                 return;
             } 
 
-			saveImg(setTitle, j);
+			/* saveImg(setTitle, j); */
         }
     }
 }
@@ -425,7 +425,7 @@ var keywords = [
 	'微量元素',
 	'维生素',
 	'维生素C',
-	'维生素c',
+	'维生素B群',
 	'矿物质',
 	'黄疸',
 	'姜茶',
@@ -439,16 +439,26 @@ var keywords = [
 	'鸡蛋',
 	'酸奶',
 	'麦片',
+	'燕麦片',
 	'适量食用',
 	'早餐',
 	'午餐',
 	'晚餐',
 	'甜点',
 	'心理压力大',
+	'听听音乐',
+	'听音乐',
+	'看书',
+	'看看书',
+	'跑步',
+	'按摩',
+	'瑜伽',
+	'拉伸',
 	'剧烈运动',
 	'避免剧烈运动',
 ];
 
+var banwords = ['🐢', '⭐️', '星', '@'];
 
 function setKeyWords(parent = document) {
 	var texts = parent.querySelectorAll('.js-text');
@@ -459,7 +469,8 @@ function setKeyWords(parent = document) {
 		var result = '';
 		parts.forEach(function(part, index) {
 			var isKeyword = keywords.indexOf(part) !== -1;
-			if (isKeyword) {
+			var isBanword = banwords.indexOf(part) !== -1;
+			if (isKeyword && !isBanword) {
 				part.split('').map(function(char, index) {
 					if (index === 0) {
 						result += `<i class="first">${char}</i>`
