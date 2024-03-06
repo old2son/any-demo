@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>test</title>
+<title>index_202403041930_autoText</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -294,14 +294,10 @@ var txt = `1.避免剧烈运动#tl
 虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt
 2.饮食调整#tl
 先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
-
-// 使用正则表达式匹配项目
 var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
 
 var result = [];
 var match;
-
-// 使用正则表达式匹配所有项目
 while ((match = regex.exec(txt)) !== null) {
     var subtitle = match[1];
     var subContent = match[2];
@@ -313,6 +309,7 @@ while ((match = regex.exec(txt)) !== null) {
     };
     result.push(obj);
 }
+jsonText[0].page[0].content.push(...result)
 
 function setHtml() {
 	var html = '';
