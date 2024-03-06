@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>5858_015</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/canvas2image.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #fffd71;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #000;
+		--subtitle-bg-color: #c7e8ff;
+		--text-color: #000;
+		--summary-color: #000000;
+		--key-color: #3356bb;
+		--key-bg-color: transparent;
+		--list-key-color: #bb335d;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_015.jpg) no-repeat;
+	}
+
+	.title {
+		height: 70px;
+		line-height: 70px;
+		padding-top: 62px;
+		overflow: hidden;
+		text-align: center;
+		color: var(--text-color);
+		font-size: 40px;
+		font-family: SourceHanSansCN-Bold;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 20px auto;
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 2px var(--main-bdr-color);
+		border-radius: 15px;
+		color: var(--subtitle-color);
+		background-color: var(--subtitle-bg-color);
+
+		.left {
+			display: none;
+			height: 86px;
+			line-height: 78px;
+			padding: 0 20px;
+			margin: -1px 0 0 -1px;
+			float: left;
+			border: solid 2px var(--main-bdr-color);
+			border-radius: 43px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 56px;
+			background-color: #7ba9e4;
+		}
+
+		.right {
+			padding: 0 20px;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text {
+		line-height: 70px;
+		padding: 60px 30px 20px;
+		margin-top: -50px;
+		border: 2px solid var(--main-bdr-color);
+		border-radius: 15px;
+		text-align: left;
+		color: var(--text-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.list-attention {
+		margin-top: 50px;
+		/* border-top: 1px solid #000; */
+
+		li {
+			position: relative;
+			line-height: 64px;
+			padding-left: 40px;
+			margin-top: 40px;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				top: 20px;
+				left: 0;
+				content: '';
+				width: 14px;
+				height: 14px;
+				border: 3px solid var(--list-circle-bdr-color);
+				border-radius: 50%;
+				background-color: var(--list-circle-bg-color);;
+			}
+
+			span {
+				color: var(--list-key-color);
+			}
+		}
+	}
+
+	.summary {
+		line-height: 72px;
+		padding: 50px 40px 0;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		span {
+			color: var(--list-key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.pic-wrap {
+		/* height: 600px; */
+		margin: 50px auto 0;
+		/* margin: 150px auto 0; */
+		overflow: hidden;
+
+		img {
+			/* width: 100%; */
+			display: block;
+			width: 30%;
+			margin: 0 auto;
+			object-fit: cover;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<p class="title" id="title"></p>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '恶心想吐，是身体在敲警钟吗？',
+
+		page: [
+			{
+				content: [
+					/* {
+						picUrl: 'img/object/teeth_003.png',
+					},
+					{
+						summary:
+							`根管治疗通常用于治疗<span>牙髓炎或牙髓坏死。这些病症可能由龋齿、牙折裂、感染等引起</span>。如果不及时治疗，可能导致更严重的口腔问题。`
+					}, */
+				]
+			},
+			{
+				content: [
+					/* {
+						subtitle: '1.恶心想吐的原因',
+						subContent:
+							`恶心想吐，可能是消化系统的小问题，比如<span>胃炎、胃溃疡，也可能是肝脏、胆囊</span>等器官的信号。当然了，有时候<span>晕车、晕船，或者心里压力大</span>，也会有这种感觉。`
+					},
+					{
+						subtitle: '2.生活习惯',
+						subContent:
+							`<span>放松心情，避开浓烈的气味</span>，到空气清新的地方深呼吸，可以缓解由焦虑或紧张引起的恶心。`
+					},
+					{
+						subtitle: '3.饮食习惯',
+						subContent:
+							`少吃多餐，饮食上要清淡，<span>避免刺激性、冷热交替</span>的食物，减轻胃的负担。`
+					}, */
+					{
+						subtitle: '4. 天然食材',
+						subContent:
+							'<span>姜茶，薄荷，胡椒，柠檬水</span>都能缓解恶心症状。'
+					},
+					{
+						picUrl: 'img/object/food_065.png',
+					},
+					{
+						subtitle: '5.及时就医',
+						subContent: 
+						`如果一直不见好，还伴随着<span>胃痛、黄疸</span>等其他症状，那就要及时到医院就诊了。`
+					},
+					{
+						picUrl: 'img/object/stomach_003.png',
+					},
+					/* {
+						summary: `活血化瘀并非难题，掌握正确方法并<span>结合个人情况进行调整</span>，每个人都能拥有更健康的身体。`
+					},
+					{
+						picUrl: 'img/object/drug_008.jpg',
+					} */
+				]
+			},
+			{
+				content: [
+					/* {
+						subtitle: '1.生活习惯',
+						subContent:
+							'<span>避免吸烟和饮酒</span>。注意空气质量，<span>避免在污染严重的环境</span>中呆太久。如果有过敏体质，尽量<span>避免接触过敏源</span>。保持良好的生活习惯，<span>充足的睡眠和适当的运动</span>。如果症状持续不减，应<span>及时就医</span>。'
+					},
+					{
+						subtitle: '2.改善饮食',
+						subContent:
+							'<span>富含维生素C的水果</span>，如橙子、柚子等，可以增强免疫力。<span>富含蛋白质的食物</span>，如鱼、肉、豆腐等，可以提高身体的抵抗力。喝一些<span>温和的汤</span>，如鸡汤、骨头汤等，可以缓解喉咙不适。'
+					}, */
+					/* {
+						subtitle: '3. 水果沙拉',
+						subContent:
+							'制作水果沙拉时撒上一些甜叶菊<span>增加甜味</span>。'
+					}, */
+					/* {
+						subtitle: '4. 地点清洁',
+						subContent:
+							'用<span>硫磺粉撒在汞污染的地方</span>，它会和汞反应形成无害的硫化汞。'
+					}, */
+					/* {
+						subtitle: '5. 红枣',
+						subContent:
+							'红枣虽然有一定的<span>补血</span>作用，但<span>效果相对较弱</span>。它可以作为<span>日常保健食品</span>食用。'
+					}, */
+					
+					/* {
+						summary:
+							`重度脂肪肝的治疗，就是<span>“管住嘴，迈开腿”，加上持之以恒</span>。当然，每个人的情况不同，具体方案还得根据个人情况来定。如果你有类似的问题，记得<span>及时找专业医生咨询</span>哦！`
+					},
+					{
+						picUrl: 'img/object/food_027.jpg',
+					}, */
+				]
+			},
+			/* {
+				list: [
+					'选择蛋类应<span>根据个人需求和口味，适量摄入</span>是关键。',
+					'确保食用蛋类新鲜<span>无污染</span>，并选择健康的烹饪方式，如<span>蒸、煮或炖，以保留营养价值</span>。',
+				]
+			}, */
+			/* {
+				content: [
+					{
+						picUrl: 'img/object/nerve_001.png',
+					}
+				]
+			} */
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj) {
+			obj.list?.forEach(function (listItem, i, arr) {
+				if (i === 0) {
+					html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+				}
+				else if (i === arr.length - 1) {
+					html += `<li>${listItem}</li></ul>`;
+				}
+				else {
+					html += `<li>${listItem}</li>`;
+				}
+			});
+
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `<div class="pic-wrap"><img src="${contentItem.picUrl}"></div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else {
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
+		});
+
+		document.getElementById('title').innerHTML = setTitle;
+		document.getElementById('content').innerHTML = html;
+		saveImg(setTitle, i);
+	});
+}
+
+function saveImg(setTitle='', j=0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		//如果想要生成图片 引入canvas2Image.js 下载地址：
+		//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+		// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+		imgUri = canvas.toDataURL('image/' + img_type).replace('image/' + img_type, 'image/octet-stream');
+		// alert(imgUri);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + img_type;
+		saveLink.click();
+		// realHtml.innerHTML="";
+		// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
+		// alert(document.body.offsetHeight);
+		// alert(document.getElementById("img1").offsetHeight);
+		// document.body.style.height = setHeight+"px";
+		// document.body.style.backgroundColor = "red";
+		// $('#img').attr('src',imgUri);
+		// document.removeChild(a);
+		// console.log(img);
+		// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
+		// localStorage.removeItem("img-html");
+		// localStorage.removeItem('img-type');
+		// localStorage.removeItem('canvas_multiple');
+	});
+}
+setHtml()
+</script>
+</html>
