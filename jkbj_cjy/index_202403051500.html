@@ -312,7 +312,7 @@ var jsonText = [
 						subContent:
 							`<span>取环的过程较为简单</span>，而且技术成熟，一般在15分钟左右，即可完成全部操作`,
 						/* picUrl: `img/object/liver_001.png`,
-						picUrltyle: `width: 30%;`				 */			
+						picStyle: `width: 30%;`				 */			
 					},
 					{
 						subtitle: '生活方式',
@@ -350,7 +350,7 @@ function setHtml() {
 								<i class="line"></i>
 							</div>
 							<p class="text">${contentItem.subContent}</p>
-							${contentItem.picUrl ? `<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">` : ''}
+							${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
 						</div>
 					`;
 				} 
@@ -364,7 +364,7 @@ function setHtml() {
 							<div class="summary">
 								<p>${contentItem.summary}</p>	
 							</div>
-							${contentItem.picUrl ? `<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">` : ''}
+							${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
 						</div>
 					`;
 				}

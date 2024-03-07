@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>如何判断自己怀孕了？这些信号暗示你有喜了</title>
+<title>医生，HPV和TCT只检查一项不行吗？不行！</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -24,7 +24,7 @@
 
 	:root {
 		--main-bdr-color: #3c2325;
-		--title-color: #362d2f;
+		--title-color: #fff;
 		--title-stroke-color: #3e2308;
 		--subtitle-color: #362d2f;
 		--subtitle-bg-color: #fffde6;
@@ -66,7 +66,7 @@
 		height: 1600px;
 		margin: auto;
 		overflow: hidden;
-		background: url(img/bg/bg_202403060946.jpg) center top no-repeat;
+		background: url(img/bg/bg_202403071050.jpg) center top no-repeat;
 	}
 
 	.content {
@@ -75,17 +75,17 @@
 	}
 
 	.title-wrap {
-		padding-top: 35px;
+		padding-top: 75px;
 		text-align: center;
 
 		h1 {
 			display: inline-block;
 			position: relative;
 			line-height: 88px;
-			margin-top: 105px;
+			margin-top: 8px;
 			text-align: center;
 			color: var(--title-color);
-			font-size: 60px;
+			font-size: 48px;
 			font-family: SourceHanSansCN-Bold;
 		}
 	}
@@ -261,10 +261,11 @@
 <script>
 	var jsonText = [
 		{
-			title: '取环的时间',
+			title: '{女人都要懂}',
 	
 			page: [
 				{
+					pageTitle: 'HPV和TCT检查是什么？',
 					content: [
 						{
 							subtitle: '这些信号暗示你有喜了',
@@ -299,6 +300,12 @@
 					if (contentItem.subContent) {
 						html += `
 							<div class="text-wrap" id="wrap-${j}">
+								${contentItem.subtitle ? `
+									<div class="summary-title">
+										<p class="right">${contentItem.subtitle}</p>
+										<i class="line"></i>
+									</div>
+								` : ''}
 								<p class="text">${contentItem.subtitle ? `<b>${contentItem.subtitle}：</b>` : ''}${contentItem.subContent}</p>
 								${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
 							</div>

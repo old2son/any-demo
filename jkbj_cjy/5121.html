@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>index_202403041930_autoText</title>
+<title>5121_202403041930</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -161,12 +161,17 @@
 		i {
 			color: var(--key-color);
 		}
+
+		b {
+			font-weight: 700;
+		}
 	}
 
 	.summary {
 		position: relative;
 		line-height: 72px;
 		padding: 30px 100px;
+		/* margin-top: 40px; */
 		margin-top: 50px;
 		border: 4px dashed var(--summary-color);
 		border-radius: 20px;
@@ -210,7 +215,7 @@
 				position: absolute;
 				left: 0;
 				right: 0;
-				bottom: -10px;
+				bottom: 5px;
 				content: '';
 				z-index: -1;
 				content: '';
@@ -235,14 +240,14 @@
 	.pic-wrap {
 		position: relative;
 		padding-right: 300px;
-		overflow: hidden;
 
 		img {
 			display: block;
 			position: absolute;
 			right: 0;
 			top: 50%;
-			margin: 50px auto;
+			/* margin: 50px auto; */
+			/* margin: 0px auto; */
 			object-fit: cover;
 			transform: translateY(-50%);
 		}
@@ -261,27 +266,37 @@
 <script>
 var jsonText = [
 	{
-		title: '心衰患者的长寿秘诀：治疗与生活之道',
+		title: '告别耳鸣困扰！我的治愈秘籍大公开',
 
 		page: [
 			{
 				content: [
 					/* {
-						subtitle: '1.避免剧烈运动',
+						subtitle: '一、耳聋耳鸣，知己知彼百战不殆',
 						subContent:
-							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`,
-						picUrl: `img/object/surgery_001.png`,
-						picStyle: `width: 35%;right:-50px;`
+							`首先，我们要明白耳聋耳鸣是怎么回事。简单来说，耳聋就是<span>听力下降</span>，耳鸣则是耳朵里出现<span>嗡嗡声</span>或其他<span>异常声音</span>。这些症状可能由多种原因引起，比如<span>噪音污染、年龄增长、耳部疾</span>病等。`,
 					},
 					{
-						subtitle: '2.饮食调整',
+						subtitle: '二、多管齐下，让耳朵重获新生',
 						subContent:
-							`先从<span>清流食</span>开始，<span>慢慢过渡到正常饮食</span>，<span>避免刺激性食物</span>给伤口带来不必要的刺激。`
-					},
-					{
-						summary:
-							`<span>当然了，以上的方法</span>都是针对原发性痛经，有些女生痛经是因为子宫内膜异位症、子宫腺肌症等引起，这时候需要解决原发病，才能彻底根治痛经。`
+							`<b>1.药物治疗：</b>在医生的指导下，可以使用一些<span>改善内耳血液循环、营养神经</span>的药物，帮助缓解耳聋耳鸣症状。但请注意，药物治疗并非万能，一定要遵医嘱使用。<br><br>
+							<b>2.中医治疗：</b>中医讲究辨证施治，通过<span>针灸、按摩</span>等方法，可以调和气血，改善耳部血液循环，从而减轻耳聋耳鸣。<br><br>
+							<b>3.听力训练：</b>对于<span>轻度耳聋患者</span>，可以通过<span>听力训练</span>来提高听力水平。比如，经常<span>听一些舒缓的音乐</span>，或者进行专门的听力训练练习。`,
 					}, */
+					{
+						subtitle: '三、细节决定成败，让耳朵享受VIP待遇',
+						subContent:
+						`<b>1.远离噪音：</b>避免长时间暴露在噪音中，如<span>调低音乐音量，不去吵闹场所</span>。<br><br>
+						<b>2.合理饮食：</b>多吃一些富含维生素和矿物质的食物，如<span>绿叶蔬菜、坚果</span>等，有助于改善内耳功能。<br><br>
+						<b>3.保持好心情：</b>心情愉悦对于缓解耳聋耳鸣也非常重要。尝试<span>冥想、瑜伽</span>等方法让心情更加舒畅。`,
+					},
+					{
+						subtitle: '四、生活中的小智慧，让耳朵更舒适',
+						subContent:
+						`<b>1.定期检查：</b>定期去医院进行<span>听力检查</span>，及时了解自己的听力状况，防患于未然。<br><br>
+						<b>2.不要频繁掏耳朵：</b>耳朵有自己的清洁功能，频繁掏耳朵反而可能<span>损伤耳道</span>。<br><br>
+						<b>3.避免用力擤鼻涕：</b>用力擤鼻涕可能导致<span>耳内压力增大</span>，影响听力。`,
+					},
 					
 				],
 				
@@ -290,89 +305,50 @@ var jsonText = [
 	}
 ];
 
-var txt = `1.避免剧烈运动#tl
-虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt
-2.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-3.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-4.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-5.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-6.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
-
-var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
-
-var result = [];
-var match;
-while ((match = regex.exec(txt)) !== null) {
-    var subtitle = match[1].trim();
-    var subContent = match[2].trim();
-    var obj = {
-		subtitle,
-		subContent,
-	};
-    result.push(obj);
-}
-jsonText[0].page[0].content.push(...result)
-
 function setHtml() {
 	var html = '';
 
-    for (let i = 0; i < jsonText.length; i++) {
-        let setTitle = jsonText[i].title || '';
-        let setObj = jsonText[i].page;
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
 
-        for (let j = 0; j < setObj.length; j++) {
-            let html = '';
-            let obj = setObj[j];
-
-            for (let k = 0; k < obj.content.length; k++) {
-                let contentItem = obj.content[k];
-
-                if (contentItem.picUrl) {
-                    html += `
-                        <div class="pic-wrap">
-                            <div class="subtitle">
-                                <p class="right">${contentItem.subtitle}</p>
-                                <i class="line"></i>
-                            </div>
-                            <p class="text js-text">${contentItem.subContent}</p>
-                            <img style="${contentItem.picStyle || 'width:30%;right:0;'}" src="${contentItem.picUrl}">
-                        </div>`;
-                } 
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `
+						<div class="pic-wrap">
+							<div class="subtitle">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="text">${contentItem.subContent}</p>
+							<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">
+						</div>`;
+				} 
 				else if (contentItem.summary) {
-                    html += `<p class="summary">${contentItem.summary}</p>`;
-                } 
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
 				else {
-                    html += `
-                        <div class="subtitle">
-                            <p class="right">${contentItem.subtitle}</p>
-                            <i class="line"></i>
-                        </div>
-                        <p class="text js-text">${contentItem.subContent}</p>
-                    `;
-                }
-            }
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+							<i class="line"></i>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
 
-            var $tl = document.getElementById('title');
-            var $cont = document.getElementById('content');
-            $tl.innerHTML = setTitle;
-            $cont.innerHTML = html;
-            setKeyWords();
-
-            if ($cont.getBoundingClientRect().height >= 1330) {
-				setObj[j + 1] || setObj.push({ content: [] });
-                setObj[j + 1].content.push(setObj[j].content.pop());
-                setHtml();
-                return;
-            } 
-
-			saveImg(setTitle, j);
-        }
-    }
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
 }
 
 function saveImg(setTitle = '', j = 0) {
@@ -406,95 +382,27 @@ function saveImg(setTitle = '', j = 0) {
 	});
 }
 
-var keywords = [
-	'肝脏',
-	'胆囊',
-	'心血管',
-	'刺激性',
-	'刺激性食物',
-	'避免刺激性食物',
-	'避免刺激性',
-	'辛辣',
-	'抗氧化',
-	'抗炎',
-	'促进消化',
-	'高血压',
-	'头晕',
-	'疲劳',
-	'胃痛',
-	'胃炎',
-	'胃溃疡',
-	'蛋白质',
-	'微量元素',
-	'维生素',
-	'维生素C',
-	'维生素B群',
-	'矿物质',
-	'黄疸',
-	'姜茶',
-	'薄荷',
-	'胡椒',
-	'柠檬水',
-	'沙拉',
-	'果汁',
-	'海鲜',
-	'奶酪',
-	'鸡蛋',
-	'酸奶',
-	'麦片',
-	'燕麦片',
-	'适量食用',
-	'早餐',
-	'午餐',
-	'晚餐',
-	'甜点',
-	'心理压力大',
-	'听听音乐',
-	'听音乐',
-	'看书',
-	'看看书',
-	'跑步',
-	'按摩',
-	'瑜伽',
-	'拉伸',
-	'剧烈运动',
-	'避免剧烈运动',
-];
-
-var banwords = ['🐢', '⭐️', '星', '@'];
-
 function setKeyWords(parent = document) {
-	var texts = parent.querySelectorAll('.js-text');
-
-	texts.forEach((item) => {
-		var txt = item.innerHTML;
-		var parts = txt.split(new RegExp('(' + keywords.join('|') + ')'));
-		var result = '';
-		parts.forEach(function(part, index) {
-			var isKeyword = keywords.indexOf(part) !== -1;
-			var isBanword = banwords.indexOf(part) !== -1;
-			if (isKeyword && !isBanword) {
-				part.split('').map(function(char, index) {
-					if (index === 0) {
-						result += `<i class="first">${char}</i>`
-					}
-					else if (index === part.length - 1) {
-						result += `<i class="last">${char}</i>`
-					}
-					else {
-						result += `<i>${char}</i>`
-					}
-				});
-			} 
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
 			else {
-				result += part;
+				return `<i>${char}</i>`;
 			}
 		});
-
-		item.innerHTML = result;
-	})
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
 }
 
-setHtml();
+setHtml()
 </script>
 </html>

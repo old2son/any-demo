@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>如何判断自己怀孕了？这些信号暗示你有喜了</title>
+<title>5160_202403060946</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -82,7 +82,7 @@
 			display: inline-block;
 			position: relative;
 			line-height: 88px;
-			margin-top: 105px;
+			margin: 105px auto 95px;
 			text-align: center;
 			color: var(--title-color);
 			font-size: 60px;
@@ -95,8 +95,11 @@
 
 		img {
 			display: block;
-			margin: 0px auto;
+			position: absolute;
+			right: 0;
+			top: 50%;
 			object-fit: cover;
+			transform: translateY(-50%);
 		}
 
 		.text {
@@ -120,6 +123,10 @@
 				border-radius: 50%;
 				border: 4px solid var(--main-bdr-color);
 				background-color: #ffb981;
+			}
+
+			b {
+				font-weight: 700;
 			}
 
 			i {
@@ -149,16 +156,15 @@
 			}
 
 			.line {
-				display: none;
 				position: absolute;
-				left: 0;
-				right: 0;
+				left: 20px;
+				right: 30px;
 				bottom: 15px;
 				z-index: 1;
 				content: '';
 				height: 25px;
 				border-radius: 10px;
-				background-color: rgba(163, 231, 117, 0.3);
+				background-color: rgba(219, 171, 39, 0.3);
 			}
 		}
 	}
@@ -235,14 +241,12 @@
 	/* .pic-wrap {
 		position: relative;
 		padding-right: 300px;
-		overflow: hidden;
 
 		img {
 			display: block;
 			position: absolute;
 			right: 0;
 			top: 50%;
-			margin: 50px auto;
 			object-fit: cover;
 			transform: translateY(-50%);
 		}
@@ -261,25 +265,62 @@
 <script>
 	var jsonText = [
 		{
-			title: '取环的时间',
+			title: '黄芪泡水喝，养生好帮手！',
 	
 			page: [
 				{
+					
 					content: [
-						{
+						/* {
 							subtitle: '这些信号暗示你有喜了',
 							subContent:
-								`<span>一般情况下</span>，女性在怀孕后，比较典型的症状为停经，对于月经周期比较规律的女性，如果近期发生性生活，未采取安全有效的防护措施时，出现停经现象时，不排除和怀孕有关。`,
-							picUrl: `img/object/liver_001.png`,
-							picStyle: `width: 18%;`		
+								`
+									<b>确定病因：</b>首先，你需要确定小肉揪的<span>具体原因</span>，是因为<span>痔疮、肛裂</span>还是其他疾病引起的。这需要你去医院找<span>专业的医生进行检查</span>。
+									<br><br>
+								`,
 						},
 						{
-							subtitle: '这些信号暗示你有喜了',
 							subContent:
-								`<span>另外</span>，在怀孕后受到体内激素水平波动的因素影响时，也容易产生恶心、呕吐、食欲减退等症状。`,
+								`
+									<b>药物治疗：</b>如果是因为痔疮或者肛裂引起的，医生可能会开一些<span>消炎止痛药或者软化大便</span>的药物给你。
+									<br><br>
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>手术治疗：</b>如果药物治疗无效时或<span>严重影响生活</span>时，可考虑手术治疗，现在<span>技术成熟且术后恢复快</span>。
+								`,
+						} */
+
+						{
+							subtitle: '日常护理',
+							subContent:
+								`
+									<b>饮食调整：</b>平时要注意饮食清淡，<span>多吃蔬菜水果，增加纤维素摄入</span>，避免便秘。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>注意卫生：</b>每天清洗肛门时，要用<span>温水</span>和温和的肥皂，<span>避免使用刺激性强</span>的清洁产品。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>坐浴：</b>每天进行温水坐浴，可以<span>缓解疼痛和炎症</span>。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>避免久坐：</b>长时间久坐会<span>加重肛门部位的压力</span>，所以要注意多站起来活动活动。
+								`,
+							picUrl: `img/object/sit_001.png`,
+							picStyle: `width: 40%;top: 190px;right:50%;transform:translateX(50%);`
 						}
 					],
-					
 				},
 			]
 		}
@@ -299,7 +340,13 @@
 					if (contentItem.subContent) {
 						html += `
 							<div class="text-wrap" id="wrap-${j}">
-								<p class="text">${contentItem.subtitle ? `<b>${contentItem.subtitle}：</b>` : ''}${contentItem.subContent}</p>
+								${contentItem.subtitle ? `
+									<div class="subtitle">
+										<p class="right">${contentItem.subtitle}</p>
+										<i class="line"></i>
+									</div>
+								` : ''}
+								<p class="text">${contentItem.subContent}</p>
 								${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
 							</div>
 						`;

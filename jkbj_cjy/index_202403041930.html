@@ -210,7 +210,7 @@
 				position: absolute;
 				left: 0;
 				right: 0;
-				bottom: -10px;
+				bottom: 0px;
 				content: '';
 				z-index: -1;
 				content: '';
@@ -271,7 +271,7 @@ var jsonText = [
 						subContent:
 							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`,
 						picUrl: `img/object/surgery_001.png`,
-						picUrltyle: `width: 35%;right:-50px;`
+						picStyle: `width: 35%;right:-50px;`
 					},
 					{
 						subtitle: '2.饮食调整',
@@ -309,7 +309,7 @@ function setHtml() {
 								<i class="line"></i>
 							</div>
 							<p class="text">${contentItem.subContent}</p>
-							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
+							<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">
 						</div>`;
 				} 
 				else if (contentItem.summary) {

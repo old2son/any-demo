@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>index_202403041930_autoText</title>
+<title>5159_202403041930</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/html2canvas.min.js"></script>
@@ -151,6 +151,7 @@
 
 	.text {
 		line-height: 64px;
+		/* line-height: 80px; */
 		padding: 0px 30px 20px;
 		margin-top: 0px;
 		text-align: left;
@@ -161,12 +162,17 @@
 		i {
 			color: var(--key-color);
 		}
+
+		b {
+			font-weight: 700;
+		}
 	}
 
 	.summary {
 		position: relative;
 		line-height: 72px;
 		padding: 30px 100px;
+		/* margin-top: 80px; */
 		margin-top: 50px;
 		border: 4px dashed var(--summary-color);
 		border-radius: 20px;
@@ -210,7 +216,7 @@
 				position: absolute;
 				left: 0;
 				right: 0;
-				bottom: -10px;
+				bottom: 5px;
 				content: '';
 				z-index: -1;
 				content: '';
@@ -235,14 +241,14 @@
 	.pic-wrap {
 		position: relative;
 		padding-right: 300px;
-		overflow: hidden;
 
 		img {
 			display: block;
 			position: absolute;
 			right: 0;
 			top: 50%;
-			margin: 50px auto;
+			/* margin: 50px auto; */
+			/* margin: 0px auto; */
 			object-fit: cover;
 			transform: translateY(-50%);
 		}
@@ -261,118 +267,99 @@
 <script>
 var jsonText = [
 	{
-		title: '心衰患者的长寿秘诀：治疗与生活之道',
+		title: '小药店的大秘密：祛斑神器！',
 
 		page: [
 			{
 				content: [
+					{
+						subtitle: '一、药店祛斑产品分类',
+						subContent:
+							`
+								<b>1.中药祛斑霜：</b>这些产品多以<span>中草药</span>为原料，<span>温和</span>而不刺激，适合<span>敏感肌肤</span>。
+								<br><br>
+								<b>2.维生素C精华：</b>维生素C具有<span>美白淡斑</span>的功效，适合<span>长期熬夜、肤色不均</span>的人群。
+								<br><br>
+								<b>3.熊果苷乳液：</b>含有熊果苷成分的产品能够有<span>效抑制黑色素</span>的形成，适合因<span>日晒导致的斑点</span>。
+							`,
+					},
+					{
+						subtitle: '二、适合不同人群',
+						subContent:
+							`
+								<b>1.学生族：</b>长期熬夜、学习压力大易导致肤色暗沉。使用<span>维生素C精华</span>可淡斑、提亮肤色。
+								<br><br>
+								<b>2.上班族：</b>长时间面对电脑、手机辐射易导致斑点增多。<span>中药祛斑霜</span>温和有效。
+								<br><br>
+								<b>3.户外爱好者：</b>户外活动易晒斑。<span>熊果苷乳液</span>可抑制黑色素形成，保肤白皙。
+							`,
+					},
 					/* {
-						subtitle: '1.避免剧烈运动',
+						subtitle: '三、使用注意事项',
 						subContent:
-							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`,
+							`
+								<b>1.敏感性肌肤请慎用：</b>在使用任何新的护肤产品前，务必现在手上进行<span>皮肤测试</span>，以确保不会引起过敏反应。
+								<br><br>
+								<b>2.持之以恒：</b>祛斑不是一蹴而就的事情，需要<span>长期坚持使用</span>才能看到效果。不要因为短时间内没有看到明显变化就放弃。
+								<br><br>
+								<b>3.防晒：</b>无论使用哪种祛斑产品，防晒都是必不可少的步骤。<span>日晒会加速黑色素</span>的形成，影响祛斑效果。
+								<img src="img/object/skin_004.png" style="width: 25%;top:60px;right:50px;transform:translateY(0);">
+								<img src="img/object/face_005.png" style="width: 30%;right:-40px;margin-top: 40px;">
+								<img src="img/object/skin_005.png" style="width: 20%;top:auto;bottom:70px;right:100px;transform:translateY(0);">
+							`,
 						picUrl: `img/object/surgery_001.png`,
-						picStyle: `width: 35%;right:-50px;`
-					},
-					{
-						subtitle: '2.饮食调整',
-						subContent:
-							`先从<span>清流食</span>开始，<span>慢慢过渡到正常饮食</span>，<span>避免刺激性食物</span>给伤口带来不必要的刺激。`
-					},
-					{
-						summary:
-							`<span>当然了，以上的方法</span>都是针对原发性痛经，有些女生痛经是因为子宫内膜异位症、子宫腺肌症等引起，这时候需要解决原发病，才能彻底根治痛经。`
+						picStyle: `width: 0%;right:-50px;`
 					}, */
-					
 				],
-				
 			},
 		]
 	}
 ];
 
-var txt = `1.避免剧烈运动#tl
-虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt
-2.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-3.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-4.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-5.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-6.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
-
-var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
-
-var result = [];
-var match;
-while ((match = regex.exec(txt)) !== null) {
-    var subtitle = match[1].trim();
-    var subContent = match[2].trim();
-    var obj = {
-		subtitle,
-		subContent,
-	};
-    result.push(obj);
-}
-jsonText[0].page[0].content.push(...result)
-
 function setHtml() {
 	var html = '';
 
-    for (let i = 0; i < jsonText.length; i++) {
-        let setTitle = jsonText[i].title || '';
-        let setObj = jsonText[i].page;
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
 
-        for (let j = 0; j < setObj.length; j++) {
-            let html = '';
-            let obj = setObj[j];
-
-            for (let k = 0; k < obj.content.length; k++) {
-                let contentItem = obj.content[k];
-
-                if (contentItem.picUrl) {
-                    html += `
-                        <div class="pic-wrap">
-                            <div class="subtitle">
-                                <p class="right">${contentItem.subtitle}</p>
-                                <i class="line"></i>
-                            </div>
-                            <p class="text js-text">${contentItem.subContent}</p>
-                            <img style="${contentItem.picStyle || 'width:30%;right:0;'}" src="${contentItem.picUrl}">
-                        </div>`;
-                } 
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `
+						<div class="pic-wrap">
+							<div class="subtitle">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="text">${contentItem.subContent}</p>
+							<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">
+						</div>`;
+				} 
 				else if (contentItem.summary) {
-                    html += `<p class="summary">${contentItem.summary}</p>`;
-                } 
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
 				else {
-                    html += `
-                        <div class="subtitle">
-                            <p class="right">${contentItem.subtitle}</p>
-                            <i class="line"></i>
-                        </div>
-                        <p class="text js-text">${contentItem.subContent}</p>
-                    `;
-                }
-            }
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+							<i class="line"></i>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
 
-            var $tl = document.getElementById('title');
-            var $cont = document.getElementById('content');
-            $tl.innerHTML = setTitle;
-            $cont.innerHTML = html;
-            setKeyWords();
-
-            if ($cont.getBoundingClientRect().height >= 1330) {
-				setObj[j + 1] || setObj.push({ content: [] });
-                setObj[j + 1].content.push(setObj[j].content.pop());
-                setHtml();
-                return;
-            } 
-
-			saveImg(setTitle, j);
-        }
-    }
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
 }
 
 function saveImg(setTitle = '', j = 0) {
@@ -406,95 +393,27 @@ function saveImg(setTitle = '', j = 0) {
 	});
 }
 
-var keywords = [
-	'肝脏',
-	'胆囊',
-	'心血管',
-	'刺激性',
-	'刺激性食物',
-	'避免刺激性食物',
-	'避免刺激性',
-	'辛辣',
-	'抗氧化',
-	'抗炎',
-	'促进消化',
-	'高血压',
-	'头晕',
-	'疲劳',
-	'胃痛',
-	'胃炎',
-	'胃溃疡',
-	'蛋白质',
-	'微量元素',
-	'维生素',
-	'维生素C',
-	'维生素B群',
-	'矿物质',
-	'黄疸',
-	'姜茶',
-	'薄荷',
-	'胡椒',
-	'柠檬水',
-	'沙拉',
-	'果汁',
-	'海鲜',
-	'奶酪',
-	'鸡蛋',
-	'酸奶',
-	'麦片',
-	'燕麦片',
-	'适量食用',
-	'早餐',
-	'午餐',
-	'晚餐',
-	'甜点',
-	'心理压力大',
-	'听听音乐',
-	'听音乐',
-	'看书',
-	'看看书',
-	'跑步',
-	'按摩',
-	'瑜伽',
-	'拉伸',
-	'剧烈运动',
-	'避免剧烈运动',
-];
-
-var banwords = ['🐢', '⭐️', '星', '@'];
-
 function setKeyWords(parent = document) {
-	var texts = parent.querySelectorAll('.js-text');
-
-	texts.forEach((item) => {
-		var txt = item.innerHTML;
-		var parts = txt.split(new RegExp('(' + keywords.join('|') + ')'));
-		var result = '';
-		parts.forEach(function(part, index) {
-			var isKeyword = keywords.indexOf(part) !== -1;
-			var isBanword = banwords.indexOf(part) !== -1;
-			if (isKeyword && !isBanword) {
-				part.split('').map(function(char, index) {
-					if (index === 0) {
-						result += `<i class="first">${char}</i>`
-					}
-					else if (index === part.length - 1) {
-						result += `<i class="last">${char}</i>`
-					}
-					else {
-						result += `<i>${char}</i>`
-					}
-				});
-			} 
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
 			else {
-				result += part;
+				return `<i>${char}</i>`;
 			}
 		});
-
-		item.innerHTML = result;
-	})
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
 }
 
-setHtml();
+setHtml()
 </script>
 </html>

@@ -265,7 +265,7 @@ var jsonText = [
 						subContent:
 							`虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内<span>避免剧烈运动</span>，给身体一个缓冲的时间。`,
 						picUrl: `img/object/surgery_001.png`,
-						picUrltyle: `width: 35%;height: 200px;`
+						picStyle: `width: 35%;height: 200px;`
 					},
 					{
 						subtitle: '饮食调整',
@@ -278,7 +278,7 @@ var jsonText = [
 						summary:
 							`<span>有些</span>女生痛经是因为子宫内膜异位症、子宫腺肌症等引起，这时候需要解决原发病，才能彻底根治痛经。`,
 							picUrl: `img/object/liver_001.png`,
-							picUrltyle: `width: 35%;`
+							picStyle: `width: 35%;`
 							
 					},
 					
@@ -308,7 +308,7 @@ function setHtml() {
 								<i class="line"></i>
 							</div>
 							<p class="text">${contentItem.subContent}</p>
-							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
+							<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">
 						</div>`;
 				} 
 				else if (contentItem.picUrl && contentItem.summary) {
@@ -319,7 +319,7 @@ function setHtml() {
 								<i class="line"></i>
 							</div>
 							<p class="summary">${contentItem.summary}</p>
-							<img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
+							<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">
 						</div>`;
 				}
 				else if (contentItem.subContent) {
@@ -350,7 +350,7 @@ function setHtml() {
 			}
 			$cont.innerHTML = html;
 			setKeyWords();
-			saveImg(setTitle, j);
+			/* saveImg(setTitle, j); */
 		});
 	}); 
 }
