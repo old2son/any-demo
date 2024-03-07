@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>5364_008</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #fffd71;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #381a0c;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #000;
+		--summary-color: #000;
+		--key-color: #eb6100;
+		--key-bg-color: transparent;
+		--list-key-color: #2a38c0;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_008.jpg) no-repeat;
+	}
+
+	.title {
+		height: 70px;
+		line-height: 70px;
+		padding-top: 62px;
+		overflow: hidden;
+		text-align: center;
+		color: var(--text-color);
+		/* text-indent: 0; */
+		text-indent: -2em;
+		font-size: 40px;
+		font-family: SourceHanSansCN-Bold;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 20px auto;
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 2px var(--main-bdr-color);
+		border-radius: 20px;
+		color: var(--subtitle-color);
+		background-color: var(--subtitle-bg-color);
+
+		.left {
+			display: none;
+			height: 86px;
+			line-height: 78px;
+			padding: 0 20px;
+			margin: -1px 0 0 -1px;
+			float: left;
+			border: solid 2px var(--main-bdr-color);
+			border-radius: 43px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 56px;
+			background-color: #7ba9e4;
+		}
+
+		.right {
+			padding: 0 20px;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text {
+		line-height: 68px;
+		padding: 60px 30px 20px;
+		margin-top: -50px;
+		border: 2px solid var(--main-bdr-color);
+		border-radius: 20px;
+		text-align: left;
+		color: var(--text-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.list-attention {
+		margin-top: 50px;
+		border-top: 1px solid #000;
+
+		li {
+			position: relative;
+			line-height: 64px;
+			padding-left: 40px;
+			margin-top: 40px;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				top: 17px;
+				left: 0;
+				content: '';
+				width: 14px;
+				height: 14px;
+				border: 3px solid var(--list-circle-bdr-color);
+				border-radius: 50%;
+				background-color: var(--list-circle-bg-color);;
+			}
+
+			i {
+				color: var(--list-key-color);
+			}
+		}
+	}
+
+	.summary {
+		line-height: 72px;
+		padding: 50px 40px 0;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--list-key-color);
+		}
+	}
+
+	.pic-wrap {
+		/* height: 600px; */
+		/* margin: 50px auto 0; */
+		/* margin: 0px auto 0; */
+		overflow: hidden;
+
+		img {
+			display: block;
+			/* width: 100%; */
+			/* width: 85%; */
+			margin: 0 auto;
+			object-fit: cover;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<p class="title" id="title"></p>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '咖啡与减肥：医生告诉你，喝对了才有效',
+
+		page: [
+			{
+				content: [
+					{
+						subtitle: '1.咖啡因的作用',
+						subContent:
+							`<span>喝咖啡确实对减肥有一定的帮助</span>，但这并不是单纯的“喝了就瘦”。我们要明白，咖啡中的咖啡因能够<span>刺激新陈代谢，帮助身体消耗更多的热量</span>。但这并不意味着你可以无节制地喝咖啡，或者依赖咖啡来减肥。
+`
+					},
+					{
+						subtitle: '2.频率与选择',
+						subContent:
+							`建议<span>每天1-2杯</span>即可，过量摄入咖啡因可能导致失眠、心悸等不适。选择<span>低糖、低脂</span>的咖啡，如拿铁、美式等，避免摄入过多的糖分和脂肪。`
+					},
+					{
+						subtitle: '3.时间与方法',
+						subContent:
+							`最好在<span>早餐后或运动前</span>喝一杯咖啡，这样能够更好地促进新陈代谢。同时，尽量<span>避免空腹</span>喝咖啡，以免对胃造成刺激。`
+					},
+				],
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `<div class="pic-wrap"><img style="${contentItem.style}" src="${contentItem.picUrl}"></div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else {
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
+			
+			obj.list?.forEach(function (listItem, i, arr) {
+				if (i === 0) {
+					html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+				}
+				else if (i === arr.length - 1) {
+					html += `<li>${listItem}</li></ul>`;
+				}
+				else {
+					html += `<li>${listItem}</li>`;
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map(char => `<i>${char}</i>`);
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>

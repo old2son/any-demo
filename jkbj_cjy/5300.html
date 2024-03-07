@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>5300_008</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #fffd71;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #381a0c;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #000;
+		--summary-color: #000;
+		--key-color: #fff;
+		--key-bg-color: #000;
+		--list-key-color: #2a38c0;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_008.jpg) no-repeat;
+	}
+
+	.title {
+		height: 70px;
+		line-height: 70px;
+		padding-top: 62px;
+		overflow: hidden;
+		text-align: center;
+		color: var(--text-color);
+		font-size: 40px;
+		font-family: SourceHanSansCN-Bold;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 20px auto;
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 2px var(--main-bdr-color);
+		border-radius: 20px;
+		color: var(--subtitle-color);
+		background-color: var(--subtitle-bg-color);
+
+		.left {
+			display: none;
+			height: 86px;
+			line-height: 78px;
+			padding: 0 20px;
+			margin: -1px 0 0 -1px;
+			float: left;
+			border: solid 2px var(--main-bdr-color);
+			border-radius: 43px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 56px;
+			background-color: #7ba9e4;
+		}
+
+		.right {
+			padding: 0 20px;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text {
+		line-height: 68px;
+		padding: 60px 30px 20px;
+		margin-top: -50px;
+		border: 2px solid var(--main-bdr-color);
+		border-radius: 20px;
+		text-align: left;
+		color: var(--text-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			box-shadow: 0 0 1px 26px black inset;
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.list-attention {
+		margin-top: 50px;
+		/* border-top: 1px solid #000; */
+
+		li {
+			position: relative;
+			line-height: 64px;
+			padding-left: 40px;
+			margin-top: 40px;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				top: 20px;
+				left: 0;
+				content: '';
+				width: 14px;
+				height: 14px;
+				border: 3px solid var(--list-circle-bdr-color);
+				border-radius: 50%;
+				background-color: var(--list-circle-bg-color);;
+			}
+
+			i {
+				color: var(--list-key-color);
+			}
+		}
+	}
+
+	.summary {
+		line-height: 72px;
+		padding: 50px 40px 0;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--list-key-color);
+		}
+	}
+
+	.pic-wrap {
+		/* height: 600px; */
+		/* margin: 50px auto 0; */
+		/* margin: 0px auto 0; */
+		overflow: hidden;
+
+		img {
+			display: block;
+			/* width: 100%; */
+			/* width: 85%; */
+			margin: 0 auto;
+			object-fit: cover;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<p class="title" id="title"></p>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '拐枣泡酒：解锁健康的秘密武器',
+
+		page: [
+			{
+				content: [
+					{
+						subtitle: '1.拐枣泡酒的神奇功效',
+						subContent:
+							`拐枣，又称万寿果，其果实形态奇特，蕴含着丰富的营养价值。<br><br>当它<span>与优质白酒结合</span>，经过时间的沉淀，拐枣中的精华便融入酒中，形成一种独特的养生保健饮品。<br><br>它不仅具有<span>健脾开胃、滋阴补肾、通经活络</span>等多种功效，还能在一定程度上<span>改善消化不良，增强体质，提高免疫力</span>。`
+					},
+					{
+						picUrl: 'img/object/food_066.png',
+						style: 'width: 65%;'
+					}
+					
+				]
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.list?.forEach(function (listItem, i, arr) {
+				if (i === 0) {
+					html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+				}
+				else if (i === arr.length - 1) {
+					html += `<li>${listItem}</li></ul>`;
+				}
+				else {
+					html += `<li>${listItem}</li>`;
+				}
+			});
+
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `<div class="pic-wrap"><img style="${contentItem.style}" src="${contentItem.picUrl}"></div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else {
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
+			
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map(char => `<i>${char}</i>`);
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>

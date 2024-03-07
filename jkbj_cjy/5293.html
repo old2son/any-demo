@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>5293_008</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/canvas2image.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #fffd71;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #381a0c;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #000;
+		--summary-color: #000;
+		--key-color: #eb6100;
+		--key-bg-color: transparent;
+		--list-key-color: #2a38c0;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_008.jpg) no-repeat;
+	}
+
+	.title {
+		height: 70px;
+		line-height: 70px;
+		padding-top: 62px;
+		overflow: hidden;
+		text-align: center;
+		color: var(--text-color);
+		font-size: 40px;
+		font-family: SourceHanSansCN-Bold;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 20px auto;
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px 0 0;
+		border: solid 2px var(--main-bdr-color);
+		border-radius: 20px;
+		color: var(--subtitle-color);
+		background-color: var(--subtitle-bg-color);
+
+		.left {
+			display: none;
+			height: 86px;
+			line-height: 78px;
+			padding: 0 20px;
+			margin: -1px 0 0 -1px;
+			float: left;
+			border: solid 2px var(--main-bdr-color);
+			border-radius: 43px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 56px;
+			background-color: #7ba9e4;
+		}
+
+		.right {
+			padding: 0 20px;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text {
+		line-height: 68px;
+		padding: 60px 30px 20px;
+		margin-top: -50px;
+		border: 2px solid var(--main-bdr-color);
+		border-radius: 20px;
+		text-align: left;
+		color: var(--text-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+			background-color: var(--key-bg-color);
+		}
+	}
+
+	.list-attention {
+		margin-top: 50px;
+		/* border-top: 1px solid #000; */
+
+		li {
+			position: relative;
+			line-height: 64px;
+			padding-left: 40px;
+			margin-top: 40px;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				top: 20px;
+				left: 0;
+				content: '';
+				width: 14px;
+				height: 14px;
+				border: 3px solid var(--list-circle-bdr-color);
+				border-radius: 50%;
+				background-color: var(--list-circle-bg-color);;
+			}
+
+			i {
+				color: var(--list-key-color);
+			}
+		}
+	}
+
+	.summary {
+		line-height: 72px;
+		padding: 50px 40px 0;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--list-key-color);
+		}
+	}
+
+	.pic-wrap {
+		/* height: 600px; */
+		margin: 50px auto 0;
+		/* margin: 0px auto 0; */
+		overflow: hidden;
+
+		img {
+			display: block;
+			width: 100%;
+			/* width: 85%; */
+			margin: 0 auto;
+			object-fit: cover;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<p class="title" id="title"></p>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '高钾蔬果有哪些?如何食用',
+
+		page: [
+			{
+				content: [
+					/* {
+						summary:
+							`总结来说，降低胆固醇并不是一蹴而就的事情，它需要<span>持续的努力和生活方式的改变</span>。降胆固醇的关键在于<span>均衡饮食和健康生活</span>。了解哪些食物有助于降低胆固醇，并将其融入日常饮食，同时<span>结合适当的运动和生活习惯</span>，女性朋友们可以有效地管理自己的胆固醇水平，享受健康的生活。`
+					},
+					{
+						picUrl: 'img/object/food_061.jpg',
+					}, */
+				]
+			},
+			{
+				content: [
+					{
+						subtitle: '1.高钾水果和蔬菜',
+						subContent:
+							`<span>蔬菜。香蕉、橙子、甜瓜、西红柿和土豆</span>都是钾的良好来源。这些食物不仅钾含量高，而且味道鲜美,易于搭配。`
+					},
+					{
+						subtitle: '2.创意食谱 ',
+						subContent:
+							`在食用这些高钾蔬果时，我们可以发挥创意，制作出各种美味的食谱。例如,可以将<span>香蕉切片加入燕麦粥</span>中，或者制作一个<span>橙汁土豆沙拉</span>。这些食谱不仅能够提供丰富的钾，还能为餐桌增添色彩和风味。`
+					},
+					{
+						subtitle: '3.慎吃/适宜人群',
+						subContent:
+							`慎吃人群：<span>患有肾脏疾病</span>的人<br>适宜人群：<span>高血压患者、运动员</span>以及<span>经常出汗</span>的人`
+					},
+					/* {
+						subtitle: '4.刺激性食物',
+						subContent:
+							`比如<span>辣椒、酒精、咖啡</span>等，这些食物会刺激肝脏，加重肝脏的损伤。`
+					}, */
+					/* {
+						summary: `不要忘记，鱼油补充剂只是<span>辅助手段</span>，<span>均衡饮食</span>和健康生活方式才是保持身体健康的根本。正确服用鱼油，<span>坚持一年甚至更长时间</span>，后果是你可能会收获一个更加健康的自己。不过，记得始终在<span>医生的指导</span>下进行哦！`
+					}, */
+					/* {
+						picUrl: 'img/object/food_060.jpg',
+					} */
+				]
+			},
+			{
+				content: [
+					/* {
+						subtitle: '1.生活习惯',
+						subContent:
+							'<span>避免吸烟和饮酒</span>。注意空气质量，<span>避免在污染严重的环境</span>中呆太久。如果有过敏体质，尽量<span>避免接触过敏源</span>。保持良好的生活习惯，<span>充足的睡眠和适当的运动</span>。如果症状持续不减，应<span>及时就医</span>。'
+					},
+					{
+						subtitle: '2.改善饮食',
+						subContent:
+							'<span>富含维生素C的水果</span>，如橙子、柚子等，可以增强免疫力。<span>富含蛋白质的食物</span>，如鱼、肉、豆腐等，可以提高身体的抵抗力。喝一些<span>温和的汤</span>，如鸡汤、骨头汤等，可以缓解喉咙不适。'
+					}, */
+					/* {
+						subtitle: '3. 水果沙拉',
+						subContent:
+							'制作水果沙拉时撒上一些甜叶菊<span>增加甜味</span>。'
+					}, */
+					/* {
+						subtitle: '4. 地点清洁',
+						subContent:
+							'用<span>硫磺粉撒在汞污染的地方</span>，它会和汞反应形成无害的硫化汞。'
+					}, */
+					/* {
+						subtitle: '5. 红枣',
+						subContent:
+							'红枣虽然有一定的<span>补血</span>作用，但<span>效果相对较弱</span>。它可以作为<span>日常保健食品</span>食用。'
+					}, */
+					
+					/* {
+						summary:
+							`总的来说，抑郁症既可以被视为精神疾病，也可以被视为心理疾病。无论怎样，我们都应该对抑郁症有足够的理解和关注，及时寻求专业的帮助！`
+					}, */
+					/* {
+						picUrl: 'img/object/food_028.jpg',
+					}, */
+				]
+			},
+			/* {
+				list: [
+					`选择<span>无糖或低糖</span>的燕麦片，避免额外糖分摄入。`,
+					`适量食用，每天燕麦片<span>摄入量不超过半杯</span>。`,
+					`<span>避免含麸质</span>的燕麦片，对于<span>麸质不耐症患者</span>特别重要。`,
+				]
+			}, */
+			/* {
+				content: [
+					{
+						picUrl: 'img/object/food_032.jpg',
+					}
+				]
+			} */
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj) {
+			obj.list?.forEach(function (listItem, i, arr) {
+				if (i === 0) {
+					html += `<ul class="list-attention js-list-attention"><li>${listItem}</li>`;
+				}
+				else if (i === arr.length - 1) {
+					html += `<li>${listItem}</li></ul>`;
+				}
+				else {
+					html += `<li>${listItem}</li>`;
+				}
+			});
+
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.picUrl) {
+					html += `<div class="pic-wrap"><img src="${contentItem.picUrl}"></div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+				else {
+					html += `
+						<div class="subtitle">
+							<p class="right">${contentItem.subtitle}</p>
+						</div>
+						<p class="text">${contentItem.subContent}</p>
+					`;
+				}
+			});
+		});
+
+		var $tl = document.getElementById('title');
+		var $cont = document.getElementById('content');
+		$tl.innerHTML = setTitle;
+		$cont.innerHTML = html;
+		setKeyWords();
+		saveImg(setTitle, i);
+	});
+}
+
+function saveImg(setTitle='', j=0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		//如果想要生成图片 引入canvas2Image.js 下载地址：
+		//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+		// var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+		imgUri = canvas.toDataURL('image/jpeg').replace('image/' + img_type, 'image/octet-stream');
+		// alert(imgUri);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + img_type;
+		saveLink.click();
+		// realHtml.innerHTML="";
+		// realHtml.innerHTML='<img style="display: block;width: 100%;height: 100%;" id="img1" src="'+imgUri+'">'
+		// alert(document.body.offsetHeight);
+		// alert(document.getElementById("img1").offsetHeight);
+		// document.body.style.height = setHeight+"px";
+		// document.body.style.backgroundColor = "red";
+		// $('#img').attr('src',imgUri);
+		// document.removeChild(a);
+		// console.log(img);
+		// Canvas2Image.saveAsJPEG(canvas, canvas.width, canvas.height);
+		// localStorage.removeItem("img-html");
+		// localStorage.removeItem('img-type');
+		// localStorage.removeItem('canvas_multiple');
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map(char => `<i>${char}</i>`);
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>

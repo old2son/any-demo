@@ -293,24 +293,27 @@ var jsonText = [
 var txt = `1.避免剧烈运动#tl
 虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt
 2.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt3.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt4.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt5.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt6.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
+3.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
+4.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
+5.饮食调整#tl
+先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
+6.饮食调整#tl
 先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
+
 var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
 
 var result = [];
 var match;
 while ((match = regex.exec(txt)) !== null) {
-    var subtitle = match[1];
-    var subContent = match[2];
-
-    // 创建对象并添加到数组中
+    var subtitle = match[1].trim();
+    var subContent = match[2].trim();
     var obj = {
-        subtitle: subtitle.trim(),
-        subContent: subContent.trim()
-    };
+		subtitle,
+		subContent,
+	};
     result.push(obj);
 }
 jsonText[0].page[0].content.push(...result)
@@ -337,7 +340,7 @@ function setHtml() {
                                 <i class="line"></i>
                             </div>
                             <p class="text js-text">${contentItem.subContent}</p>
-                            <img style="${contentItem.picUrltyle}" src="${contentItem.picUrl}">
+                            <img style="${contentItem.picUrltyle || 'width:30%;right:0;'}" src="${contentItem.picUrl}">
                         </div>`;
                 } 
 				else if (contentItem.summary) {
@@ -367,7 +370,7 @@ function setHtml() {
                 return;
             } 
 
-			/* saveImg(setTitle, j); */
+			saveImg(setTitle, j);
         }
     }
 }
