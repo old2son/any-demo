@@ -30,9 +30,9 @@
 		--subtitle-bg-color: #fffde6;
 		--text-color: #362d2f;
 		--summary-color: #362d2f;
-		--key-color: #fe9c4f;
+		--key-color: #ec6941;
 		--key-bg-color: #000;
-		--list-key-color: #fe9c4f;
+		--list-key-color: #ec6941;
 		--list-circle-bdr-color: #000;
 		--list-circle-bg-color: #f9ff58;
 	}
@@ -130,7 +130,7 @@
 			}
 
 			i {
-				text-shadow: var(--text-color) 0 2px 1px;
+				/* text-shadow: var(--text-color) 0 2px 1px; */
 				/* -webkit-text-stroke-width: 0.1px;
 				-webkit-text-stroke-color: var(--text-color); */
 				color: var(--key-color);
@@ -265,34 +265,104 @@
 <script>
 	var jsonText = [
 		{
-			title: '玉米油：厨房里的“双刃剑”，你真的会用吗？',
+			title: '玉米油：厨房里的“双刃剑”',
 	
 			page: [
 				{
 					
 					content: [
+						{
+							subtitle: `玉米油的“亮点”和“暗点”`,
+							subContent:
+								`
+									<b>营养丰富：</b>玉米油含有<span>维生素E和不饱和脂肪酸</span>，有助于降低胆固醇、保护心血管。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>烹饪好搭档：</b>用它炒菜，食物色香味俱佳，就连最难搞定的菜肴也能<span>变得美味</span>可口。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>耐高温小能手：</b>玉米油<span>不怕高温</span>挑战，煎、炒、炸样样在行。
+									<br><br>
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>热量小陷阱：</b>虽然营养丰富，但热量也不低，吃多了容易让<span>身材走样</span>。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>氧化风险：</b>开封后尽快使用，否则里面的<span>不饱和脂肪酸</span>可能会<span>变坏</span>产生有害的自由基。
+								`,
+						},
+
 						/* {
-							subtitle: '桑葚酒的功效与作用',
+							subtitle: `如何更“油”味地吃玉米油？`,
 							subContent:
 								`
-									<b>1.增强免疫力：</b>桑葚富含<span>维生素C</span>，能有效提高身体免疫力，让你远离小病小痛。
+									<b>适量为王：</b><span>每天15-25克</span>，不多也不少。
 									<br><br>
 								`,
 						},
 						{
 							subContent:
 								`
-									<b>2.抗氧化：</b>桑葚中的<span>花青素</span>是强大的抗氧化剂，能帮助清除体内自由基，延缓衰老。
+									<b>低温烹饪更佳：</b>尽量避免长时间高温加热，这样可以<span>保留</span>住玉米油里的<span>营养成分</span>。
 									<br><br>
 								`,
 						},
 						{
 							subContent:
 								`
-									<b>3.促进消化：</b>适量饮用桑葚酒，能<span>促进胃液分泌</span>，帮助消化，让你的胃口变得更好。
+									<b>混搭风也健康：</b>与其他油类搭配使用，既能丰富口感，又能更<span>全面地摄取营养</span>。
+									<br><br>
 								`,
-								picUrl: `img/object/food_078.png`,
-								picStyle: `top: 210px;right:50%;width: 30%;margin-right: 0px;transform:translateX(50%);`
+						},
+						{
+							subContent:
+								`
+									<b>小妙招分享：</b>烹饪时可以先用<span>少量玉米油爆香葱姜蒜</span>，再加入其他食材翻炒，这样既<span>省油</span>又美味。
+								`,
+						}, */
+
+						/* {
+							subtitle: `哪些人更适合吃玉米油？`,
+							subContent:
+								`
+									<b>心血管守护者：</b><span>不饱和脂肪酸</span>有助于心血管健康，心血管疾病患者可以适量食用。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>营养需求者：</b>需要补充营养的人群，玉米油中的<span>维生素E</span>能助你一臂之力。
+									<br><br>
+								`,
+							picUrl: `img/object/oil_001.png`,
+							picStyle: `top: 110px;right:50%;width: 25%;margin-right: -350px;transform:translateX(50%);`
+						},
+						{
+							subtitle: `吃玉米油前的小叮嘱`,
+							subContent:
+								`
+									<b>选购有门道：</b>选择<span>信誉好、质量有保障</span>的品牌，吃得放心。
+								`,
+						},
+						{
+							subContent:
+								`
+									<b>存放要得当：</b>放在阴凉、干燥处，<span>避免阳光直射</span>和高温烘烤。
+								`,
+							picUrl: `img/object/oil_002.png`,
+							picStyle: `top: 100px;right:50%;width: 20%;margin-right: -80px;transform:translateX(50%);`
 						}, */
 					],
 				},

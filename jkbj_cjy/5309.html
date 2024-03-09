@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>5309_202403060946</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #3c2325;
+		--title-color: #362d2f;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #362d2f;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #362d2f;
+		--summary-color: #362d2f;
+		--key-color: #ec6941;
+		--key-bg-color: #000;
+		--list-key-color: #ec6941;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	h1 {
+		margin: 0;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403060946.jpg) center top no-repeat;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 0px auto;
+	}
+
+	.title-wrap {
+		padding-top: 35px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			line-height: 88px;
+			margin: 105px auto 95px;
+			text-align: center;
+			color: var(--title-color);
+			font-size: 60px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.text-wrap {
+		position: relative;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+
+		.text {
+			position: relative;
+			line-height: 88px;
+			/* padding: 0px 0px 0 30px; */
+			padding: 0px 30px 0 30px;
+			/* margin-top: 30px; */
+			text-indent: 1.5em;
+			text-align: left;
+			color: var(--text-color);
+			font-size: 46px;
+			font-family: SourceHanSansCN-Regular;
+
+			&::after {
+				position: absolute;
+				left: 47px;
+				top: 33px;
+				content: '';
+				width: 18px;
+				height: 18px;
+				border-radius: 50%;
+				border: 4px solid var(--main-bdr-color);
+				background-color: #ffb981;
+			}
+
+			b {
+				font-weight: 700;
+			}
+
+			i {
+				/* text-shadow: var(--text-color) 0 2px 1px; */
+				/* -webkit-text-stroke-width: 0.1px;
+				-webkit-text-stroke-color: var(--text-color); */
+				color: var(--key-color);
+				font-weight: 700;
+			}
+		}
+
+		.subtitle {
+			display: inline-block;
+			position: relative;
+			line-height: 88px;
+			padding: 0px 30px;
+			/* margin: 20px 0 0; */
+			color: var(--subtitle-color);
+
+			.right {
+				position: relative;
+				z-index: 2;
+				float: left;
+				color: var(--subtitle-color);
+				font-size: 46px;
+				font-family: SourceHanSansCN-Bold;
+			}
+
+			.line {
+				position: absolute;
+				left: 25px;
+				right: 25px;
+				bottom: 15px;
+				z-index: 1;
+				content: '';
+				height: 25px;
+				border-radius: 10px;
+				background-color: rgba(219, 171, 39, 0.3);
+			}
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 72px;
+		padding: 30px 100px;
+		margin-top: 50px;
+		border: 4px dashed var(--summary-color);
+		border-radius: 20px;
+		/* text-align: left; */
+		text-align: center;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+		/* background: url(img/item/border_001.png) center top no-repeat;
+		background-size: 100% 100%; */
+
+		&::before {
+			position: absolute;
+			left: 50px;
+			top: 80px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		&::after {
+			position: absolute;
+			right: 50px;
+			bottom: 70px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+			font-weight: 700;
+
+			&::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -10px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			}
+		}
+
+		i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		}
+	}
+
+	/* .pic-wrap {
+		position: relative;
+		padding-right: 300px;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+	} */
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+	var jsonText = [
+		{
+			title: '爱上香蕉的十大理由！',
+	
+			page: [
+				{
+					
+					content: [
+						/* {
+							subtitle: `1.补充能量小能手`,
+							subContent:
+								`
+									香蕉含有丰富的<span>碳水化合物</span>和<span>天然糖分</span>，能够<span>迅速补充能量</span>，让你恢复活力！
+								`,
+						},
+						{
+							subtitle: `2.消化小助手`,
+							subContent:
+								`
+									香蕉的膳食纤维有助于<span>促进肠胃蠕动，改善消化</span>功能，让你远离肠胃不适的烦恼！
+								`,
+						},
+						{
+							subtitle: `3.调节血压小高手`,
+							subContent:
+								`
+									香蕉富含钾元素，能够帮助身体排出多余的钠，从而<span>有效调节血压</span>，让你的血压稳稳当当！
+								`,
+							picUrl: 'img/object/food_090.png',
+							picStyle: `top: 240px;right:50%;width: 40%;margin-right: 0px;transform:translateX(50%);`
+						}, */
+						{
+							subtitle: `4.增强免疫小卫士`,
+							subContent:
+								`
+									香蕉富含钾元素，能够帮助身体排出多余的钠，<span>有效调节血压</span>，让你的血压稳稳当当！
+								`,
+						},
+						{
+							subtitle: `5.心情小太阳`,
+							subContent:
+								`
+									香蕉能够<span>促进血清素的合成</span>，带来愉悦心情，是抗击压力、<span>缓解抑郁</span>的天然良药！
+								`,
+						},
+						{
+							subtitle: `6.美容小秘诀`,
+							subContent:
+								`
+									香蕉中的抗氧化物质有助于抵抗自由基的损害，<span>延缓皮肤衰老</span>，让你保持青春靓丽！
+								`,
+						},
+						{
+							subtitle: `7.运动好伙伴`,
+							subContent:
+								`
+									香蕉是运动前后的理想食物，能够<span>迅速补充能量，帮助肌肉恢复</span>，健身达人必备之选！
+									<br><br>
+								`,
+						},
+						/* {
+							subtitle: `8.旅行小能手`,
+							subContent:
+								`
+									香蕉<span>方便携带</span>，营养丰富，是旅行途中的理想食物，随时随地都能补充能量！
+								`,
+						},
+						{
+							subtitle: `9.环保小贡献`,
+							subContent:
+								`
+									香蕉皮不仅可以做<span>植物肥料</span>，还能<span>擦拭皮鞋和银器</span>，让你的生活更加环保！
+								`,
+						},
+						{
+							subtitle: `10.创意无限小灵感`,
+							subContent:
+								`
+									香蕉不仅可以食用，还能激发你的创意灵感，尝试用<span>香蕉做各种美食</span>，让生活充满乐趣！
+								`,
+							picUrl: 'img/object/food_091.png',
+							picStyle: `top: 320px;right:50%;width: 30%;margin-right: 0px;transform:translateX(50%);`
+						}, */
+					],
+				},
+			]
+		}
+	];
+	
+	function setHtml() {
+		var html = '';
+	
+		jsonText.forEach(function (item) {
+			var setTitle = item.title || '';
+			var setObj = item.page;
+	
+			setObj.forEach(function (obj, i) {
+				html = '';
+				
+				obj.content?.forEach(function (contentItem, j) {
+					if (contentItem.subContent) {
+						html += `
+							<div class="text-wrap" id="wrap-${j}">
+								${contentItem.subtitle ? `
+									<div class="subtitle">
+										<p class="right">${contentItem.subtitle}</p>
+										<i class="line"></i>
+									</div>
+								` : ''}
+								<p class="text">${contentItem.subContent}</p>
+								${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
+							</div>
+						`;
+					} 
+					else if (contentItem.summary) {
+						html += `
+							<div class="summary-wrap" id="wrap-${j}">
+								${contentItem.subtitle ? `
+									<div class="summary-title">
+										<p class="right">${contentItem.subtitle}</p>
+										<i class="line"></i>
+									</div>
+								` : ''}
+								<div class="summary">
+									<p>${contentItem.summary}</p>	
+								</div>
+								${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
+							</div>
+						`;
+					}
+	
+					contentItem.list?.forEach(function (listItem, k, arr) {
+						if (k === 0) {
+							html += `<ul class="list-attention js-list-attention" id="js-list-attention-${j}"><li>${listItem}</li>`;
+						}
+						else if (k === arr.length - 1) {
+							html += `<li>${listItem}</li></ul>`;
+						}
+						else {
+							html += `<li>${listItem}</li>`;
+						}
+					});
+				});
+	
+				var $tl = document.getElementById('title');
+				var $cont = document.getElementById('content');
+				if ($tl) {
+					$tl.innerHTML = setTitle;
+				}
+	
+				$cont.innerHTML = html;
+	
+				insertList();
+				setKeyWords();
+				/* saveImg(setTitle, i); */
+			});
+		}); 
+	}
+	
+	function saveImg(setTitle = '', j = 0) {
+		var realHtml = document.getElementById('html-canvas');
+		var width = 1200; //获取dom 宽度
+	
+		var img_type = 'jpeg';
+		// var height = realHtml.offsetHeight; //获取dom 高度
+		var height = 1600; //获取dom 高度
+		var canvas = document.createElement('canvas'); //创建一个canvas节点
+		var scale = 1; //定义任意放大倍数 支持小数
+		canvas.width = width * scale; //定义canvas 宽度 * 缩放
+		canvas.height = height * scale; //定义canvas高度 *缩放
+		canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+		var opts = {
+			tainttest: true, //检测每张图片都已经加载完成
+			scale: scale, // 添加的scale 参数
+			useCORS: true,
+			canvas: canvas, //自定义 canvas
+			logging: true, //日志开关
+			width: width, //dom 原始宽度
+			height: height, //dom 原始高度
+			name: 'pic'
+		};
+		html2canvas(realHtml, opts).then(function (canvas) {
+			var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+			var saveLink = document.createElement('a');
+			saveLink.href = imgUri;
+			saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+			saveLink.click();
+		});
+	}
+	
+	function setKeyWords(parent = document) {
+		const spans = parent.querySelectorAll('span');
+		spans.forEach((span, i) => {
+			const text = span.textContent;
+			const characters = text.split('');
+			const wrappedCharacters = characters.map((char, index, arr) => {
+				if (index === 0) {
+					return `<i class="first">${char}</i>`;
+				}
+				else if (index === arr.length - 1) {
+					return `<i class="last">${char}</i>`;
+				}
+				else {
+					return `<i>${char}</i>`;
+				}
+			});
+			const wrappedText = wrappedCharacters.join('');
+			span.outerHTML = wrappedText;
+		});
+	}
+	
+	function insertList () {
+		document.querySelectorAll('.js-list-attention').forEach((item, i) => {
+			var str = item.id.split('-')
+			var id = str[str.length - 1];
+			document.querySelector(`#wrap-${id} .summary`).appendChild(item);
+		});
+	}
+	
+	setHtml()
+</script>
+</html>
