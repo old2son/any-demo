@@ -290,33 +290,46 @@ var jsonText = [
 	}
 ];
 
-var txt = `1.避免剧烈运动#tl
-虽然伤口小，但内部的恢复还是需要时间的。所以术后几天内避免剧烈运动，给身体一个缓冲的时间。#txt
-2.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-3.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-4.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-5.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt
-6.饮食调整#tl
-先从清流食开始，慢慢过渡到正常饮食，避免刺激性食物给伤口带来不必要的刺激。#txt`;
+var txt = 
+`
+	什么情况下需要打破伤风针1 #tl
+	一般来说，如果伤口比较深、污染比较严重，或者是由生锈的金属物品造成的，就需要考虑打破伤风针了。当然，具体是否需要打针，最好还是听从医生的建议哦！ #txt #summary
+	什么情况下需要打破伤风针2 #tl
+	那么，打破伤风后需要注意哪些事项呢？下面就让我来给你支支招吧！
+	观察身体反应：打破伤风针后，有些人可能会出现一些不适症状，比如发热、头痛、恶心等。如果这些症状比较轻微，一般不需要特殊处理，但如果症状持续加重，就需要及时就医哦！#txt #summary
+	 
+	什么情况下需要打破伤风针3 #tl
+	一般来说，如果伤口比较深、污染比较严重，或者是由生锈的金属物品造成的，就需要考虑打破伤风针了。当然，具体是否需要打针，最好还是听从医生的建议哦！ #txt #summary
+	什么情况下需要打破伤风针4 #tl
+	那么，打破伤风后需要注意哪些事项呢？下面就让我来给你支支招吧
+	观察身体反应：打破伤风针后，有些人可能会出现一些不适症状，比如发热、头痛、恶心等。如果这些症状比较轻微，一般不需要特殊处理，但如果症状持续加重，就需要及时就医哦！#txt #summary
 
-var regex = /(\d+\..+?)#tl([\s\S]+?)#txt/g;
+`
+var regex = /([\s\S]+?)#tl([\s\S]+?)#txt([\s\S]+?)#summary/g;
 
 var result = [];
 var match;
 while ((match = regex.exec(txt)) !== null) {
     var subtitle = match[1].trim();
     var subContent = match[2].trim();
-    var obj = {
-		subtitle,
-		subContent,
-	};
-    result.push(obj);
+    var summary = match[3].trim();
+
+	if (subContent) {
+		result.push({
+			subtitle,
+			subContent,
+		})
+	}
+    
+	if (summary) {
+		result.push({
+			summary
+		})
+	}
 }
 jsonText[0].page[0].content.push(...result)
+
+console.log(jsonText);
 
 function setHtml() {
 	var html = '';
@@ -332,29 +345,22 @@ function setHtml() {
             for (let k = 0; k < obj.content.length; k++) {
                 let contentItem = obj.content[k];
 
-                if (contentItem.picUrl) {
-                    html += `
-                        <div class="pic-wrap">
-                            <div class="subtitle">
-                                <p class="right">${contentItem.subtitle}</p>
-                                <i class="line"></i>
-                            </div>
-                            <p class="text js-text">${contentItem.subContent}</p>
-                            <img style="${contentItem.picStyle || 'width:30%;right:0;'}" src="${contentItem.picUrl}">
-                        </div>`;
-                } 
+                if (contentItem.subContent) {
+					html += `
+						<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
+							${contentItem.subtitle ? `
+								<div class="subtitle">
+									<p class="right">${contentItem.subtitle || ''}</p>
+									<i class="line"></i>
+								</div>
+							` : ''}
+							<p class="text js-text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				} 
 				else if (contentItem.summary) {
-                    html += `<p class="summary">${contentItem.summary}</p>`;
-                } 
-				else {
-                    html += `
-                        <div class="subtitle">
-                            <p class="right">${contentItem.subtitle}</p>
-                            <i class="line"></i>
-                        </div>
-                        <p class="text js-text">${contentItem.subContent}</p>
-                    `;
-                }
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
             }
 
             var $tl = document.getElementById('title');
@@ -459,6 +465,7 @@ var keywords = [
 	'拉伸',
 	'剧烈运动',
 	'避免剧烈运动',
+	'污染',
 ];
 
 var banwords = ['🐢', '⭐️', '星', '@'];
