@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>5266_202403041930</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #b0d796;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #3c6421;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #362e2b;
+		--summary-color: #3c6421;
+		--key-color: #eb6100;
+		--key-bg-color: #000;
+		--list-key-color: #3c6421;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403041930.jpg) center top no-repeat;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 0px auto;
+	}
+
+	.title-wrap {
+		padding-top: 65px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			-webkit-text-stroke-width: 1.5px;
+			-webkit-text-stroke-color: var(--title-stroke-color);
+			text-shadow: #000 0 4px 0px;
+			text-align: center;
+			color: var(--title-color);
+			font-size: 60px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: -30px;
+				content: '';
+				/* width: 142px; */
+				/* height: 222px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_001.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -30px;
+				content: '';
+				/* width: 110px; */
+				/* height: 213px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_002.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+			
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 54px;
+			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 25px;
+			border-radius: 10px;
+			background-color: rgba(163, 231, 117, 0.3);
+		}
+	}
+
+	.text {
+		line-height: 64px;
+		/* line-height: 54px; */
+		/* line-height: 58px; */
+		/* line-height: 75px; */
+		/* line-height: 80px; */
+		padding: 0px 30px 20px;
+		margin-top: 0px;
+		text-align: left;
+		color: var(--text-color);
+		font-size: 42px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+		}
+
+		b {
+			font-weight: 700;
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 72px;
+		padding: 30px 100px;
+		/* margin-top: 80px; */
+		margin-top: 50px;
+		border: 4px dashed var(--summary-color);
+		border-radius: 20px;
+		/* text-align: left; */
+		text-align: center;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+		/* background: url(img/item/border_001.png) center top no-repeat;
+		background-size: 100% 100%; */
+
+		&::before {
+			position: absolute;
+			left: 50px;
+			top: 80px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		&::after {
+			position: absolute;
+			right: 50px;
+			bottom: 70px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+			font-weight: 700;
+
+			&::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 5px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			}
+		}
+
+		i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		}
+	}
+
+	.pic-wrap {
+		position: relative;
+		padding-right: 300px;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			/* margin: 50px auto; */
+			/* margin: 0px auto; */
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '肚脐湿臭，女人你该怎么应对？',
+
+		page: [
+			{
+				content: [
+					/* {
+						subtitle: '肚脐湿臭的原因',
+						subContent: 
+							`
+							肚脐是一个<span>相对封闭的环境</span>，容易<span>滋生细菌</span>。如果日常清洁不到位，或者是因为体质原因，肚脐周围的<span>汗液和皮肤分泌物混合</span>，就可能产生异味。所以，治疗肚脐湿臭的关键，就是保持清洁和干燥。
+							`
+					},
+					{
+						subtitle: '一、怎么治疗？',
+						subContent: 
+							`
+								<b>1.清洁肚脐：</b>每天洗澡时，用<span>温和的洗面奶或沐浴露</span>轻轻清洁肚脐，注意不要用力过猛，以免刮伤皮肤。清洁后，用干净的毛巾轻轻擦干。
+								<br><br>
+								<b>2.局部杀菌：</b>如果异味较严重，可以在清洁后，用含有<span>适量酒精的湿巾或棉球</span>轻轻擦拭肚脐，进行局部杀菌。但注意，<span>酒精浓度不宜过高</span>，以免刺激皮肤。
+								<br><br>
+								<b>3.使用抗菌药膏：</b>如果以上方法不能解决问题，可以考虑在<span>医生的建议下使用抗菌药膏</span>。但请注意，药膏使用需遵医嘱，不可盲目自行使用。
+							`
+					}, */
+
+					{
+						subtitle: '二、日常怎么护理？',
+						subContent: 
+							`
+								<b>1.保持干燥：</b>尽量避免肚脐长时间处于潮湿状态，比如<span>游泳后要及时擦干。穿着透气性好的内衣</span>，避免过度出汗。
+								<br><br>
+								<b>2.合理饮食：</b>尽量避免食用过多辛辣、刺激性食物，它们可能会<span>刺激皮肤，增加出汗和异味</span>。
+								<br><br>
+								<b>3.定期检查：</b>如果发现<span>肚脐周围有红肿、疼痛</span>等异常症状，应<span>及时就医</span>检查，以免延误治疗。
+							`
+					},
+					{
+						summary: `当然啦，我们也不必过分担心肚脐湿臭的问题。只要<span>保持良好的生活习惯和卫生习惯</span>，这个问题是完全可以预防和解决的。所以，亲爱的朋友们，让我们一起行动起来，让肚脐告别湿臭，迎接清新健康的自己吧！`
+					}
+				],
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.subContent) {
+					html += `
+						<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
+							${contentItem.subtitle ? `
+								<div class="subtitle">
+									<p class="right">${contentItem.subtitle || ''}</p>
+									<i class="line"></i>
+								</div>
+							` : ''}
+							<p class="text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
+			else {
+				return `<i>${char}</i>`;
+			}
+		});
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>
