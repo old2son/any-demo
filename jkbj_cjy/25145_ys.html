@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>25145_202403051045</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #333333;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #333333;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #545563;
+		--summary-color: #546163;
+		--summary-color-2: #5d5463;
+		--key-color: #eb6100;
+		--key-bg-color: #000;
+		--list-key-color: #eb6100;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403051045.jpg) center top no-repeat;
+	}
+
+	.content {
+		/* padding-top: 100px; */
+		margin: 0px 100px 0 200px;
+	}
+
+	.title-wrap {
+		padding-top: 105px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			padding-left: 75px;
+			margin: 0;
+			text-align: center;
+			color: var(--title-color);
+			/* font-size: 50px; */
+			font-size: 47px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			/* font-size: 48px; */
+			font-size: 45px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -60px;
+				content: '';
+				width: 48px;
+				height: 49px;
+				transform: translateY(-50%);
+				background: url(img/item/icon_correct_001.png) center no-repeat;
+				background-size: 100%;
+			}
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 32px;
+			background: url(img/item/title_line_002.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.text {
+		line-height: 52px;
+		padding: 0px 30px 20px;
+		/* padding: 0px 30px 40px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--text-color);
+		/* font-size: 40px; */
+		font-size: 42px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+		}
+	}
+
+	.text-wrap,
+	.pic-wrap {
+		position: relative;
+
+		img {
+			display: block;
+			margin: 0px auto;
+			object-fit: cover;
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 75px;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color-2);
+		font-size: 44px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+
+			/* &::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -10px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			} */
+		}
+
+		/* i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		} */
+	}
+
+	.summary-title {
+		display: inline-block;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 48px;
+			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 10px;
+			z-index: 1;
+			content: '';
+			height: 24px;
+			background: url(img/item/title_line_001.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.summary-wrap {
+		position: relative;
+		padding-right: 300px;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '大便青绿色，是癌变的信号？为您揭开真相！',
+
+		page: [
+			{
+				content: [
+					/* {
+						subtitle: '大便青绿色是癌变吗？',
+						subContent:
+							`
+								大便青绿色可能与多种原因有关，比如<span>吃过多的绿叶蔬菜</span>、<span>药物因素</span>、<span>肠道感染性疾病</span>，一般<span>不是癌变的原因</span>，肠道发生癌变之后，可能会出现排便次数增多、腹痛及血便等表现。
+							`,
+					},
+					{
+						subtitle: '大便青绿色可以采取哪些措施治疗呢？',
+						subContent:
+							`
+								<b>多饮水：</b>治疗的过程中需要<span>少量多次</span>喝一些<span>温热的白开水</span>，能够补充身体所需要的水分，预防身体脱水。
+							`,
+						picUrl: `img/object/water_001.png`,
+						picStyle: `width: 25%;margin: -60px auto 0;`
+					},
+					{
+						subContent:
+							`
+								<b>注意饮食卫生：</b>平时尽量<span>不要吃没有彻底清洁的瓜果蔬菜</span>，<span>剩菜剩饭</span>需要彻底<span>加热</span>之后再吃，以免导致<span>细菌</span>和<span>微生物感染</span>。
+							`,
+						picUrl: `img/object/bacteria_001.png`,
+						picStyle: `width: 25%;margin: -20px auto 0;`
+					},
+					{
+						subContent:
+							`
+								<b>药物治疗：</b>可用<span>蒙脱石散、肠炎宁片、诺氟沙星胶囊</span>等药物治疗，有助于控制疾病发展。
+							`,
+					}, */
+
+					{
+						subtitle: '治疗的过程中也有一些注意事项需要知晓。',
+						subContent:
+							`
+								<b>调整饮食：</b>急性发作期间尽量<span>吃流质</span>或者是<span>半流质</span>的食物，比如<span>小米粥</span>或者是<span>鸡蛋羹</span>。
+							`,
+							picUrl: `img/object/eggtart_001.png`,
+							picStyle: `width: 25%;margin: 0px auto 0px;`
+					},
+					{
+						subContent:
+							`
+								<b>不吃辛辣食物：</b>平时尽量<span>不要吃辛辣生冷</span>或者是<span>刺激性过强</span>的食物，还需要积极<span>戒烟戒酒</span>。
+							`,
+							picUrl: `img/object/chili_002.png`,
+							picStyle: `width: 30%;margin: 0px auto 0px;`
+					},
+					{
+						subContent:
+							`
+								<b>及时就医：</b>如果<span>腹痛腹泻</span>的症状逐渐<span>加重</span>，应尽快<span>去医院</span>复查。
+							`,
+						picUrl: `img/object/stomach_006.png`,
+						picStyle: `width: 30%;margin: 0px auto 0px;`
+					},
+				],
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.subContent) {
+					html += `
+						<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
+							${contentItem.subtitle ? `
+								<div class="subtitle">
+									<p class="right">${contentItem.subtitle || ''}</p>
+									<i class="line"></i>
+								</div>
+							` : ''}
+							<p class="text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `
+						<div class="${contentItem.picUrl ? 'summary-wrap' : ''}">
+							<div class="summary-title">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="summary">${contentItem.summary}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			if ($tl) {
+				$tl.innerHTML = setTitle;
+			}
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
+			else {
+				return `<i>${char}</i>`;
+			}
+		});
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>

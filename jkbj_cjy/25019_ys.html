@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>25019_202403051045</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #333333;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #333333;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #545563;
+		--summary-color: #546163;
+		--summary-color-2: #5d5463;
+		--key-color: #eb6100;
+		--key-bg-color: #000;
+		--list-key-color: #eb6100;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403051045.jpg) center top no-repeat;
+	}
+
+	.content {
+		/* padding-top: 100px; */
+		margin: 0px 100px 0 200px;
+	}
+
+	.title-wrap {
+		padding-top: 105px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			padding-left: 75px;
+			margin: 0;
+			text-align: center;
+			color: var(--title-color);
+			/* font-size: 50px; */
+			font-size: 47px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			/* font-size: 48px; */
+			font-size: 45px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -60px;
+				content: '';
+				width: 48px;
+				height: 49px;
+				transform: translateY(-50%);
+				background: url(img/item/icon_correct_001.png) center no-repeat;
+				background-size: 100%;
+			}
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 32px;
+			background: url(img/item/title_line_002.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.text {
+		line-height: 52px;
+		padding: 0px 30px 20px;
+		/* padding: 0px 30px 40px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--text-color);
+		/* font-size: 40px; */
+		font-size: 42px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+		}
+	}
+
+	.text-wrap,
+	.pic-wrap {
+		position: relative;
+
+		img {
+			display: block;
+			margin: 0px auto;
+			object-fit: cover;
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 75px;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color-2);
+		font-size: 44px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+
+			/* &::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -10px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			} */
+		}
+
+		/* i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		} */
+	}
+
+	.summary-title {
+		display: inline-block;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 48px;
+			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 10px;
+			z-index: 1;
+			content: '';
+			height: 24px;
+			background: url(img/item/title_line_001.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.summary-wrap {
+		position: relative;
+		padding-right: 300px;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '晕车困扰不断？揭秘坐车头晕恶心的真相！',
+
+		page: [
+			{
+				content: [
+					/* {
+						subtitle: '坐车头晕恶心想吐是怎么回事？',
+						subContent:
+							`
+								人体大脑主要依靠<span>前景</span>和<span>视觉</span>以及<span>本身感受系统</span>来<span>控制</span>和<span>感受平衡</span>，如果在坐车时，这些<span>信息产生冲突</span>，就会出现晕动症，导致坐车时出现头晕，恶心，想吐等症状。
+							`,
+					},
+					{
+						subtitle: '坐车头晕恶心想吐怎么治疗？',
+						subContent:
+							`
+								<b>保持空气畅通：</b>在坐车时可以乘坐<span>靠近窗户</span>的位置，<span>多呼吸新鲜空气</span>，减少车内空气对身体的影响。
+							`,
+						picUrl: `img/object/car_001.png`,
+						picStyle: `width: 30%;`
+					},
+					{
+						subContent:
+							`
+								<b>使用药物：</b>可以使用<span>盐酸苯环壬酯片、茶苯海明片、斧标驱风油</span>等药物治疗可以起到提神和预防眩晕作用。
+							`,
+						picUrl: `img/object/drug_010.png`,
+						picStyle: `width: 30%;margin: -50px auto 0;`
+					}, */
+
+					{
+						subtitle: '治疗期间的注意事项有哪些？',
+						subContent:
+							`
+								<b>适当喝水：</b>适当地喝一些水，能够补充体内所需的水分，而且还可<span>促进新陈代谢</span>，缓解恶心呕吐，头晕现象。
+							`,
+							picUrl: `img/object/water_002.png`,
+							picStyle: `width: 20%;margin: -30px auto 0px;`
+					},
+					{
+						subContent:
+							`
+								<b>苏打饼干：</b>具有<span>中和胃酸</span>的效果，有助于减轻胃部分泌物增多。
+							`,
+							picUrl: `img/object/cookie_002.png`,
+							picStyle: `width: 30%;margin: -30px auto 0px;`
+					},
+					{
+						subContent:
+							`
+								<b>适当运动：</b>平时可以做一些体育锻炼，比如<span>散步或者快走</span>，可以提高免疫力，而且还可加强前庭器官的耐受性，减轻晕车现象。
+							`,
+							picUrl: `img/object/sport_008.png`,
+							picStyle: `width: 30%;margin: 0px auto 30px;`
+					},
+					{
+						subContent:
+							`
+								<b>充足睡眠：</b>日常要养成早睡早起的好习惯，尽量不要熬夜，建议<span>每天的睡眠时间在8个小时以上</span>。
+							`,
+						picUrl: `img/object/sleep_001.png`,
+						picStyle: `width: 25%;margin: -115px auto 0px;`
+					},
+				],
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.subContent) {
+					html += `
+						<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
+							${contentItem.subtitle ? `
+								<div class="subtitle">
+									<p class="right">${contentItem.subtitle || ''}</p>
+									<i class="line"></i>
+								</div>
+							` : ''}
+							<p class="text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `
+						<div class="${contentItem.picUrl ? 'summary-wrap' : ''}">
+							<div class="summary-title">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="summary">${contentItem.summary}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			if ($tl) {
+				$tl.innerHTML = setTitle;
+			}
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
+			else {
+				return `<i>${char}</i>`;
+			}
+		});
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>
