@@ -23,16 +23,16 @@
 	}
 
 	:root {
-		--main-bdr-color: #3c2325;
+		--main-bdr-color: #88abda;
 		--title-color: #fff;
 		--title-stroke-color: #3e2308;
-		--subtitle-color: #362d2f;
-		--subtitle-bg-color: #fffde6;
-		--text-color: #362d2f;
-		--summary-color: #362d2f;
-		--key-color: #fe9c4f;
+		--subtitle-color: #fff799;
+		--subtitle-bg-color: #448aca;
+		--text-color: #362e2b;
+		--summary-color: #362e2b;
+		--key-color: #004986;
 		--key-bg-color: #000;
-		--list-key-color: #fe9c4f;
+		--list-key-color: #448aca;
 		--list-circle-bdr-color: #000;
 		--list-circle-bg-color: #f9ff58;
 	}
@@ -61,6 +61,10 @@
 		font-style: normal;
 	}
 
+	em {
+		font-style: normal;
+	}
+
 	.bg {
 		width: 1200px;
 		height: 1600px;
@@ -71,7 +75,10 @@
 
 	.content {
 		width: 1000px;
+		height: 1320px;
 		margin: 0px auto;
+		border-radius: 20px;
+		background-color: #fff;
 	}
 
 	.title-wrap {
@@ -85,7 +92,8 @@
 			margin-top: 8px;
 			text-align: center;
 			color: var(--title-color);
-			font-size: 48px;
+			/* font-size: 48px; */
+			font-size: 42px;
 			font-family: SourceHanSansCN-Bold;
 		}
 	}
@@ -101,16 +109,16 @@
 
 		.text {
 			position: relative;
-			line-height: 88px;
-			padding: 0px 30px;
+			line-height: 60px;
+			padding: 12px 60px;
 			/* margin-top: 30px; */
-			text-indent: 1.5em;
 			text-align: left;
 			color: var(--text-color);
 			font-size: 46px;
 			font-family: SourceHanSansCN-Regular;
 
 			&::after {
+				display: none;
 				position: absolute;
 				left: 47px;
 				top: 33px;
@@ -123,29 +131,54 @@
 			}
 
 			i {
-				text-shadow: var(--text-color) 0 2px 1px;
-				/* -webkit-text-stroke-width: 0.1px;
-				-webkit-text-stroke-color: var(--text-color); */
+				position: relative;
+				z-index: 1;
 				color: var(--key-color);
-				font-weight: 700;
+
+				&::after {
+					display: none;
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 10px;
+					content: '';
+					z-index: -1;
+					content: '';
+					height: 25px;
+					background-color: #e1ecfa;
+				}
+			}
+
+			i.first {
+				&::after {
+					border-radius: 8px 0 0 8px;
+				}
+			}
+
+			i.last {
+				&::after {
+					border-radius: 0 8px 8px 0;
+				}
 			}
 		}
 
 		.subtitle {
-			display: inline-block;
 			position: relative;
 			line-height: 88px;
-			padding: 0px 30px;
+			text-align: center;
 			/* margin: 20px 0 0; */
 			color: var(--subtitle-color);
 
 			.right {
+				display: inline-block;
 				position: relative;
 				z-index: 2;
-				float: left;
+				padding: 0px 30px;
+				border-radius: 0 0 20px 20px;
 				color: var(--subtitle-color);
 				font-size: 46px;
 				font-family: SourceHanSansCN-Bold;
+				background-color: var(--subtitle-bg-color);
 			}
 
 			.line {
@@ -161,14 +194,46 @@
 				background-color: rgba(163, 231, 117, 0.3);
 			}
 		}
+
+		.sb-cont-tl {
+			display: block;
+			margin-bottom: 8px;
+			color: var(--key-color);
+			font-family: SourceHanSansCN-Bold;
+
+			em {
+				position: relative;
+				padding-right: 40px;
+
+				&::after {
+					/* 画一个倒三角箭头 */
+					position: absolute;
+					right: 0;
+					top: 17px;
+					z-index: 1;
+					content: '';
+					width: 0;
+					height: 0;
+					border-left: 9px solid transparent;
+					border-right: 9px solid transparent;
+					border-top: 16px solid var(--key-color);
+				}
+			}
+
+		}
+	}
+
+	.summary-wrap {
+		padding: 0 30px;
 	}
 
 	.summary {
 		position: relative;
-		line-height: 72px;
-		padding: 30px 100px;
-		margin-top: 50px;
-		border: 4px dashed var(--summary-color);
+		/* line-height: 72px; */
+		line-height: 62px;
+		padding: 30px 60px;
+		margin-top: 20px;
+		border: 4px dashed var(--main-bdr-color);
 		border-radius: 20px;
 		/* text-align: left; */
 		text-align: center;
@@ -180,23 +245,24 @@
 
 		&::before {
 			position: absolute;
-			left: 50px;
-			top: 80px;
+			left: -20px;
+			top: 50%;
 			content: '';
-			width: 46px;
-			height: 46px;
-			background: url(img/item/icon_start_001.png) center no-repeat;
+			width: 88px;
+			height: 115px;
+			margin-top: -80px;
+			background: url(img/item/icon_start_003.png) center no-repeat;
 			background-size: 100%;
 		}
 
 		&::after {
 			position: absolute;
-			right: 50px;
-			bottom: 70px;
+			right: -20px;
+			bottom: -20px;
 			content: '';
-			width: 46px;
-			height: 46px;
-			background: url(img/item/icon_start_001.png) center no-repeat;
+			width: 88px;
+			height: 115px;
+			background: url(img/item/icon_start_004.png) center no-repeat;
 			background-size: 100%;
 		}
 
@@ -210,12 +276,12 @@
 				position: absolute;
 				left: 0;
 				right: 0;
-				bottom: -10px;
+				bottom: 8px;
 				content: '';
 				z-index: -1;
 				content: '';
 				height: 25px;
-				background-color: rgba(163, 231, 117, 0.3);
+				background-color: #e1ecfa;
 			}
 		}
 
@@ -261,26 +327,34 @@
 <script>
 	var jsonText = [
 		{
-			title: '{女人都要懂}',
+			title: '{不能超过18个字}',
 	
 			page: [
 				{
-					pageTitle: 'HPV和TCT检查是什么？',
 					content: [
 						{
-							subtitle: '这些信号暗示你有喜了',
+							subtitle: '男性下腹部有坠胀感和隐痛有哪些原因？',
 							subContent:
-								`<span>一般情况下</span>，女性在怀孕后，比较典型的症状为停经，对于月经周期比较规律的女性，如果近期发生性生活，未采取安全有效的防护措施时，出现停经现象时，不排除和怀孕有关。`,
-							picUrl: `img/object/liver_001.png`,
-							picStyle: `width: 18%;`		
+								`
+									<b class="sb-cont-tl"><em>HPV检查</em></b>
+									男性下腹部有坠胀感和隐痛可能与<span>腹腔脏器急性炎症</span>有关，比如<span>急性肠炎</span>和<span>急性肠胃炎</span>，另外与<span>腹膜炎症</span>、<span>腹腔内血管堵塞</span>、<span>全身性疾病</span>和<span>	消化道功能障碍</span>等因素也有一定的关系。
+								`,
 						},
 						{
-							subtitle: '这些信号暗示你有喜了',
 							subContent:
-								`<span>另外</span>，在怀孕后受到体内激素水平波动的因素影响时，也容易产生恶心、呕吐、食欲减退等症状。`,
-						}
+								`
+									<b class="sb-cont-tl"><em>TCT检查</em></b>
+									男性下腹部有坠胀感和隐痛可能与<span>腹腔脏器急性炎症</span>有关，比如<span>急性肠炎</span>和<span>急性肠胃炎</span>，另外与<span>腹膜炎症</span>、<span>腹腔内血管堵塞</span>、<span>全身性疾病</span>和<span>	消化道功能障碍</span>等因素也有一定的关系。
+								`,
+						},
+						{
+							summary:
+								`
+									<span>在进行TCT检查</span>和HPV检查前，应注意避开月经期，并在检查前三日内禁止同房或
+									<span>在进行TCT检查</span>和HPV检查前，应注意避开月经期，并在检查前三日内禁止同房或
+								`,
+						},
 					],
-					
 				},
 			]
 		}
@@ -289,56 +363,40 @@
 	function setHtml() {
 		var html = '';
 	
-		jsonText.forEach(function (item) {
+		jsonText.forEach(function (item, i) {
 			var setTitle = item.title || '';
 			var setObj = item.page;
 	
-			setObj.forEach(function (obj, i) {
+			setObj.forEach(function (obj, j) {
 				html = '';
 				
-				obj.content?.forEach(function (contentItem, j) {
+				obj.content?.forEach(function (contentItem) {
 					if (contentItem.subContent) {
 						html += `
-							<div class="text-wrap" id="wrap-${j}">
+							<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
 								${contentItem.subtitle ? `
-									<div class="summary-title">
-										<p class="right">${contentItem.subtitle}</p>
+									<div class="subtitle">
+										<p class="right">${contentItem.subtitle || ''}</p>
 										<i class="line"></i>
 									</div>
 								` : ''}
-								<p class="text">${contentItem.subtitle ? `<b>${contentItem.subtitle}：</b>` : ''}${contentItem.subContent}</p>
-								${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
-							</div>
-						`;
+								<p class="text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+								${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+							</div>`;
 					} 
 					else if (contentItem.summary) {
 						html += `
-							<div class="summary-wrap" id="wrap-${j}">
+							<div class="${contentItem.picUrl ? 'summary-pic-wrap' : 'summary-wrap'}">
 								${contentItem.subtitle ? `
 									<div class="summary-title">
-										<p class="right">${contentItem.subtitle}</p>
+										<p class="right">${contentItem.subtitle || ''}</p>
 										<i class="line"></i>
 									</div>
 								` : ''}
-								<div class="summary">
-									<p>${contentItem.summary}</p>	
-								</div>
-								${contentItem.picUrl ? `<img style="${contentItem.picStyle}" src="${contentItem.picUrl}">` : ''}
-							</div>
-						`;
+								<p class="summary">${contentItem.summary}</p>
+								${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+							</div>`;
 					}
-	
-					contentItem.list?.forEach(function (listItem, k, arr) {
-						if (k === 0) {
-							html += `<ul class="list-attention js-list-attention" id="js-list-attention-${j}"><li>${listItem}</li>`;
-						}
-						else if (k === arr.length - 1) {
-							html += `<li>${listItem}</li></ul>`;
-						}
-						else {
-							html += `<li>${listItem}</li>`;
-						}
-					});
 				});
 	
 				var $tl = document.getElementById('title');
@@ -346,12 +404,9 @@
 				if ($tl) {
 					$tl.innerHTML = setTitle;
 				}
-	
 				$cont.innerHTML = html;
-	
-				insertList();
 				setKeyWords();
-				/* saveImg(setTitle, i); */
+				/* saveImg(setTitle, j); */
 			});
 		}); 
 	}
@@ -405,14 +460,6 @@
 			});
 			const wrappedText = wrappedCharacters.join('');
 			span.outerHTML = wrappedText;
-		});
-	}
-	
-	function insertList () {
-		document.querySelectorAll('.js-list-attention').forEach((item, i) => {
-			var str = item.id.split('-')
-			var id = str[str.length - 1];
-			document.querySelector(`#wrap-${id} .summary`).appendChild(item);
 		});
 	}
 	
