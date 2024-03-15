@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>31369_202403041930</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #b0d796;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #3c6421;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #362e2b;
+		--summary-color: #3c6421;
+		--key-color: #eb6100;
+		--key-bg-color: #000;
+		--list-key-color: #3c6421;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403041930.jpg) center top no-repeat;
+	}
+
+	.content {
+		width: 1000px;
+		margin: 0px auto;
+	}
+
+	.title-wrap {
+		padding-top: 65px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			-webkit-text-stroke-width: 1.5px;
+			-webkit-text-stroke-color: var(--title-stroke-color);
+			text-shadow: #000 0 2px 0px;
+			text-align: center;
+			color: var(--title-color);
+			font-size: 50px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: -30px;
+				content: '';
+				/* width: 142px; */
+				/* height: 222px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_001.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -30px;
+				content: '';
+				/* width: 110px; */
+				/* height: 213px; */
+				width: 50px;
+				height: 100px;
+				transform: translateY(-50%);
+				background: url(img/item/title_star_002.png) center center no-repeat;
+				background-size: auto 100%;
+			}
+			
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 54px;
+			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 25px;
+			border-radius: 10px;
+			background-color: rgba(163, 231, 117, 0.3);
+		}
+	}
+
+	.text-wrap {
+		position: relative;
+
+		.text {
+			padding-bottom: 0;
+			/*  */
+		}
+	}
+
+	.text {
+		line-height: 64px;
+		/* line-height: 80px; */
+		padding: 0px 30px 20px;
+		margin-top: 0px;
+		text-align: left;
+		color: var(--text-color);
+		font-size: 42px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+		}
+
+		b {
+			font-weight: 700;
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 72px;
+		padding: 30px 100px;
+		/* margin-top: 80px; */
+		margin-top: 50px;
+		border: 4px dashed var(--summary-color);
+		border-radius: 20px;
+		/* text-align: left; */
+		text-align: center;
+		color: var(--summary-color);
+		font-size: 46px;
+		font-family: SourceHanSansCN-Regular;
+		/* background: url(img/item/border_001.png) center top no-repeat;
+		background-size: 100% 100%; */
+
+		&::before {
+			position: absolute;
+			left: 50px;
+			top: 80px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		&::after {
+			position: absolute;
+			right: 50px;
+			bottom: 70px;
+			content: '';
+			width: 46px;
+			height: 46px;
+			background: url(img/item/icon_start_001.png) center no-repeat;
+			background-size: 100%;
+		}
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+			font-weight: 700;
+
+			&::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 5px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			}
+		}
+
+		i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		}
+	}
+
+	.pic-wrap {
+		position: relative;
+		padding-right: 300px;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			/* margin: 50px auto; */
+			/* margin: 0px auto; */
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+
+		.text {
+			padding-bottom: 0;
+			/*  */
+			line-height: 75px;
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '探寻“血清淀粉样蛋白A高”的奥秘与解决之道',
+
+		page: [
+			{
+				content: [
+					{
+						subtitle: ' 血清淀粉样蛋白A与健康关系简介',
+						subContent:
+							`
+								血清淀粉样蛋白A是一种由肝脏合成的蛋白质，当人体发生<span>炎症或感染</span>时，它的<span>数值就会升高</span>。而导致其升高的原因有很多，如常见的<span>感冒、喉咙痛、肠胃炎</span>等，以及一些更严重的疾病。此外，<span>不良的生活习惯和饮食结构</span>也可能导致这一指标的升高。
+							`,
+					},
+					{
+						subtitle: ' 血清淀粉样蛋白A高怎么办？',
+						subContent:
+							`
+								<b>注意饮食：</b>增加蔬菜和水果的摄入量，<span>减少油炸、烧烤等不健康食品</span>的摄入。同时，注重饮食的均衡和多样性，确保身体能够获取到足够的营养。
+								<br><br>
+							`,
+					},
+					{
+						subContent:
+							`
+								<b>加强体育锻炼：</b><span>每天坚持至少30分钟的有氧运动</span>，比如<span>慢跑、游泳</span>等。这些运动不仅能够帮助我提高身体免疫力，还能保持愉悦的心情。
+								<br><br>
+								<img src="img/object/swim_001.png" style="display:block;position:absolute;bottom: -70px;right: 0px;width:30%;margin: 0px auto 0;">
+							`,
+					},
+					{
+						subContent:
+							`
+								<b>遵医嘱：</b>在<span>医生的建议下服用一些针对性的药物</span>来辅助治疗。但需要注意的是，药物的使用一定要遵循医生的指导，切勿盲目自行用药。
+								<img src="img/object/drug_013.png" style="display:block;position:absolute;bottom: -35px;right: 80px;width:20%;margin: 0px auto 0;">
+								<br><br>
+							`,
+					},
+				],
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.subContent) {
+					html += `
+						<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
+							${contentItem.subtitle ? `
+								<div class="subtitle">
+									<p class="right">${contentItem.subtitle || ''}</p>
+									<i class="line"></i>
+								</div>
+							` : ''}
+							<p class="text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `<p class="summary">${contentItem.summary}</p>`
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			$tl.innerHTML = setTitle;
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
+			else {
+				return `<i>${char}</i>`;
+			}
+		});
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>
