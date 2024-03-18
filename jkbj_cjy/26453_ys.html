@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>26453_202403051045</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #333333;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #333333;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #545563;
+		--summary-color: #546163;
+		--summary-color-2: #5d5463;
+		--key-color: #eb6100;
+		--key-bg-color: #000;
+		--list-key-color: #eb6100;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403051045.jpg) center top no-repeat;
+	}
+
+	.content {
+		/* padding-top: 100px; */
+		margin: 0px 100px 0 200px;
+	}
+
+	.title-wrap {
+		padding-top: 105px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			padding-left: 75px;
+			margin: 0;
+			text-align: center;
+			color: var(--title-color);
+			/* font-size: 50px; */
+			font-size: 47px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			/* font-size: 48px; */
+			font-size: 45px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -60px;
+				content: '';
+				width: 48px;
+				height: 49px;
+				transform: translateY(-50%);
+				background: url(img/item/icon_correct_001.png) center no-repeat;
+				background-size: 100%;
+			}
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 32px;
+			background: url(img/item/title_line_002.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.text {
+		line-height: 52px;
+		padding: 0px 30px 20px;
+		/* padding: 0px 30px 40px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--text-color);
+		/* font-size: 40px; */
+		font-size: 42px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+		}
+	}
+
+	.text-wrap,
+	.pic-wrap {
+		position: relative;
+
+		img {
+			display: block;
+			margin: 0px auto;
+			object-fit: cover;
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 75px;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color-2);
+		font-size: 44px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+
+			/* &::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -10px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			} */
+		}
+
+		/* i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		} */
+	}
+
+	.summary-title {
+		display: inline-block;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 48px;
+			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 10px;
+			z-index: 1;
+			content: '';
+			height: 24px;
+			background: url(img/item/title_line_001.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.summary-wrap {
+		position: relative;
+		padding-right: 300px;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '气道高反应性：如何有效管理与注意',
+
+		page: [
+			{
+				content: [
+					/* {
+						subtitle: '气道高反应性是什么',
+						subContent:
+							`
+								<b>定义：</b><span>气道高反应性是指气道对正常不应产生强烈反应的刺激物表现出过度敏感和反应增强的状态</span>，常见于哮喘、慢性阻塞性肺疾病等。
+								<br><br>
+								<b>症状表现：</b><span>频繁咳嗽、喘息、胸闷、呼吸困难</span>等，尤其在接触过敏源、冷空气、烟尘等刺激后症状加重。
+								<br><br>
+								<img src="img/object/cough_002.png" style="display:block;position:absolute;bottom: -110px;right:70px;width: 25%;margin: 0px auto 0px;">
+							`,
+					},
+					{
+						subtitle: '针对气道高反应性的治疗',
+						subContent:
+							`
+								<b>药物治疗：</b>如使用<span>长效β2受体激动剂</span>（如<span>福莫特罗</span>）舒张支气管，或采用<span>吸入性皮质激素</span>（如<span>布地奈德</span>）减少气道炎症反应，具体用药需在医生指导下进行。
+								<br><br>
+								<b>免疫调节治疗：</b>对于由过敏引起的气道高反应性，可能需要<span>脱敏治疗</span>，例如<span>标准化变应原疫苗注射疗法</span>。
+								<img src="img/object/needle_002.png" style="display:block;width: 40%;margin: -70px auto 0px;">
+							`,
+					}, */
+
+					{
+						subtitle: '日常生活注意事项',
+						subContent:
+							`
+								<b>环境控制：</b>尽可能<span>避开</span>已知的<span>过敏源</span>，如<span>花粉</span>、<span>尘螨</span>、<span>宠物毛发</span>等，保持室内空气清新，<span>定期打扫卫生</span>，使用空气净化器。
+								<img src="img/object/clean_001.png" style="display:block;width: 30%;margin: 0px auto 0px;">
+								<b>合理运动：</b>推荐进行适度的<span>有氧运动</span>，如<span>慢跑、游泳、太极拳</span>等，提升肺部功能，但要<span>避免</span>在<span>空气质量差</span>或<span>气温过低</span>时进行剧烈运动。
+								<img src="img/object/swim_001.png" style="display:block;width: 30%;margin: 0px auto 0px;">
+								<b>饮食调理：</b><span>均衡膳食</span>，多吃富含维生素C、E和锌的食物，如<span>新鲜果蔬、坚果、瘦肉</span>等，有助于增强免疫力，减少气道炎症。
+								<img src="img/object/food_072.png" style="display:block;width: 30%;margin: 0px auto 0px;">
+							`,
+					},
+
+				],
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.subContent) {
+					html += `
+						<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
+							${contentItem.subtitle ? `
+								<div class="subtitle">
+									<p class="right">${contentItem.subtitle || ''}</p>
+									<i class="line"></i>
+								</div>
+							` : ''}
+							<p class="text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `
+						<div class="${contentItem.picUrl ? 'summary-wrap' : 'summary-wrap-text'}">
+							<div class="summary-title">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="summary">${contentItem.summary}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			if ($tl) {
+				$tl.innerHTML = setTitle;
+			}
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
+			else {
+				return `<i>${char}</i>`;
+			}
+		});
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>

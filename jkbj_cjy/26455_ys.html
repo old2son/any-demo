@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>26455_202403051045</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<style>
+	@font-face {
+		font-family: SourceHanSansCN-Heavy;
+		src: url('css/font/SourceHanSansCN-Heavy.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Bold;
+		src: url('css/font/SourceHanSansCN-Bold.otf');
+	}
+
+	@font-face {
+		font-family: SourceHanSansCN-Regular;
+		src: url('css/font/SourceHanSansCN-Regular.otf');
+	}
+
+	:root {
+		--main-bdr-color: #000;
+		--title-color: #333333;
+		--title-stroke-color: #3e2308;
+		--subtitle-color: #333333;
+		--subtitle-bg-color: #fffde6;
+		--text-color: #545563;
+		--summary-color: #546163;
+		--summary-color-2: #5d5463;
+		--key-color: #eb6100;
+		--key-bg-color: #000;
+		--list-key-color: #eb6100;
+		--list-circle-bdr-color: #000;
+		--list-circle-bg-color: #f9ff58;
+	}
+
+	ul {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	i {
+		font-style: normal;
+	}
+
+	.bg {
+		width: 1200px;
+		height: 1600px;
+		margin: auto;
+		overflow: hidden;
+		background: url(img/bg/bg_202403051045.jpg) center top no-repeat;
+	}
+
+	.content {
+		/* padding-top: 100px; */
+		margin: 0px 100px 0 200px;
+	}
+
+	.title-wrap {
+		padding-top: 105px;
+		text-align: center;
+
+		h1 {
+			display: inline-block;
+			position: relative;
+			height: 80px;
+			line-height: 80px;
+			padding-left: 75px;
+			margin: 0;
+			text-align: center;
+			color: var(--title-color);
+			/* font-size: 50px; */
+			font-size: 47px;
+			font-family: SourceHanSansCN-Bold;
+		}
+	}
+
+	.subtitle {
+		display: table;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			/* font-size: 48px; */
+			font-size: 45px;
+			font-family: SourceHanSansCN-Bold;
+
+			&::after {
+				position: absolute;
+				top: 50%;
+				right: -60px;
+				content: '';
+				width: 48px;
+				height: 49px;
+				transform: translateY(-50%);
+				background: url(img/item/icon_correct_001.png) center no-repeat;
+				background-size: 100%;
+			}
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 15px;
+			z-index: 1;
+			content: '';
+			height: 32px;
+			background: url(img/item/title_line_002.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.text {
+		line-height: 52px;
+		padding: 0px 30px 20px;
+		/* padding: 0px 30px 40px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--text-color);
+		/* font-size: 40px; */
+		font-size: 42px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			color: var(--key-color);
+		}
+	}
+
+	.text-wrap,
+	.pic-wrap {
+		position: relative;
+
+		img {
+			display: block;
+			margin: 0px auto;
+			object-fit: cover;
+		}
+	}
+
+	.summary {
+		position: relative;
+		line-height: 75px;
+		/* margin-top: 50px; */
+		margin-top: 0px;
+		text-align: left;
+		color: var(--summary-color-2);
+		font-size: 44px;
+		font-family: SourceHanSansCN-Regular;
+
+		i {
+			position: relative;
+			z-index: 1;
+			color: var(--list-key-color);
+
+			/* &::after {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: -10px;
+				content: '';
+				z-index: -1;
+				content: '';
+				height: 25px;
+				background-color: rgba(163, 231, 117, 0.3);
+			} */
+		}
+
+		/* i.first {
+			&::after {
+				border-radius: 8px 0 0 8px;
+			}
+		}
+
+		i.last {
+			&::after {
+				border-radius: 0 8px 8px 0;
+			}
+		} */
+	}
+
+	.summary-title {
+		display: inline-block;
+		position: relative;
+		width: auto;
+		height: 100px;
+		line-height: 100px;
+		margin: 20px 0 0;
+		color: var(--subtitle-color);
+
+		.right {
+			position: relative;
+			z-index: 2;
+			float: left;
+			color: var(--subtitle-color);
+			font-size: 48px;
+			font-family: SourceHanSansCN-Bold;
+		}
+
+		.line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 10px;
+			z-index: 1;
+			content: '';
+			height: 24px;
+			background: url(img/item/title_line_001.png) center no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+
+	.summary-wrap {
+		position: relative;
+		padding-right: 300px;
+
+		img {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			object-fit: cover;
+			transform: translateY(-50%);
+		}
+	}
+</style>
+</head>
+
+<body>
+<div class="bg" id="html-canvas">
+	<div class="title-wrap">
+		<h1 id="title"></h1>
+	</div>
+	<div class="content" id="content"></div>
+</div>
+</body>
+<script>
+var jsonText = [
+	{
+		title: '感冒耳朵听不清，如何治疗？',
+
+		page: [
+			{
+				content: [
+					/* {
+						subtitle: '耳闷感的原因',
+						subContent:
+							`
+								<b>中耳炎：</b><span>感冒</span>时，<span>病菌</span>容易通过咽鼓管<span>进入中耳引发炎症</span>，导致中耳积液或水肿，产生耳闷、听力减退等症状。
+								<br><br>
+								<b>鼻窦炎关联：</b><span>感冒引起的鼻腔和鼻窦炎症可能影响到咽鼓管功能</span>，使其阻塞，间接引起耳部不适。
+								<br><br>
+								<img src="img/object/ear_001.png" style="display:block;position:absolute;bottom: -140px;right:280px;width: 20%;margin: 0px auto 0px;">
+							`,
+					},
+					{
+						subtitle: '治疗方案',
+						subContent:
+							`
+								<b>药物治疗：</b>对于由感冒引发的耳闷感，首先应治疗原发病——感冒，可使用对症的非处方感冒药，如<span>解热镇痛药</span>，常见<span>布洛芬缓释片</span>，<span>抗组胺药</span>，如<span>马来酸氯苯那敏片</span>，缓解鼻塞、流涕等症状；若伴有细菌感染，医生可能会开具<span>抗生素</span>，如<span>阿莫西林</span>。
+								<br><br>
+								<b>物理疗法：</b><span>进行吞咽动作或者捏鼻闭嘴呼气</span>，有助于打开咽鼓管，减轻耳内压力。但此方法需谨慎操作，避免用力过猛造成损伤。
+								<img src="img/object/nose_002.png" style="display:block;position:absolute;bottom: -127px;right:350px;width: 30%;margin: 0px auto 0px;">
+							`,
+					}, */
+
+					{
+						subtitle: '日常注意事项与护理',
+						subContent:
+							`
+								<b>保持鼻腔通畅：</b><span>用生理盐水冲洗鼻腔</span>可清除分泌物，减少黏膜肿胀，改善咽鼓管通气功能。
+								<br><br>
+								<b>充足休息：</b><span>保证充足的睡眠</span>可增强身体抵抗力，促进感冒康复，缓解耳闷感。
+								<br><br>
+								<b>避免揉搓耳朵：</b><span>切勿随意用手或其他物品插入耳道</span>清理，以免加重炎症或损伤耳膜。
+								<br><br>
+								<b>调整生活习惯：</b><span>戒烟限酒，保持室内空气湿润，减少外部刺激</span>对耳部的影响。
+								<br><br>
+								<b>何时就医：</b><span>如果耳闷感持续不减，听力明显下降，或出现耳痛、发热、耳鸣</span>等新症状，应<span>及时前往医院</span>就诊，以排除急性中耳炎、化脓性中耳炎等严重并发症。
+								<img src="img/object/check_003.png" style="display:block;width: 50%;margin: 0px auto 0px;">
+							`,
+					},
+
+				],
+			},
+		]
+	}
+];
+
+function setHtml() {
+	var html = '';
+
+	jsonText.forEach(function (item, i) {
+		var setTitle = item.title || '';
+		var setObj = item.page;
+
+		setObj.forEach(function (obj, j) {
+			html = '';
+			
+			obj.content?.forEach(function (contentItem) {
+				if (contentItem.subContent) {
+					html += `
+						<div class="${contentItem.picUrl ? 'pic-wrap' : 'text-wrap'}">
+							${contentItem.subtitle ? `
+								<div class="subtitle">
+									<p class="right">${contentItem.subtitle || ''}</p>
+									<i class="line"></i>
+								</div>
+							` : ''}
+							<p class="text" style="${contentItem.subContentStyle || ''}">${contentItem.subContent}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				} 
+				else if (contentItem.summary) {
+					html += `
+						<div class="${contentItem.picUrl ? 'summary-wrap' : 'summary-wrap-text'}">
+							<div class="summary-title">
+								<p class="right">${contentItem.subtitle}</p>
+								<i class="line"></i>
+							</div>
+							<p class="summary">${contentItem.summary}</p>
+							${contentItem.picUrl ? ` <img style="${contentItem.picStyle || ''}" src="${contentItem.picUrl}"> ` : ''}
+						</div>`;
+				}
+			});
+
+			var $tl = document.getElementById('title');
+			var $cont = document.getElementById('content');
+			if ($tl) {
+				$tl.innerHTML = setTitle;
+			}
+			$cont.innerHTML = html;
+			setKeyWords();
+			/* saveImg(setTitle, j); */
+		});
+	}); 
+}
+
+function saveImg(setTitle = '', j = 0) {
+	var realHtml = document.getElementById('html-canvas');
+	var width = 1200; //获取dom 宽度
+
+	var img_type = 'jpeg';
+	// var height = realHtml.offsetHeight; //获取dom 高度
+	var height = 1600; //获取dom 高度
+	var canvas = document.createElement('canvas'); //创建一个canvas节点
+	var scale = 1; //定义任意放大倍数 支持小数
+	canvas.width = width * scale; //定义canvas 宽度 * 缩放
+	canvas.height = height * scale; //定义canvas高度 *缩放
+	canvas.getContext('2d').scale(scale, scale); //获取context,设置scale
+	var opts = {
+		tainttest: true, //检测每张图片都已经加载完成
+		scale: scale, // 添加的scale 参数
+		useCORS: true,
+		canvas: canvas, //自定义 canvas
+		logging: true, //日志开关
+		width: width, //dom 原始宽度
+		height: height, //dom 原始高度
+		name: 'pic'
+	};
+	html2canvas(realHtml, opts).then(function (canvas) {
+		var imgUri = canvas.toDataURL('image/' + img_type, 0.9);
+		var saveLink = document.createElement('a');
+		saveLink.href = imgUri;
+		saveLink.download = setTitle + (j + 1) + '.' + (img_type === 'jpeg' ? 'jpg' : img_type);
+		saveLink.click();
+	});
+}
+
+function setKeyWords(parent = document) {
+	const spans = parent.querySelectorAll('span');
+	spans.forEach((span, i) => {
+		const text = span.textContent;
+		const characters = text.split('');
+		const wrappedCharacters = characters.map((char, index, arr) => {
+			if (index === 0) {
+				return `<i class="first">${char}</i>`;
+			}
+			else if (index === arr.length - 1) {
+				return `<i class="last">${char}</i>`;
+			}
+			else {
+				return `<i>${char}</i>`;
+			}
+		});
+		const wrappedText = wrappedCharacters.join('');
+		span.outerHTML = wrappedText;
+	});
+}
+
+setHtml()
+</script>
+</html>
