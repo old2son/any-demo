@@ -260,12 +260,12 @@
 <script>
 var jsonText = [
 	{
-		title: '肺实变：认识、治疗与日常禁忌',
+		title: '肺实变：认识、治疗与日常护理',
 
 		page: [
 			{
 				content: [
-					/* {
+					{
 						subtitle: '肺实变的认识',
 						summary: 
 							`	
@@ -285,10 +285,10 @@ var jsonText = [
 								<b>手术治疗：</b>肺实变面积较大或药物治疗<span>效果不佳时，可考虑手术治疗</span>
 								<img src="img/object/surgery_001.png" style="display:block;width: 40%;margin: 0px auto 0px;">
 							`,
-					}, */
+					},
 
-					{
-						subtitle: '肺实变的日常禁忌',
+					/* {
+						subtitle: '肺实变的日常护理',
 						subContent:
 							`
 								<b>戒烟限酒：</b><span>吸烟和饮酒会加重肺实变的症状</span>，影响治疗效果。
@@ -299,7 +299,7 @@ var jsonText = [
 								<img src="img/object/food_064.png" style="display:block;width: 30%;margin: 0px auto 0px;">
 								<b>保持良好心态食：</b>肺实变的<span>治疗需要一定时间</span>，患者应<span>保持积极乐观的心态</span>，积极配合医生的治疗建议。
 							`,
-					},
+					}, */
 				],
 			},
 		]
@@ -350,7 +350,7 @@ function setHtml() {
 			}
 			$cont.innerHTML = html;
 			setKeyWords();
-			/* saveImg(setTitle, j); */
+			saveImg(setTitle, j);
 		});
 	}); 
 }
